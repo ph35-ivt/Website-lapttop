@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
+Route::get('/admin','AdminController@index');
+Route::get('/admin/dashboard','AdminController@showdashboard')->name('login');
+Route::post('/admin/dashboard','AdminController@dashboard');
