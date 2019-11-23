@@ -14,6 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin','AdminController@index');
-Route::get('/admin/dashboard','AdminController@showdashboard')->name('login');
-Route::post('/admin/dashboard','AdminController@dashboard');
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::get('/admin/dang-nhap','AdminController@getDangNhap')->name('dangnhapad');
+
+Route::get('admin/dashboard','AdminController@dashboard')->name('dashboard');
+
+Route::post('admin/dang-nhap', 'AdminController@postDangNhap');
+
+Route::get('admin/dang-xuat', 'AdminController@dangXuat')->name('dangxuatad');
+
+Route::get('admin/quen-mat-khau', 'AdminController@getQuenMatKhau')->name('quenmatkhau');
+
+

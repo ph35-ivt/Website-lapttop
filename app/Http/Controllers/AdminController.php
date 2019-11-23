@@ -1,30 +1,48 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getDangNhap()
     {
-        return view('admins.login');
+        return view('admin.dangnhap');       
     }
-    public function showdashboard()
+
+    public function dashboard()
     {
-        return view('admins.layout.index');
+        return view('admin.main');
     }
-    public function dashboard(Request $request)
+    public function postDangNhap(Request $req)
     {
-        $email = $request->email;
-        $password = md5($request->password);
-        $request = DB::table('users')->where('email',$email)->where('password',$password)->first();
-        return view('admins.layout.index');
+        $email=$req->email;
+        $password=$req->password;
+
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'level' => 1])) {
+            return redirect()->route('dashboard');
+        }
+        else{
+            return redirect()->back()->with(['errorLogin'=>'Email đăng nhập hoặc mật khẩu không đúng!!!']);
+        }
+    }
+
+    public function dangXuat()
+    {
+        auth()->logout();
+        return view('admin.dangnhap');
+    }
+
+    public function getQuenmatkhau()
+    {
+        return view('admin.quenmatkhau');
     }
     /**
      * Show the form for creating a new resource.
