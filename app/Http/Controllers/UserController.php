@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $listUsers = User::all();
+        return view('admin.users.list_user', compact('listUsers'));
     }
 
     /**
@@ -21,9 +23,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
-        //
+        return view('admin.users.add_user');
     }
 
     /**
@@ -34,7 +36,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data =$request->except('_token');
+        // dd($data);
+        User::create($data);
+        return redirect()->route('list-user');
     }
 
     /**
@@ -56,7 +61,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit_user',compact('user'));
     }
 
     /**
@@ -68,7 +74,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $data= $request->only('name', 'email', 'password','level');
+        $user->update($data);
+        return redirect()->route('list-user');
     }
 
     /**
@@ -79,6 +88,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('list-user');
     }
 }

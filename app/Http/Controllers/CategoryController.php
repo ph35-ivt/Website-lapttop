@@ -14,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $listCategories = Category::all();
+        // dd($listCategories);
+        return view('admin.categories.list_category', compact('listCategories'));
+        
     }
 
     /**
@@ -22,9 +25,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
-        //
+        return view('admin.categories.add_category');
     }
 
     /**
@@ -35,7 +38,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data =$request->except('_token');
+        // dd($data);
+        Category::create($data);
+        return redirect()->route('list-category');
     }
 
     /**
@@ -55,9 +61,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.edit_category',compact('category'));
     }
 
     /**
@@ -67,9 +74,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $data= $request->only('parent_category_id','name','category_slug','description','order','status');
+        $category->update($data);
+        return redirect()->route('list-category');
     }
 
     /**
@@ -78,8 +88,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect()->route('list-category');
     }
 }

@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $listProducts = Product::all();
+        // dd($listProducts);
+        return view('admin.products.list_product', compact('listProducts'));
     }
 
     /**
@@ -22,9 +24,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
-        //
+        return view('admin.products.add_product');
     }
 
     /**
@@ -35,7 +37,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data =$request->except('_token');
+        // dd($data);
+        Product::create($data);
+        return redirect()->route('list-product');
     }
 
     /**
@@ -55,9 +60,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.products.edit_product',compact('product'));
     }
 
     /**
@@ -67,9 +73,12 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $data= $request->only('name','category_id','product_slug','content','price','link','quantity','status');
+        $product->update($data);
+        return redirect()->route('list-product');
     }
 
     /**
@@ -78,8 +87,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        Product::destroy($id);
+        return redirect()->route('list-product');
     }
 }

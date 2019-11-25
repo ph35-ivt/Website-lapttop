@@ -17,8 +17,8 @@
                         <span>Category</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">List category</a></li>
-                        <li><a href="glyphicon.html">Thêm category</a></li>
+                        <li><a href="{{route('list-category')}}">List category</a></li>
+                        <li><a href="{{route('add-category')}}">Add category</a></li>
                     </ul>
                 </li>
 
@@ -28,8 +28,8 @@
                         <span>Product</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">List product</a></li>
-                        <li><a href="glyphicon.html">Thêm product</a></li>
+                        <li><a href="{{route('list-product')}}">List product</a></li>
+                        <li><a href="{{route('add-product')}}">Add product</a></li>
                     </ul>
                 </li>
 
@@ -39,7 +39,7 @@
                         <span>Order</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">List order</a></li>
+                        <li><a href="{{route('list-order')}}">List order</a></li>
                                                    
                     </ul>
                 </li>
@@ -50,7 +50,7 @@
                         <span>Order_detail</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">List order_detail</a></li>
+                        <li><a href="{{route('list-order-detail')}}">List order_detail</a></li>
                         
                     </ul>
                 </li>
@@ -61,7 +61,7 @@
                         <span>Comment</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">List comment</a></li>
+                        <li><a href="{{route('list-comment')}}">List comment</a></li>
                     </ul>
 
                     <li class="sub-menu">
@@ -70,8 +70,8 @@
                         <span>User</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="typography.html">List user</a></li>
-                        <li><a href="glyphicon.html">Thêm user</a></li>
+                        <li><a href="{{route('list-user')}}">List user</a></li>
+                        <li><a href="{{route('add-user')}}">Add user</a></li>
                     </ul>
                 </li>
                 </li>

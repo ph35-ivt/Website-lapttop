@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class New extends Model
 {
     protected $fillable = [
-        'title','description','new_slug','content','images','new_nb'
+        'title','content','images','new_nb'
     ];
+    public function Commments()
+    {
+    	return $this->hasMany('App\Commment');
+    }
 }

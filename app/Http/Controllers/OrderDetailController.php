@@ -14,7 +14,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        $listOrder_details = Order_Detail::all();
+        return view('admin.order_details.list_order_detail', compact('listOrder_details'));
     }
 
     /**
@@ -55,9 +56,10 @@ class OrderDetailController extends Controller
      * @param  \App\Order_Detail  $order_Detail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order_Detail $order_Detail)
+    public function edit($id)
     {
-        //
+        $detail = Order_Detail::find($id);
+        return view('admin.order_details.edit_order_detail',compact('detail'));
     }
 
     /**
@@ -67,9 +69,13 @@ class OrderDetailController extends Controller
      * @param  \App\Order_Detail  $order_Detail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order_Detail $order_Detail)
+    public function update(Request $request, $id)
     {
-        //
+        $detail = Order_Detail::find($id);
+        $data= $request->only('order_id','product_id','price','quantity');
+        $detail->update($data);
+        return redirect()->route('list-order-detail');
+
     }
 
     /**
@@ -78,8 +84,9 @@ class OrderDetailController extends Controller
      * @param  \App\Order_Detail  $order_Detail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order_Detail $order_Detail)
+    public function destroy($id)
     {
-        //
+        Order_Detail::destroy($id);
+        return redirect()->route('list-order-detail');
     }
 }

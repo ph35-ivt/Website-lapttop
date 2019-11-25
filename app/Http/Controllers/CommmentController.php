@@ -14,7 +14,8 @@ class CommmentController extends Controller
      */
     public function index()
     {
-        //
+        $listComments = Commment::all();
+        return view('admin.comment.list_comment', compact('listComments'));
     }
 
     /**
