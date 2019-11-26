@@ -38,42 +38,35 @@
             </th>
             <th> ID</th>
             <th>Name</th>
-            <th>Category ID</th>
-            <th>Product_slug</th>
             <th>Content</th>
             <th>Price</th>
             <th>Link</th>
             <th>Quantity</th>
-            <th>Status</th>
-            <th>Create At</th>
-            <th>Update At</th>
-            <th style="width:30px;" colspan="2">Action</th>
+            <th style="width:30px;">Action</th>
           </tr>
         </thead>
         <tbody>
           @foreach($listProducts as $product)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td><span class="text-ellipsis">{{$product->id}}</span></td>
+            <td><span class="text-ellipsis">{{$product->id}}</span></td> 
             <td><span class="text-ellipsis">{{$product->name}}</span></td>
-            <td><span class="text-ellipsis">{{$product->category_id}}</span></td>
-            <td><span class="text-ellipsis">{{$product->product_slug}}</span></td>
             <td><span class="text-ellipsis">{{$product->content}}</span></td>
             <td><span class="text-ellipsis">{{$product->price}}</span></td>
-            <td><span class="text-ellipsis">{{$product->link}}</span></td>
+            <td><span class="text-ellipsis"><img style="width: 60px" src="{{$product->link}}" alt=""></span></td>
             <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
-            <td><span class="text-ellipsis">{{$product->status}}</span></td>
-            <td><span class="text-ellipsis">{{$product->created_at}}</span></td>
-            <td><span class="text-ellipsis">{{$product->updated_at}}</span></td>
             <td>
-              <a class="btn" href="{{route('edit-product',$product->id)}}">
+              <a class="btn" href="{{route('show-product',$product->id)}}">
+                <button type="submit"><i class="fas fa-scroll"></i></button>
+              </a>
+              <a  class="btn" href="{{route('edit-product',$product->id)}}">
                 <button type="submit"><i class="fas fa-edit"></i></button>
               </a>
                 @if (empty($product->deleted_at))
                     <form style="padding-left: 13px" action="{{route('delete-product', $product->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px" class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i style="width: 17px; color: #097cef" style="" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

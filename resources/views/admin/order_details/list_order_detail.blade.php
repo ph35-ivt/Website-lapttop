@@ -65,7 +65,7 @@
                     <form style="padding-left: 13px" action="{{route('delete-order-detail', $detail->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px" class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

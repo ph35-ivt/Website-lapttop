@@ -19,33 +19,20 @@ Route::get('/', function () {
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-
+// {{asset('images/->path')}}
 
 Route::get('/admin/dang-nhap','AdminController@getDangNhap')->name('dangnhapad');
 
-Route::get('admin/dashboard','AdminController@dashboard')->name('dashboard');
+Route::get('admin/dashboard','AdminController@dashboard')->name('dashboard')->middleware('adminLogin');
 
-Route::post('admin/dang-nhap', 'AdminController@postDangNhap');
+Route::post('admin/dang-nhap', 'AdminController@postDangNhap')->name('dangnhap');
 
 Route::get('admin/dang-xuat', 'AdminController@dangXuat')->name('dangxuatad');
 
 Route::get('admin/quen-mat-khau', 'AdminController@getQuenMatKhau')->name('quenmatkhau');
 
-// Route::group(['prefix'=>'admin'],
-// 	function(){
-		//list product
-		Route::get('/products', 'ProductController@index')->name('list-product');
-		// create cat
-		Route::get('/products/add', 'ProductController@add')->name('add-product');
-		//store 
-		Route::post('/products', 'ProductController@store')->name('store-product');
-		//delete 
-		Route::delete('/products/{id}', 'ProductController@destroy')->name('delete-product');
-		// show form edit
-		Route::get('/products/{id}/edit','ProductController@edit')->name('edit-product');
-		// update 
-		Route::put('/products/{id}','ProductController@update')->name('update-product');
-//////////////
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
+ 	function(){
 		//list category
 		Route::get('/categories', 'CategoryController@index')->name('list-category');
 		// create cat
@@ -58,28 +45,30 @@ Route::get('admin/quen-mat-khau', 'AdminController@getQuenMatKhau')->name('quenm
 		Route::get('/categories/{id}/edit','CategoryController@edit')->name('edit-category');
 		// update 
 		Route::put('/categories/{id}','CategoryController@update')->name('update-category');
-//////////
-		//list uesr
-		Route::get('/users', 'UserController@index')->name('list-user');
+////////////
+		//list product
+		Route::get('/products', 'ProductController@index')->name('list-product');
+		// show product_detail
+		Route::get('/products/{id}/show','ProductController@show')->name('show-product');
 		// create cat
-		Route::get('/users/add', 'UserController@add')->name('add-user');
+		Route::get('/products/add', 'ProductController@add')->name('add-product');
 		//store 
-		Route::post('/users', 'UserController@store')->name('store-user');
+		Route::post('/products', 'ProductController@store')->name('store-product');
 		//delete 
-		Route::delete('/users/{id}', 'UserController@destroy')->name('delete-user');
+		Route::delete('/products/{id}', 'ProductController@destroy')->name('delete-product');
 		// show form edit
-		Route::get('/users/{id}/edit','UserController@edit')->name('edit-user');
+		Route::get('/products/{id}/edit','ProductController@edit')->name('edit-product');
 		// update 
-		Route::put('/users/{id}','UserController@update')->name('update-user');
-///////////
+		Route::put('/products/{id}','ProductController@update')->name('update-product');
+//////////////
 		// list comment
-		Route::get('/comments', 'CommmentController@index')->name('list-comment');
+		Route::get('/comments', 'CommentController@index')->name('list-comment');
 		//delete 
-		Route::delete('/comments/{id}', 'CommmentController@destroy')->name('delete-comment');
+		Route::delete('/comments/{id}', 'CommentController@destroy')->name('delete-comment');
 		// show form edit
-		Route::get('/comments/{id}/edit','CommmentController@edit')->name('edit-comment');
+		Route::get('/comments/{id}/edit','CommentController@edit')->name('edit-comment');
 		// update 
-		Route::put('/comments/{id}','CommmentController@update')->name('update-comment');
+		Route::put('/comments/{id}','CommentController@update')->name('update-comment');
 ///////////
 		//list order
 		Route::get('/orders', 'OrderController@index')->name('list-order');
@@ -98,4 +87,20 @@ Route::get('admin/quen-mat-khau', 'AdminController@getQuenMatKhau')->name('quenm
 		Route::get('/order-details/{id}/edit','OrderDetailController@edit')->name('edit-order-detail');
 		// update 
 		Route::put('/order-details/{id}','OrderDetailController@update')->name('update-order-detail');
-// });
+//////////////
+		//list uesr
+		Route::get('/users', 'UserController@index')->name('list-user');
+		// show
+		Route::get('/users/{id}/show','UserController@show')->name('show-user');
+		// create cat
+		Route::get('/users/add', 'UserController@add')->name('add-user');
+		//store 
+		Route::post('/users', 'UserController@store')->name('store-user');
+		//delete 
+		Route::delete('/users/{id}', 'UserController@destroy')->name('delete-user');
+		// show form edit
+		Route::get('/users/{id}/edit','UserController@edit')->name('edit-user');
+		// update 
+		Route::put('/users/{id}','UserController@update')->name('update-user');
+///////////
+});

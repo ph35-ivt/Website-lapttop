@@ -39,10 +39,6 @@
             <th> ID</th>
             <th>Name</th>
             <th>email</th>
-            <th>Password</th>
-            <th>level</th>
-            <th>Create At</th>
-            <th>Update At</th>
             <th style="width:30px;">Action</th>
           </tr>
         </thead>
@@ -53,11 +49,10 @@
             <td><span class="text-ellipsis">{{$user->id}}</span></td>
             <td><span class="text-ellipsis">{{$user->name}}</span></td>
             <td><span class="text-ellipsis">{{$user->email}}</span></td>
-            <td><span class="text-ellipsis">{{$user->password}}</span></td>
-            <td><span class="text-ellipsis">{{$user->level}}</span></td>
-            <td><span class="text-ellipsis">{{$user->created_at}}</span></td>
-            <td><span class="text-ellipsis">{{$user->updated_at}}</span></td>
             <td>
+              <a class="btn" href="{{route('show-user',$user->id)}}">
+                <button type="submit"><i class="fas fa-scroll"></i></button>
+              </a>
               <a class="btn" href="{{route('edit-user',$user->id)}}">
                 <button type="submit"><i class="fas fa-edit"></i></button>
               </a>
@@ -65,7 +60,7 @@
                     <form style="padding-left: 13px" action="{{route('delete-user', $user->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px" class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i style="width: 17px; color: #097cef" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

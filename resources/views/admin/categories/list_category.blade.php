@@ -58,7 +58,13 @@
             <td><span class="text-ellipsis">{{$category->category_slug}}</span></td>
             <td><span class="text-ellipsis">{{$category->description}}</span></td>
             <td><span class="text-ellipsis">{{$category->order}}</span></td>
-            <td><span class="text-ellipsis">{{$category->status}}</span></td>
+            <td>
+              @if($category->status==0)
+                <span class="text-ellipsis">....</span>
+                @else
+                <span class="text-ellipsis">....</span>
+              @endif
+            </td>
             <td><span class="text-ellipsis">{{$category->created_at}}</span></td>
             <td><span class="text-ellipsis">{{$category->updated_at}}</span></td>
             <td>
@@ -69,7 +75,7 @@
                     <form style="padding-left: 13px" action="{{route('delete-category', $category->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px" class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

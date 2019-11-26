@@ -52,7 +52,13 @@
             <td><span class="text-ellipsis">{{$order->id}}</span></td>
             <td><span class="text-ellipsis">{{$order->customer_id}}</span></td>
             <td><span class="text-ellipsis">{{$order->payment}}</span></td>
-            <td><span class="text-ellipsis">{{$order->status}}</span></td>
+            <td>
+              @if($order->status==1)
+              <span class="text-ellipsis">Đã thanh toán</span>
+              @else
+              <span class="text-ellipsis">Chưa thanh toán</span>
+              @endif
+            </td>
             <td><span class="text-ellipsis">{{$order->created_at}}</span></td>
             <td><span class="text-ellipsis">{{$order->updated_at}}</span></td>
             <td>
@@ -63,7 +69,7 @@
                     <form style="padding-left: 13px" action="{{route('delete-order', $order->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px" class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

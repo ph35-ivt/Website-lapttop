@@ -40,7 +40,7 @@
             <th>New ID</th>
             <th>User ID</th>
             <th>Product ID</th>
-            <th>content</th>
+            <th>Content</th>
             <th>Create At</th>
             <th>Update At</th>
             <th style="width:30px;">Action</th>
@@ -65,7 +65,7 @@
                     <form style="padding-left: 13px" action="{{route('delete-comment', $comment->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px" class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

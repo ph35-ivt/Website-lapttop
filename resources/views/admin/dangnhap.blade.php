@@ -26,10 +26,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
 <div class="w3layouts-main">
     <h2>Đăng nhập</h2>
-        <form action="#" method="post">
+    @if(Session::has('errorLogin'))
+    <p>{{Session::get('errorLogin')}}</p>
+    @endif
+        <form action="{{route('dangnhap')}}" method="POST">
             @csrf
-            <input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
-            <input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
+            <input type="email" class="ggg" name="email" placeholder="E-MAIL" required="">
+            <input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
             <span><input type="checkbox" />Nhớ mật khẩu</span>
             <h6><a href="{{route('quenmatkhau')}}">Quên mật khẩu</a></h6>
                 <div class="clearfix"></div>

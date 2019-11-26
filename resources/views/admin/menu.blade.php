@@ -4,12 +4,6 @@
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a class="active" href="{{route('dashboard')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
                 
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -24,7 +18,7 @@
 
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fas fa-box-open"></i>
                         <span>Product</span>
                     </a>
                     <ul class="sub">
@@ -66,7 +60,7 @@
 
                     <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fas fa-user-circle"></i>
                         <span>User</span>
                     </a>
                     <ul class="sub">

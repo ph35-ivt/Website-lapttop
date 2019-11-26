@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Commment;
+use App\Comment;
 use Illuminate\Http\Request;
 
-class CommmentController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CommmentController extends Controller
      */
     public function index()
     {
-        $listComments = Commment::all();
+        $listComments = Comment::all();
         return view('admin.comment.list_comment', compact('listComments'));
     }
 
@@ -42,10 +42,10 @@ class CommmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Commment  $commment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Commment $commment)
+    public function show($id)
     {
         //
     }
@@ -53,34 +53,39 @@ class CommmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Commment  $commment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Commment $commment)
+    public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('admin.comment.edit_comment',compact('comment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Commment  $commment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Commment $commment)
+    public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $data= $request->only('new_id','user_id','product_id','content');
+        $comment->update($data);
+        return redirect()->route('list-comment');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Commment  $commment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Commment $commment)
+    public function destroy($id)
     {
-        //
+        Comment::destroy($id);
+        return redirect()->route('list-comment');
     }
 }

@@ -39,6 +39,7 @@
                             <label for="exampleInputFile">Link</label>
                             <input type="file" id="exampleInputFile" class="form-control" 
                             name="link">
+                            
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Quantity</label>

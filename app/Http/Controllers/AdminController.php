@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class AdminController extends Controller
 {
+        use AuthenticatesUsers;
+
     
     /**
      * Display a listing of the resource.
@@ -25,18 +29,22 @@ class AdminController extends Controller
     {
         $email=$req->email;
         $password=$req->password;
+        // dd($email,$password);
 
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'level' => 1])) {
-            return redirect()->route('dashboard');
+        if (\Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('list-category');
         }
         else{
             return redirect()->back()->with(['errorLogin'=>'Email đăng nhập hoặc mật khẩu không đúng!!!']);
         }
     }
 
-    public function dangXuat()
+    public function dangXuat(Request $request)
     {
-        auth()->logout();
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
         return view('admin.dangnhap');
     }
 

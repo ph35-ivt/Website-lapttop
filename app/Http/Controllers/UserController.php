@@ -37,7 +37,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data =$request->except('_token');
-        // dd($data);
         User::create($data);
         return redirect()->route('list-user');
     }
@@ -50,7 +49,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        if ($user) {
+            return view('admin.users.detail_user',compact('user'));
+        }
+            echo "Not found";       
     }
 
     /**
