@@ -25,13 +25,26 @@
 <section class="login-block">
 <div class="container">
    <div class="row">
+     @if(count($errors) > 0)
+     <div class="alert alert-danger">
+         @foreach($errors ->all() as $err)
+          {{$err}}
+         @endforeach
+     </div>
+    @endif
+    @if(session('thongbao'))
+     <div class="alert alert-success">
+         {{session('thongbao')}}
+     </div>
+    @endif
        <div class="col-md-4 login-sec">
         <h2 class="text-center">Đăng nhập</h2>
-          <form class="login-form">
+          <form class="login-form" action="{{route('postlogin')}}" method="POST">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
             <label for="exampleInputEmail1" class="text-uppercase">Username
               </label>
-             <input type="text" class="form-control" placeholder="">
+             <input type="email" class="form-control" placeholder="">
     
              </div>
            <div class="form-group">

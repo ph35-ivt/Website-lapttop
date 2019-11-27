@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categories extends Model
 {
+	 protected  $table = "Categories";
     protected $fillable = [
         'name','category_slug','description','status'
     ];
-     public function comments()
+     public function product()
     {
-    	return $this->hasMany('App\Comments');
+    	return $this->hasMany('App\Product');
     }
 
 }

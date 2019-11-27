@@ -41,7 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="content">
     	<div class="content_top">
     		<div class="back-links">
-    		<p><a href="index.html">Home</a> >>>> <a href="#">Electronics</a></p>
+    		<p><a href="{{route('trangchu')}}">Home</a> >>>> <a href="{{route('lienhe')}}">Liên hệ</a></p>
     	    </div>
     		<div class="clear"></div>
     	</div>
@@ -79,105 +79,45 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     		<div class="clear"></div>
     	</div>
    <div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="#"><img src="images/new-pic1.jpg" alt=""></a>					
+		 @foreach($product1 as $pt)
+				<div class="grid_1_of_4 images_1_of_4">				
 					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
+			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
+							<h2>{{$pt->name}}</h2>
+							<div class="price-details">
+	 					<div class="price-number">
+	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+	 					</div>
+	 					<div class="add-cart">								
+	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+	 					</div>
+	 					<div class="clear"></div>
+ 				     </div>	 
 							 <div class="clear"></div>
 					</div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic2.jpg" alt=""></a>
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic4.jpg" alt=""></a>
-					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="">
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
+		  @endforeach
+			
 			</div>
         </div>
-				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
-					<ul class="side-w3ls">
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
-    				</ul>
-    				<div class="subscribe">
-    					<h2>Đăng nhập</h2>
-    						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
-						    <div class="signup">
-							    <form method="POST" action="{{route('dangnhap')}}}">
-							     <input type="hidden" name="_token" value="{{csrf_token()}}">
-							    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-							    	
-							    </form>
-						    </div>
-      				</div>
-      				 <div class="community-poll">
-      				 
-      				 	<div class="poll">
-      				 		<form>
-      				 			<ul>
-									<li>
-									<input type="radio" name="vote" class="radio" value="1">
-									<span class="label"><label>More convenient shipping and delivery </label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="2">
-									<span class="label"><label for="vote_2">Lower price</label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="3">
-									<span class="label"><label for="vote_3">Bigger choice</label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="5">
-									<span class="label"><label for="vote_5">Payments security </label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="6">
-									<span class="label"><label for="vote_6">30-day Money Back Guarantee </label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="7">
-									<span class="label"><label for="vote_7">Other.</label></span>
-									</li>
-									</ul>
-      				 		</form>
-      				 	</div>
-      				 </div>
- 				</div>
+	<div class="rightsidebar span_3_of_1">
+		<h2>CATEGORIES</h2>
+		<ul class="side-w3ls">
+	     @foreach($categories as $ct)
+	      <li><a href="#">{{$ct->name}}</a></li>
+	      @endforeach
+		</ul>
+		<div class="subscribe">
+			<h2>Đăng nhập</h2>
+			    <div class="signup">
+				    <form method="POST" action="{{route('dangnhap')}}}">
+				     <input type="hidden" name="_token" value="{{csrf_token()}}">
+				    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
+				    	
+				    </form>
+			    </div>
+			</div>
+		</div>
  		</div>
  	</div>
     </div>

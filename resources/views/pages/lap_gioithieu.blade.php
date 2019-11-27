@@ -41,7 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="content">
     	<div class="content_top">
     		<div class="back-links">
-    		<p><a href="index.html">Home</a> >><a href="#">Giới thiệu</a></p>
+    		<p><a href="{{route('trangchu')}}">Home</a> >><a href="{{route('lap_gioithieu')}}">Giới thiệu</a></p>
     	    </div>
     		<div class="clear"></div>
     	</div>
@@ -111,59 +111,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     		<div class="clear"></div>
     	</div>
    <div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="#"><img src="user/images/new-pic1.jpg" alt=""></a>					
+			 @foreach($product1 as $pt)
+				<div class="grid_1_of_4 images_1_of_4">				
 					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
+			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
+							<h2>{{$pt->name}}</h2>
+							<div class="price-details">
+	 					<div class="price-number">
+	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+	 					</div>
+	 					<div class="add-cart">								
+	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+	 					</div>
+	 					<div class="clear"></div>
+ 				     </div>	 
 							 <div class="clear"></div>
 					</div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic2.jpg" alt=""></a>
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic4.jpg" alt=""></a>
-					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="">
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
+			@endforeach
+
 			</div>
         </div>
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul class="side-w3ls">
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
+				      @foreach($categories as $ct)
+				      <li><a href="#">{{$ct->name}}</a></li>
+				      @endforeach
     				</ul>
     				<div class="subscribe">
     					<h2>Đăng nhập </h2>

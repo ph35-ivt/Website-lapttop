@@ -1,138 +1,47 @@
  @extends('layout.index')
  @section('content')
  <div class="main">
-    <div class="content">
-    	<div class="content_top">
-    		<div class="heading">
-    		<h3>Sony</h3>
-    		</div>
-    		
-    		<div class="clear"></div>
-    	</div>
-	      <div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="user/images/slider/laptop1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$620.87</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>	 
-				</div>
+ 	<div class="content">
+ 		@foreach($categories as $ct) 	
+ 		<div class="content_top">
+ 			<div class="heading">
+ 				<h3>{{$ct->name}}</h3>
+ 			</div>
 
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$899.75</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				    
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/feature-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$599.00</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/feature-pic4.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$679.87</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>				     
-				</div>
+ 			<div class="clear"></div>
+ 		</div>
+ 		<div class="section group">
+ 			@php
+ 			$count = 0;
+ 			@endphp
+ 			@foreach($product as $pt)
+ 			@if($pt->category_id == $ct->id && $count < 4)
+ 			@php
+ 			$count++;
+ 			@endphp
+ 			<div class="grid_1_of_4 images_1_of_4">
+ 				<a href="preview.html"><img  src="{{asset($pt->link)}}" alt="" /></a>
+ 				<h2>{{$pt->name}}</h2>
+ 				<div class="price-details">
+ 					<div class="price-number">
+ 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+ 					</div>
+ 					<div class="add-cart">								
+ 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+ 					</div>
+ 					<div class="clear"></div>
+ 				</div>	 
+ 			</div>
+ 			@endif
+ 			@endforeach
+ 		</div>
+ 		<div class="content_right" style="text-align: right;"><a class="btn btn-danger" href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html">Xem thêm >></a></div>
 
-			</div>
-			 <div class="content_right" style="text-align: right;"><a class="btn btn-danger" href="">Xem thêm >></a></div>
-			<div class="content_bottom">
-    		<div class="heading">
-    		<h3>Asus</h3>
-    		</div>
-    		
-    		<div class="clear"></div>
-         	</div>
-		  	<div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="images/new-pic1.jpg" alt="" /></a>					
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$849.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-			
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$599.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/new-pic4.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					<div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$799.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <a href="preview.html"><img src="images/new-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <div class="price-details">
-				       <div class="price-number">
-							<p><span class="rupees">$899.99</span></p>
-					    </div>
-					       		<div class="add-cart">								
-									<h4><a href="preview.html">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-			</div>
-			<div class="content_right" style="text-align: right;"><a class="btn btn-danger" href="">Xem thêm >></a></div>
-			
-    </div>
+ 		@endforeach
+
+ 	</div>
  </div>
-</div>
 
-@endsection
+
+
+ @endsection

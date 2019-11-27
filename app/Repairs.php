@@ -4,13 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class New extends Model
+class Repairs extends Model
 {
+     protected  $table = "Repairs";
     protected $fillable = [
         'title','content','images','new_nb'
     ];
-    public function Commments()
-    {
-    	return $this->hasMany('App\Commment');
-    }
 }
