@@ -62,10 +62,11 @@
 	</style>
 </head>
 <body>
- <form class="box" method="POST">
+ <form class="box" method="POST" action="dangnhap">
+ 	<input type="hidden" name="_token" value="{{csrf_token()}}">
  	<h1>Đăng nhập</h1>
- 	<input type="text" name="taikhoan" placeholder="username" required="">
- 	<input type="password" name="matkhau" placeholder="password" required="">
+ 	<input type="text" name="email" placeholder="username" required="">
+ 	<input type="password" name="password" placeholder="password" required="">
  	<input type="submit" name="submit" value="login" >
  </form>
 </body>

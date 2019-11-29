@@ -27,18 +27,18 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Category_slug</label>
                             <input type="text" id="exampleInputFile" class="form-control" 
-                            name="product_slug" value="{{$category->category_slug}}">
+                            name="category_slug" value="{{$category->category_slug}}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputFile">Description</label>
-                            <textarea style="resize: none" rows="5" id="exampleInputFile" class="form-control" name="content" value="{{$category->description}}"></textarea>
+                            <input type="text" id="exampleInputFile" class="form-control" name="description" value="{{$category->description}}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputFile">Order</label>
                             <input type="text" id="exampleInputFile" class="form-control" 
-                            name="price" value="{{$category->order}}">
+                            name="order" value="{{$category->order}}">
                         </div>
 
                         <div class="form-group">

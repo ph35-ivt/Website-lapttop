@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Content</label>
-                            <textarea style="resize: none" rows="5" id="exampleInputFile" class="form-control" name="content" value="{{$product->content}}"></textarea>
+                            <input type="text" id="exampleInputFile" class="form-control" name="content" value="{{$product->content}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Price</label>

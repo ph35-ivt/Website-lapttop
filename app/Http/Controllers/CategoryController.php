@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
@@ -20,7 +20,7 @@ class CategoryController extends Controller
         return view('admin.categories.list_category', compact('listCategories'));
         
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -28,7 +28,7 @@
 
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Facebook</h4>
-						<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpg%2Fdananglaptopcu%2Freviews%2F%3Fref%3Dpage_internal&tabs=timeline&width=200&height=80&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="200" height="80" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+						<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpg%2Fdananglaptopcu%2Freviews%2F%3Fref%3Dpage_internal&tabs=timeline&width=200&height=80&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="200" height="150" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 						
 				</div>
 			</div>			

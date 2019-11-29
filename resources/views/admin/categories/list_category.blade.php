@@ -60,9 +60,9 @@
             <td><span class="text-ellipsis">{{$category->order}}</span></td>
             <td>
               @if($category->status==0)
-                <span class="text-ellipsis">ẩn</span>
+                <a href="."><span class="text-ellipsis">ẩn</span></a>
                 @else
-                <span class="text-ellipsis">hiện</span>
+                <a href="."><span class="text-ellipsis">hiện</span></a>
               @endif
             </td>
             <td><span class="text-ellipsis">{{$category->created_at}}</span></td>

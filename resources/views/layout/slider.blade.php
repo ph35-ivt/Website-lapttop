@@ -3,18 +3,9 @@
 				<div class="categories">
 				  <ul>
 				  	<h3>Categories</h3>
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
+				  	 @foreach($categories as $ct)
+				      <li><a href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html">{{$ct->name}}</a></li>
+				      @endforeach
 				  </ul>
 				</div>					
 	  	     </div>
@@ -36,7 +27,7 @@
 					                   </div>			               
 									  <div class="clear"></div>				
 				                  </div>	
-						             	<div class="slide">
+						             <div class="slide">
 						             		<div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>
 		                                 <h2>UPTo 40% OFF</h2>
@@ -46,13 +37,13 @@
 							             <a href="preview.html" class="button">Shop Now</a>
 					                   </div>		
 						             	 <div class="slider-img">
-									     <a href="preview.html"><img src="images/slide-3-image.jpg" alt="learn more" /></a>
+									     <a href="preview.html"><img src="user/images/slider/laptop2.jpg" alt="learn more" /></a>
 									  </div>						             					                 
 									  <div class="clear"></div>				
 				                  </div>
 				                  <div class="slide">						             	
 					                  <div class="slider-img">
-									     <a href="preview.html"><img src="images/slide-2-image.jpg" alt="learn more" /></a>
+									     <a href="preview.html"><img src="user/images/slider/laptop3.jpg" alt="learn more" /></a>
 									  </div>
 									  <div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>

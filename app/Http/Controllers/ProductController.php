@@ -13,6 +13,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $listProducts = Product::all();
@@ -39,7 +43,10 @@ class ProductController extends Controller
     public function store(CreateProductRequest $request)
     {
         $data =$request->except('_token');
-        // dd($data);
+        $link = $request->file('link')->getClientOriginalName();
+        // dd($link);
+        $data['link'] = $link;
+        $request->file('link')->move('user/images/product',$link);
         Product::create($data);
         return redirect()->route('list-product');
     }

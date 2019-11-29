@@ -31,10 +31,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h2 class="agileits1">Dang ki</h2>
 		<p class="agileits2">Đăng kí thành viên</p>
 	</div>
+	 @if(count($errors) > 0)
+         <div class="alert alert-danger">
+             @foreach($errors ->all() as $err)
+              {{$err}}
+             @endforeach
+          </div>
+     @endif
 	<div class="content-agile2">
-		<form action="#" method="post">
+		<form action="dangki" method="POST">
+			<input type="hidden" name="_token" value="{{csrf_token()}}">
 			<div class="form-control w3layouts"> 
-				<input type="text" id="firstname" name="firstname" placeholder="Tên tài khoản"  required="">
+				<input type="text" id="firstname" name="name" placeholder="Tên tài khoản"  required="">
 			</div>
 
 			<div class="form-control w3layouts">	

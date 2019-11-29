@@ -45,6 +45,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::get('/categories/{id}/edit','CategoryController@edit')->name('edit-category');
 		// update 
 		Route::put('/categories/{id}','CategoryController@update')->name('update-category');
+		
 ////////////
 		//list product
 		Route::get('/products', 'ProductController@index')->name('list-product');
@@ -60,6 +61,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::get('/products/{id}/edit','ProductController@edit')->name('edit-product');
 		// update 
 		Route::put('/products/{id}','ProductController@update')->name('update-product');
+		
+		
 //////////////
 		// list comment
 		Route::get('/comments', 'CommentController@index')->name('list-comment');
@@ -104,3 +107,20 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::put('/users/{id}','UserController@update')->name('update-user');
 ///////////
 });
+
+
+Route::get('trangchu','PagesController@trangchu')->name('trangchu');
+Route::get('dangki','PagesController@getdangki');
+Route::post('dangki','PagesController@postdangki')->name('login');
+Route::get('dangnhap','PagesController@getdangnhap')->name('dangnhap');
+Route::post('dangnhap','PagesController@postdangnhap')->name('postdangnhap');
+Route::get('nguoidung','PagesController@getnguoidung')->name('getnguoidung');
+Route::post('nguoidung','PagesController@postnguoidung')->name('postnguoidung');
+Route::get('dangxuat','PagesController@getdangxuat');
+Route::get('lap_gioithieu','PagesController@lap_gioithieu')->name('lap_gioithieu');
+Route::get('sanpham/{id}/{product_slug}.html','PagesController@sanpham')->name('sanpham');
+Route::get('repair','PagesController@repair')->name('repair');
+Route::get('tintuc','PagesController@tintuc')->name('tintuc');
+Route::get('lienhe','PagesController@lienhe')->name('lienhe');
+Route::get('giohang','PagesController@giohang')->name('giohang');
+

@@ -31,7 +31,7 @@
             <td><span class="text-ellipsis">{{$product->product_slug}}</span></td>
             <td><span class="text-ellipsis">{{$product->content}}</span></td>
             <td><span class="text-ellipsis">{{$product->price}}</span></td>
-            <td><span class="text-ellipsis">{{$product->link}}</span></td>
+            <td><span class="text-ellipsis"><img style="width: 60px" src="{{$product->link}}" alt=""></span></td>
             <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
             <td><span class="text-ellipsis">{{$product->status}}</span></td>
             <td><span class="text-ellipsis">{{$product->created_at}}</span></td>

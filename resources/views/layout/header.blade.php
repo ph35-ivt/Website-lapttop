@@ -11,23 +11,32 @@
 				<a href="index.html"><img width="150px" src="user/images/logo1.png" alt="" /></a>
 			</div>
 			<div class="account_desc">
-							    <ul class="nav navbar-nav pull-right">
+				@if(session('thongbao'))
+                      <div class="alert alert-success">
+                          {{session('thongbao')}}
+                      </div>
+                 @endif
+			  <ul class="nav navbar-nav pull-right">
+                    @if(Auth::check())
                     <li>
                         <a href="nguoidung">
                             <span class ="glyphicon glyphicon-user"></span>
+                            {{Auth::user()->name}}
                         </a>
                     </li>
 
                     <li>
                         <a href="dangxuat">Đăng xuất</a>
                     </li>
-
+                   
+                    @else
                        <li>
-                        <a href="dangky">Đăng ký</a>
+                        <a href="dangki">Đăng ký</a>
                     </li>
                     <li>
                         <a href="dangnhap">Đăng nhập</a>
                     </li>
+                     @endif
  
                 </ul>
 			</div>

@@ -45,7 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="content">
     	<div class="content_top">
     		<div class="back-links">
-    		<p><a href="index.html">Home</a> >><a href="#">News</a></p>
+    		<p><a href="{{route('trangchu')}}">Home</a> >><a href="{{route('tintuc')}}">Tin tức</a></p>
     	    </div>
     		<div class="clear"></div>
     	</div>
@@ -53,34 +53,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="cont-desc span_1_of_2">
 				  <div class="product-details">	
 				  	<h2 style="color: red">Tin tức</h2>
-					<hr>								
+					<hr>
+			<?php $i= 0 ?>
+			  @foreach($tintuc1 as $tt)								
 				<div class="desc span_3_of_3">
 
-					 <h2 style="color: black"> 1. Thay Phím Laptop Giá Rẻ – Lấy Ngay Tại Đà Nẵng</h2>
-					
-                     <p></p>
-                     <p> Laptop T&T – 484 Núi Thành, Đà Nẵng chuyên thay phím laptop giá rẻ, chính hãng với kinh nghiệm hơn 8 năm cung cấp dịch vụ sửa chữa, vệ sinh, […]</p>
+					 <h2 style="color: black">{{$tt->id}}.{{$tt->title}}</h2>
+					 <p><img src="{{asset($tt->link)}}" alt=""></p>
+                     <p class="far fa-clock"> Posted on: {{$tt->created_at}}</p>
+                     <p> {{$tt->content}}</p>
+                     <br>
                       <a class="btn btn-primary" href="">Xem thêm >></a>
+                     <hr>
  
 			   </div>
-			   <div class="desc span_3_of_3">
-					
-					<hr>
-					 <h2 style="color: black"> 2. Thay Phím Laptop Giá Rẻ – Lấy Ngay Tại Đà Nẵng</h2>
-					
-                     <p></p>
-                     <p> Laptop T&T – 484 Núi Thành, Đà Nẵng chuyên thay phím laptop giá rẻ, chính hãng với kinh nghiệm hơn 8 năm cung cấp dịch vụ sửa chữa, vệ sinh, […]</p>
-                      <a class="btn btn-primary" href="">Xem thêm<span class="glyphicon glyphicon-chevron-right"></span></a>
- 
-			 </div>
+			  @endforeach
              <div class="content-pagenation" style="text-align: center;">
-					<li><a href="#">Frist</a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><span>....</span></li>
-					<li><a href="#">Last</a></li>
-					<div class="clear"> </div>
+					
+                    {!! $tintuc1->fragment('foo')->links() !!}
+
+               
 				</div>	
 			<div class="clear"></div>
 		   </div>
@@ -95,59 +87,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     		<div class="clear"></div>
     	</div>
    <div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="#"><img src="user/images/new-pic1.jpg" alt=""></a>					
+   	          @foreach($product1 as $pt)
+				<div class="grid_1_of_4 images_1_of_4">				
 					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
+			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
+							<h2>{{$pt->name}}</h2>
+							<div class="price-details">
+	 					<div class="price-number">
+	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+	 					</div>
+	 					<div class="add-cart">								
+	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+	 					</div>
+	 					<div class="clear"></div>
+ 				     </div>	 
 							 <div class="clear"></div>
 					</div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic2.jpg" alt=""></a>
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic4.jpg" alt=""></a>
-					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="">
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
+				@endforeach
 			</div>
         </div>
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul class="side-w3ls">
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
+				      @foreach($categories as $ct)
+				      <li><a href="#">{{$ct->name}}</a></li>
+				      @endforeach
     				</ul>
     				<div class="subscribe">
     					<h2>Đăng nhập </h2>

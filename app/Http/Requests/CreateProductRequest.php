@@ -26,7 +26,7 @@ class CreateProductRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'category_id' => 'required|numeric',
-            'product_slug' => 'required|min:6' ,
+            'product_slug' => 'required|min:3' ,
             'content' =>  'required|min:6',
             'price' => 'required|numeric',
             'link'=> 'required',
@@ -42,7 +42,7 @@ class CreateProductRequest extends FormRequest
             'category_id.required'=>'vui lòng nhập id',
             'category_id.numeric'=>'nhập ký là tự chữ số',
             'product_slug.required'=>'vui lòng nhập tên không dấu',
-            'product_slug.min'=>'nhập ít nhất 6 ký tự',
+            'product_slug.min'=>'nhập ít nhất 3 ký tự',
             'content.required'=>'vui lòng nhập nội dung',
             'content.min'=>'nhập ít nhất 6 ký tự',
             'price.required'=>'vui lòng nhập giá sản phẩm',

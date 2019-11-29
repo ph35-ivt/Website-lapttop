@@ -9,7 +9,7 @@
             </header>
             <div class="panel-body">
                 <div class="position-center">
-                    <form action="{{route('store-product')}}" method="POST">
+                    <form action="{{route('store-product')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
@@ -53,8 +53,8 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Link</label>
                             <input type="file" id="exampleInputFile" class="form-control" 
-                            name="link">
-                            
+                            name="link" >
+                           
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Quantity</label>

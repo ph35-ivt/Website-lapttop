@@ -54,9 +54,9 @@
             <td><span class="text-ellipsis">{{$order->payment}}</span></td>
             <td>
               @if($order->status==1)
-              <span class="text-ellipsis">Đã thanh toán</span>
+              <span class="text-ellipsis">active</span>
               @else
-              <span class="text-ellipsis">Chưa thanh toán</span>
+              <span class="text-ellipsis">unactive</span>
               @endif
             </td>
             <td><span class="text-ellipsis">{{$order->created_at}}</span></td>
