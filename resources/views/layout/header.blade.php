@@ -3,13 +3,6 @@
 			<div class="call">
 				 <p><span>Need help?</span> call us <span class="number">0386556593</span></span></p>
 			</div>
-			
-			<div class="clear"></div>
-		</div>
-		<div class="header_top">
-			<div class="logo">
-				<a href="index.html"><img width="150px" src="user/images/logo1.png" alt="" /></a>
-			</div>
 			<div class="account_desc">
 				@if(session('thongbao'))
                       <div class="alert alert-success">
@@ -28,6 +21,7 @@
                     <li>
                         <a href="dangxuat">Đăng xuất</a>
                     </li>
+
                    
                     @else
                        <li>
@@ -36,10 +30,44 @@
                     <li>
                         <a href="dangnhap">Đăng nhập</a>
                     </li>
+                        
                      @endif
  
                 </ul>
+                
 			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="header_top">
+			<div class="logo">
+				<a href="index.html"><img width="150px" src="user/images/logo1.png" alt="" /></a>
+			</div>
+			
+			<div class="cart">
+			  	   <p> <span class="glyphicon glyphicon-shopping-cart">Giỏhàng: ( @if(Session::has('cart')){{Session('cart')->totalQty}}
+			  	   @else Trống @endif)  </span>
+			 	   @if(Session::has('cart'))
+			  	   	@foreach($product_cart as $pt)
+			  	   	<ul class="dropdown">
+							<li><a href=""><img width="20px" height="20px" src="{{$pt['item']['link']}}" alt="">{{$pt['item']['name']}},
+								Giá : $ {{$pt['qty']}}*{{$pt['item']['price']}}
+								 </a>
+								 <a href="{{route('editcart',$pt['item']['id'])}}" class="glyphicon glyphicon-trash"></a>
+								 <a href=""class="glyphicon glyphicon-pencil"></a>
+							</li>
+							<li></li>
+							
+					</ul>
+					@endforeach
+					 <hr>
+					 <p> Tổng tiền : $ {{number_format(Session('cart')->totalPrice)}} Đồng</p>
+					 <br>
+					 <br>
+					 <button class="btn btn-primary " >Đặt hàng <a href="" class="glyphicon glyphicon-triangle-right "></a>	</button>
+					 @endif
+					
+			  </div>
+				
 	 	<div class="clear"></div>
  		 </div>
 	<div class="header_bottom">
@@ -54,8 +82,9 @@
      			</ul>
 	     	</div>
 	     	<div class="search_box">
-	     		<form>
-	     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+	     		<form action="{{route('timkiem')}}" method="GET">
+	     			@csrf
+	     			<input type="text" name="timkiem" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
 	     		</form>
 	     	</div>
 	     	<div class="clear"></div>

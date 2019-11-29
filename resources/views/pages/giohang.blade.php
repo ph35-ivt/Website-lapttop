@@ -1,11 +1,13 @@
 
 <!DOCTYPE HTML>
 <head>
-<title>Free Home Shoppe Website Template | Preview :: w3layouts</title>
+<title>Chi tiết sản phẩm</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <base href="{{asset('')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+
 <script type="user/text/javascript" src="js/jquery-1.7.2.min.js"></script> 
 <script type="user/text/javascript" src="js/move-top.js"></script>
 <script type="user/text/javascript" src="js/easing.js"></script>
@@ -13,30 +15,18 @@
 <link href="user/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" href="user/css/global.css">
 <script src="user/js/slides.min.jquery.js"></script>
-<script>
-		$(function(){
-			$('#products').slides({
-				preload: true,
-				preloadImage: 'img/loading.gif',
-				effect: 'slide, fade',
-				crossfade: true,
-				slideSpeed: 350,
-				fadeSpeed: 500,
-				generateNextPrev: true,
-				generatePagination: false
-			});
-		});
-	</script>
+
 </head>
 <body>
   <div class="wrap">
     @include('layout.header')
    </div>
 <div class="main">
+	
     <div class="content">
     	<div class="content_top">
     		<div class="back-links">
-    		<p><a href="index.html">Home</a> >>>> <a href="#">Electronics</a></p>
+    		<p><a href="index.html">Home</a> >> <a href="#">Chi tiết sản phẩm</a></p>
     	    </div>
     		<div class="clear"></div>
     	</div>
@@ -46,76 +36,29 @@
 					<div class="grid images_3_of_2">
 						<div id="container">
 						   <div id="products_example">
-							   <div id="products">
-								<div class="slides_container">
-									<a href="#" target="_blank"><img src="images/productslide-1.jpg" alt=" " /></a>
-									<a href="#" target="_blank"><img src="images/productslide-2.jpg" alt=" " /></a>
-									<a href="#" target="_blank"><img src="images/productslide-3.jpg" alt=" " /></a>					
-									<a href="#" target="_blank"><img src="images/productslide-4.jpg" alt=" " /></a>
-									<a href="#" target="_blank"><img src="images/productslide-5.jpg" alt=" " /></a>
-									<a href="#" target="_blank"><img src="images/productslide-6.jpg" alt=" " /></a>
-								</div>
-								<ul class="pagination">
-									<li><a href="#"><img src="images/thumbnailslide-1.jpg" alt=" " /></a></li>
-									<li><a href="#"><img src="images/thumbnailslide-2.jpg" alt=" " /></a></li>
-									<li><a href="#"><img src="images/thumbnailslide-3.jpg" alt=" " /></a></li>
-									<li><a href="#"><img src="images/thumbnailslide-4.jpg" alt=" " /></a></li>
-									<li><a href="#"><img src="images/thumbnailslide-5.jpg" alt=" " /></a></li>
-									<li><a href="#"><img src="images/thumbnailslide-6.jpg" alt=" " /></a></li>
-								</ul>
-							</div>
+							  <a href="#" target="_blank"><img src="{{asset($pt->link)}}"  alt=" " /></a>
 						</div>
 					</div>
 				</div>
 				<div class="desc span_3_of_2">
-					<h2>Lorem Ipsum is simply dummy text </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
+					<h2>{{$pt->name}} </h2>	
+					<br>
+					<hr>				
 					<div class="price">
-						<p>Price: <span>$500</span></p>
-					</div>
-					<div class="available">
-						<p>Available Options :</p>
-					<ul>
-						<li>Color:
-							<select>
-							<option>Silver</option>
-							<option>Black</option>
-							<option>Dark Black</option>
-							<option>Red</option>
-						</select></li>
-						<li>Size:<select>
-							<option>Large</option>
-							<option>Medium</option>
-							<option>small</option>
-							<option>Large</option>
-							<option>small</option>
-						</select></li>
-						<li>Quality:<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select></li>
-					</ul>
+						<p>Price: <span>${{number_format($pt->price)}} Đồng</span></p>
+						<p>Số lượng: {{$pt->quantity}}</p>
 					</div>
 				<div class="share-desc">
 					<div class="share">
 						<p>Share Product :</p>
 						<ul>
-					    	<li><a href="#"><img src="images/facebook.png" alt="" /></a></li>
-					    	<li><a href="#"><img src="images/twitter.png" alt="" /></a></li>					    
+					    	<li><a href="#"><img src="user/images/facebook.png" alt="" /></a></li>
+					    	<li><a href="#"><img src="user/images/twitter.png" alt="" /></a></li>					    
 			    		</ul>
 					</div>
-					<div class="button"><span><a href="#">Add to Cart</a></span></div>					
+					<div class="button"><span><a href="{{route('addcart',$pt->id)}}">Giỏ hàng</a></span></div>					
 					<div class="clear"></div>
 				</div>
-				 <div class="wish-list">
-				 	<ul>
-				 		<li class="wish"><a href="#">Add to Wishlist</a></li>
-				 	    <li class="compare"><a href="#">Add to Compare</a></li>
-				 	</ul>
-				 </div>
 			</div>
 			<div class="clear"></div>
 		  </div>
@@ -131,60 +74,59 @@
 					<div class="product-desc">
 						<h1 style="font-size: 20px">
 						1. THÔNG SỐ KỸ THUẬT :</h1>
-						<p>Lorem Ipsum is simply dummy text of the <span>printing and typesetting industry</span>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <span>when an unknown printer took a galley of type and scrambled</span> it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span> It has survived not only five centuries</span>, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>					</div>
+						<p>{{$pt->content}}</p>
+										</div>
 				<div class="product-desc">
 						<h1 style="font-size: 20px">
 						2. GÓI BẢO HÀNH :</h1>
-						<p>Lorem Ipsum is simply dummy text of the <span>printing and typesetting industry</span>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <span>when an unknown printer took a galley of type and scrambled</span> it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span> It has survived not only five centuries</span>, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>					
+						<br>
+						<a href=""><img width="724px" height="300px" src="user/images/product/goibh.png" alt=""></a>					
 			    </div>
 			    <div class="product-desc">
 						<h1 style="font-size: 20px">
 						3. CAM KẾT:</h1>
-						<p>Lorem Ipsum is simply dummy text of the <span>printing and typesetting industry</span>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <span>when an unknown printer took a galley of type and scrambled</span> it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<span> It has survived not only five centuries</span>, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>					
+						<br>
+						<a href=""><img style="margin-left: 100px" width="500px" height="300px" src="user/images/product/CAM-KET.png" alt=""></a>				
 				 </div>
-
-				 <div class="product-tags">
-						 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-					<h4>Add Your Tags:</h4>
-					<div class="input-box">
-						<input type="text" value="">
-					</div>
-					<div class="button"><span><a href="#">Add Tags</a></span></div>
-			    </div>	
-
 				<div class="review">
-				  <div class="your-review">
-				  	 <h3>How Do You Rate This Product?</h3>
-				  	  <p>Write Your Own Review?</p>
-				  	  <form>
-					    	<div>
-						    	<span><label>Nickname<span class="red">*</span></label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>
-						    <div><span><label>Summary of Your Review<span class="red">*</span></label></span>
-						    	<span><input type="text" value=""></span>
-						    </div>						
-						    <div>
-						    	<span><label>Review<span class="red">*</span></label></span>
-						    	<span><textarea> </textarea></span>
-						    </div>
-						   <div>
-						   		<span><input type="submit" value="SUBMIT REVIEW"></span>
-						  </div>
-					    </form>
-				  	 </div>				
+		       @if(Auth::check())
+               <div class="well">
+                @if(session('thongbao'))
+                    {{ session('thongbao') }}
+                @endif
+                <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
+                <form role="form" action="" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" name="NoiDung"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </form>
+            </div>
+             <hr>
+          
+          
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                    
+                        <small></small>
+                    </h4>
+                  
+                </div>
+            </div>
+            @endif
+
 				</div>
 			</div>
 		 </div>
 	 </div>
 
 	    <script type="text/javascript">
+
     $(document).ready(function () {
         $('#horizontalTab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion           
@@ -203,103 +145,41 @@
     		<div class="clear"></div>
     	</div>
    <div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="#"><img src="images/new-pic1.jpg" alt=""></a>					
+			@foreach($product1 as $pt)
+				<div class="grid_1_of_4 images_1_of_4">				
 					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
+			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
+							<h2>{{$pt->name}}</h2>
+							<div class="price-details">
+	 					<div class="price-number">
+	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+	 					</div>
+	 					<div class="add-cart">								
+	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+	 					</div>
+	 					<div class="clear"></div>
+ 				     </div>	 
 							 <div class="clear"></div>
 					</div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic2.jpg" alt=""></a>
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="#"><img src="images/new-pic4.jpg" alt=""></a>
-					<div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="">
-					 <div class="price" style="border:none">
-					       		<div class="add-cart" style="float:none">								
-									<h4><a href="#">Add to Cart</a></h4>
-							     </div>
-							 <div class="clear"></div>
-					</div>
-				</div>
+				@endforeach
 			</div>
         </div>
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul class="side-w3ls">
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
+				      @foreach($categories as $ct)
+				      <li><a href="#">{{$ct->name}}</a></li>
+				      @endforeach
     				</ul>
     				<div class="subscribe">
-    					<h2>Newsletters Signup</h2>
-    						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
+    					<h2>Đăng nhập</h2>
 						    <div class="signup">
 							    <form>
 							    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
 							    </form>
 						    </div>
       				</div>
-      				 <div class="community-poll">
-      				 	<h2>Community POll</h2>
-      				 	<p>What is the main reason for you to purchase products online?</p>
-      				 	<div class="poll">
-      				 		<form>
-      				 			<ul>
-									<li>
-									<input type="radio" name="vote" class="radio" value="1">
-									<span class="label"><label>More convenient shipping and delivery </label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="2">
-									<span class="label"><label for="vote_2">Lower price</label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="3">
-									<span class="label"><label for="vote_3">Bigger choice</label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="5">
-									<span class="label"><label for="vote_5">Payments security </label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="6">
-									<span class="label"><label for="vote_6">30-day Money Back Guarantee </label></span>
-									</li>
-									<li>
-									<input type="radio" name="vote" class="radio" value="7">
-									<span class="label"><label for="vote_7">Other.</label></span>
-									</li>
-									</ul>
-      				 		</form>
-      				 	</div>
-      				 </div>
  				</div>
  		</div>
  	</div>

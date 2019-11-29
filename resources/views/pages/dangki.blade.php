@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!doctype html>
 <html>
 <head>
-<title>Official Signup Form Flat Responsive widget Template :: w3layouts</title>
+<title>Đăng kí thành viên</title>
 
 <base href="{{asset('')}}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,36 +25,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- /css -->
 </head>
 <body>
+
 <h1 class="w3ls">Đăng kí thành viên</h1>
 <div class="content-w3ls">
 	<div class="content-agile1">
 		<h2 class="agileits1">Dang ki</h2>
 		<p class="agileits2">Đăng kí thành viên</p>
 	</div>
-	 @if(count($errors) > 0)
-         <div class="alert alert-danger">
-             @foreach($errors ->all() as $err)
-              {{$err}}
-             @endforeach
-          </div>
-     @endif
 	<div class="content-agile2">
 		<form action="dangki" method="POST">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+			@csrf
 			<div class="form-control w3layouts"> 
-				<input type="text" id="firstname" name="name" placeholder="Tên tài khoản"  required="">
+				<input type="text" id="firstname" name="name" placeholder="Tên tài khoản" required=""  >
 			</div>
 
 			<div class="form-control w3layouts">	
-				<input type="email" id="email" name="email" placeholder="Đăng nhập email" title="email" required="">
+				<input type="email" id="email" name="email" placeholder="Đăng nhập email" title="email" required="" >
 			</div>
 
 			<div class="form-control agileinfo">	
-				<input type="password" class="lock" name="password" placeholder="Password" id="password1" required="">
+				<input type="password" class="lock" name="password" placeholder="Password" id="password1" required="" >
 			</div>	
 
 			<div class="form-control agileinfo">	
-				<input type="password" class="lock" name="confirm-password" placeholder="Đăng nhập lại password" id="password2" required="">
+				<input type="password" class="lock" name="passwordAgain" placeholder="Đăng nhập lại password" id="password2" required="" >
 			</div>			
 			
 			<input type="submit" class="register" value="Đăng kí">

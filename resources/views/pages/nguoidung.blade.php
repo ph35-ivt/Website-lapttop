@@ -38,9 +38,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
              @endforeach
           </div>
      @endif
+     @if(session('thongbao'))
+                      <div class="alert alert-success">
+                          {{session('thongbao')}}
+                      </div>
+    @endif
 	<div class="content-agile2">
 		<form action="nguoidung" method="POST">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+			@csrf
 			<div class="form-control w3layouts"> 
 				<input type="text"  name="name" value="{{$user->name}}" id="firstname"  placeholder="Tên tài khoản"  required="">
 			</div>

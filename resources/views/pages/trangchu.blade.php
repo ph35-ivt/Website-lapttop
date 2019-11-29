@@ -20,14 +20,17 @@
  			$count++;
  			@endphp
  			<div class="grid_1_of_4 images_1_of_4">
- 				<a href="preview.html"><img  src="{{asset($pt->link)}}" alt="" /></a>
+ 				<a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html"><img width="400px" height="250px" src="{{asset($pt->link)}}" alt="" /></a>
  				<h2>{{$pt->name}}</h2>
  				<div class="price-details">
  					<div class="price-number">
- 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+ 						<p><span class="rupees">{{number_format($pt->price)}} Đ</span></p>
  					</div>
- 					<div class="add-cart">								
- 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+ 					<div class="add-cart" > 							
+ 						<h4><a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html">Chi tiết sp </a></h4>
+ 					</div>
+ 					<div class="add-cart">  							
+ 						<h4 ><a href="{{route('addcart',$pt->id)}}" class="" >Giỏ hàng</a></h4>
  					</div>
  					<div class="clear"></div>
  				</div>	 

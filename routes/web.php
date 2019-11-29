@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('cart', function () {
+    return view('user.index');
+});
 Route::get('/admin','AdminController@index');
 Route::get('/admin/dashboard','AdminController@showdashboard')->name('login');
 Route::post('/admin/dashboard','AdminController@dashboard');
@@ -24,10 +27,17 @@ Route::get('dangnhap','PagesController@getdangnhap')->name('dangnhap');
 Route::post('dangnhap','PagesController@postdangnhap')->name('postdangnhap');
 Route::get('nguoidung','PagesController@getnguoidung')->name('getnguoidung');
 Route::post('nguoidung','PagesController@postnguoidung')->name('postnguoidung');
+Route::get('timkiem','PagesController@timkiem')->name('timkiem');
 Route::get('dangxuat','PagesController@getdangxuat');
 Route::get('lap_gioithieu','PagesController@lap_gioithieu')->name('lap_gioithieu');
+Route::get('giohang/{id}/{product_slug}.html','PagesController@getgiohang')->name('getgiohang');
 Route::get('sanpham/{id}/{product_slug}.html','PagesController@sanpham')->name('sanpham');
 Route::get('repair','PagesController@repair')->name('repair');
 Route::get('tintuc','PagesController@tintuc')->name('tintuc');
 Route::get('lienhe','PagesController@lienhe')->name('lienhe');
 Route::get('giohang','PagesController@giohang')->name('giohang');
+Route::get('addcart/{id}','PagesController@addcart')->name('addcart');
+Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
+ Route::get('dathang','PagesController@dathang')->name('dathang');
+ Route::post('dathang','PagesController@postdathang')->name('postdathangs');
+
