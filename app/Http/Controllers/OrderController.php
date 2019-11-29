@@ -14,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $listOrders = Order::all();
+        return view('admin.orders.list_order', compact('listOrders'));
     }
 
     /**
@@ -55,9 +56,10 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        return view('admin.orders.edit_order',compact('order'));
     }
 
     /**
@@ -67,9 +69,12 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $data= $request->only('customer_id','payment','status');
+        $order->update($data);
+        return redirect()->route('list-order');
     }
 
     /**
@@ -78,8 +83,9 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        Order::destroy($id);
+        return redirect()->route('list-order');
     }
 }

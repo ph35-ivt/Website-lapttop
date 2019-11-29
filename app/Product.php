@@ -8,9 +8,9 @@ class Product extends Model
 {
     protected  $table = "Products";
 	protected $fillable = [
-        'category_id','name','product_slug','content','price','images','quantity','status'
+        'category_id','name','product_slug','content','price','link','quantity','status'
     ];
-     public function categories()
+    public function categories()
     {
     	return $this->belongsToMany('App\Categories');
     }
@@ -22,5 +22,8 @@ class Product extends Model
     {
     	return $this->hasMany('App\Order__details');
     }
-    
+    public function getImageAttribute()
+    {
+       return $this->link;
+    }
 }

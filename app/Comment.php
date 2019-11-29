@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-     protected  $table = "Comment";
+    protected  $table = "Comment";
 	protected $fillable = [
         'new_id','user_id','product_id','content'
     ];
@@ -18,5 +18,4 @@ class Comment extends Model
     {
     	return $this->belongsToMany('App\User');
     }
-    
 }
