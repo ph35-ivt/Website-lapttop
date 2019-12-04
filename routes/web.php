@@ -14,8 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('cart', function () {
-    return view('user.index');
+Route::get('thongbao', function () {
+    return view('pages.thongbao');
+});
+Route::get('slider', function () {
+    return view('pages.slider');
 });
 Route::get('/admin','AdminController@index');
 Route::get('/admin/dashboard','AdminController@showdashboard')->name('login');
@@ -35,9 +38,10 @@ Route::get('sanpham/{id}/{product_slug}.html','PagesController@sanpham')->name('
 Route::get('repair','PagesController@repair')->name('repair');
 Route::get('tintuc','PagesController@tintuc')->name('tintuc');
 Route::get('lienhe','PagesController@lienhe')->name('lienhe');
+Route::post('comment/{id}','PagesController@postcomment');
 Route::get('giohang','PagesController@giohang')->name('giohang');
 Route::get('addcart/{id}','PagesController@addcart')->name('addcart');
 Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
  Route::get('dathang','PagesController@dathang')->name('dathang');
- Route::post('dathang','PagesController@postdathang')->name('postdathangs');
+ Route::post('dathang','PagesController@postdathang')->name('postdathang');
 

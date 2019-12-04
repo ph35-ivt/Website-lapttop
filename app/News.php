@@ -10,8 +10,5 @@ class News extends Model
     protected $fillable = [
         'title','content','images','new_nb'
     ];
-    public function Commments()
-    {
-    	return $this->hasMany('App\Commment');
-    }
+    
 }

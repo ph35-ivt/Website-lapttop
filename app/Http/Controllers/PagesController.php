@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Categories;
+use App\Category;
 use App\Product;
 use App\News;
 use App\Repairs;
 use App\User;
 use App\Comment;
 use App\Cart;
-use App\Customer;
+use App\Order;
+use App\Order__detail;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class PagesController extends Controller
 {
     function __construct()
     {
-        $categories = Categories::all();
+        $categories = Category::all();
         $product = Product::all();
        // $tintuc = News::all();
         view()->share('categories',$categories);
@@ -40,7 +41,7 @@ class PagesController extends Controller
     }
     function sanpham($id)
     {
-        $categories = Categories::find($id);
+        $categories = Category::find($id);
         $sanpham = Product::where('category_id',$id)->paginate(4);  
         return view('pages.sanpham',compact('sanpham','categories'));
     }
@@ -53,11 +54,21 @@ class PagesController extends Controller
          $product1 = Product::paginate(4);
     	  return view('pages.lienhe',compact('product1'));
     }
+
+   function postcomment(Request $request,$id){
+        $comment= new Comment;
+        $comment->cm_name = $request->cm_name;
+        $comment->cm_email = $request->cm_email;
+        $comment->product_id =$id;
+        $comment->content = $request->content;
+        $comment->save();
+        return back();
+    }
     function getgiohang($id){
-        
           $product1 = Product::paginate(4);
+          $comment = Comment::where('product_id',$id)->get();
           $pt = Product::find($id);
-          return view('pages.giohang',compact('product1','pt'));
+          return view('pages.giohang',compact('product1','pt','comment'));
     }
     function getdangnhap(){
           return view('pages.dangnhap');
@@ -142,7 +153,50 @@ class PagesController extends Controller
        return redirect()->back();
     }
     function dathang(){
-      return view('pages.dathang');
+       $users = Auth::user();
+       return view('pages.dathang',compact('users'));
+    }
+    function postdathang(Request $request){
+
+       $this->validate($request,
+          [
+              'name' =>'required|min:3|max:32',
+              'email'=>'required|min:6|max:32',
+              'phone'=>'required',
+              'address'=>'required'
+          ],
+          [
+              'name.required' =>'Bạn chưa nhập tên',
+              'name.min'=>'Độ dài kí tự lớn hơn 3 nhỏ hơn 32',
+              'name.max'=>'Độ dài kí tự lớn hơn 3 nhỏ hơn 32',
+              'email.required' =>'Bạn chưa nhập email',
+              'email.min'=>'Độ dài kí tự lớn hơn 3 nhỏ hơn 32',
+              'email.max'=>'Độ dài kí tự lớn hơn 3 nhỏ hơn 32',
+              'phone.required' =>'Bạn chưa nhập số điện thoại',
+              'address.required' =>'Bạn chưa nhập address'
+          ]);
+      $cart= Session::get('cart');
+      $or= new Order;
+      $or->name= $request->name;
+      $or->email =$request->email;
+      $or->phone =$request->phone;
+      $or->address =$request->address;
+      $or->date_order = date('Y-m-d');
+      $or->total = $cart->totalPrice;
+      $or->payment = $request->payment;
+       $or->status = 1;
+      $or->save();
+      foreach ($cart->items as $key => $value) {
+          $order_detail = new Order__detail;
+          $order_detail->order_id = $or->id;
+          $order_detail->product_id = $key;
+          $order_detail->quantity = $value['qty'];
+          $order_detail->price = ($value['price']/$value['qty']);
+          $order_detail->save();
+      }
+      Session::forget('cart');
+      return redirect()->back()->with('thongbao','Đặt hàng thành công');
+     
     }
     
 }

@@ -55,11 +55,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 
 			<div class="form-control agileinfo">	
-				<input type="password" class="lock" value=" {{$user->email}}" name="password" placeholder="Password" id="password1" required="">
+				<input type="password" class="lock" value=" {{$user->password}}" name="password" placeholder="Password" id="password1" required="">
 			</div>	
 
 			<div class="form-control agileinfo">	
-				<input type="password" class="lock"value=" {{$user->email}}" name="confirm_password" placeholder="Đăng nhập lại password" id="password2" required="">
+				<input type="password" class="lock"value=" {{$user->password}}" name="confirm_password" placeholder="Đăng nhập lại password" id="password2" required="">
 			</div>			
 			
 			<input type="submit" class="register" value="Thay đổi thông tin">

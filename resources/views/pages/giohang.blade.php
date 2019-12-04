@@ -26,7 +26,7 @@
     <div class="content">
     	<div class="content_top">
     		<div class="back-links">
-    		<p><a href="index.html">Home</a> >> <a href="#">Chi tiết sản phẩm</a></p>
+    		<p><a href="{{route('trangchu')}}">Home</a> >> <a href="{{route('giohang')}}">Chi tiết sản phẩm</a></p>
     	    </div>
     		<div class="clear"></div>
     	</div>
@@ -45,8 +45,8 @@
 					<br>
 					<hr>				
 					<div class="price">
-						<p>Price: <span>${{number_format($pt->price)}} Đồng</span></p>
-						<p>Số lượng: {{$pt->quantity}}</p>
+						<p>Giá: <span>${{number_format($pt->price)}} Đồng</span></p>
+						<p>Số lượng: 20</p>
 					</div>
 				<div class="share-desc">
 					<div class="share">
@@ -56,7 +56,7 @@
 					    	<li><a href="#"><img src="user/images/twitter.png" alt="" /></a></li>					    
 			    		</ul>
 					</div>
-					<div class="button"><span><a href="{{route('addcart',$pt->id)}}">Giỏ hàng</a></span></div>					
+					<div class="button"><span><a href="{{route('addcart',$pt->id)}}" class="" >Giỏ hàng</a></span></div>					
 					<div class="clear"></div>
 				</div>
 			</div>
@@ -89,37 +89,47 @@
 						<a href=""><img style="margin-left: 100px" width="500px" height="300px" src="user/images/product/CAM-KET.png" alt=""></a>				
 				 </div>
 				<div class="review">
-		       @if(Auth::check())
-               <div class="well">
-                @if(session('thongbao'))
-                    {{ session('thongbao') }}
-                @endif
-                <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                <form role="form" action="" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3" name="NoiDung"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Gửi</button>
-                </form>
-            </div>
+            <div class="contact-form">
+				  	<h2>Bình luận</h2>
+				  	 @if(session('thongbao'))
+                   		 {{ session('thongbao') }}
+               		 @endif
+					    <form action="comment/{{$pt->id}}" method="POST">
+                              @csrf
+						    <div>
+						    	<span><label>Name *:</label></span>
+						    	<span><input type="text" name="cm_name" class="textbox" ></span>
+						    </div>
+						    <div>
+						    	<span><label>E-mail *:</label></span>
+						    	<span><input type="text" name="cm_email" class="textbox"></span>
+						    </div>
+						    <div>
+						    	<span><label>Nội Dung *:</label></span>
+						    	<span><textarea name="content"> </textarea></span>
+						    </div>
+						   <div>
+						   		<span><input type="submit" value="Phản hồi" ></span>
+						  </div>
+					    </form>
+				  </div>
              <hr>
           
-          
+            @foreach($comment as $cm)
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    <img class="media-object" style="width: 70px" src="user/images/slider/dangnhap.png" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
-                    
-                        <small></small>
+                        Tên người bình luận: {{$cm->cm_name}}
+                        <small>Datetime: {{$cm->created_at}}</small>
                     </h4>
+                    {{$cm->content}}
                   
                 </div>
             </div>
-            @endif
-
+            @endforeach         
 				</div>
 			</div>
 		 </div>
@@ -140,7 +150,7 @@
     		<h3>Related Products</h3>
     		</div>
     		<div class="see">
-    			<p><a href="#">See all Products</a></p>
+    			<p><a href="{{route('trangchu')}}">See all Products</a></p>
     		</div>
     		<div class="clear"></div>
     	</div>

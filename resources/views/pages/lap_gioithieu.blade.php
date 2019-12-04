@@ -18,7 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="user/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" href="user/css/global.css">
 <script src="user/js/slides.min.jquery.js"></script>
-<script>
+<!-- <script>
 		$(function(){
 			$('#products').slides({
 				preload: true,
@@ -31,11 +31,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				generatePagination: false
 			});
 		});
-	</script>
+	</script> -->
 </head>
 <body>
   <div class="wrap">
-    @include('layout.header')
+     @include('layout.header_user')
    </div>
  <div class="main">
     <div class="content">
@@ -76,31 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="clear"></div>
 		  </div>
-		  <div class="contact-form">
-				  	<h2>Bình luận</h2>
-					    <form>
-
-						    <div>
-						    	<span><label>Subject</label></span>
-						    	<span><textarea> </textarea></span>
-						    </div>
-						    <div>
-						    	<span><label>Name</label></span>
-						    	<span><input type="text" class="textbox" ></span>
-						    </div>
-						    <div>
-						    	<span><label>E-mail</label></span>
-						    	<span><input type="text" class="textbox"></span>
-						    </div>
-						    <div>
-						     	<span><label>Company Name</label></span>
-						    	<span><input type="text" class="textbox"></span>
-						    </div>
-						   <div>
-						   		<span><input type="submit" value="Submit"  class="myButton"></span>
-						  </div>
-					    </form>
-				  </div>
+		 
    <div class="content_bottom">
     		<div class="heading">
     		<h3>Related Products</h3>
@@ -112,19 +88,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	</div>
    <div class="section group">
 			 @foreach($product1 as $pt)
-				<div class="grid_1_of_4 images_1_of_4">				
+				<div class="grid_1_of_4 images_1_of_4" style="width: 150px ;height: 320px">				
 					<div class="price" style="border:none">
-			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
+			       		<a href="preview.html"><img  src="{{$pt->link}}" alt="" /></a>
 							<h2>{{$pt->name}}</h2>
 							<div class="price-details">
 	 					<div class="price-number">
-	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+	 						<p><span class="rupees">Giá :${{number_format($pt->price)}} </span></p>
 	 					</div>
-	 					<div class="add-cart">								
-	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
-	 					</div>
-	 					<div class="clear"></div>
- 				     </div>	 
+	 					<div class="add-cart" > 						
+ 						<h4><a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" class="">Giỏ hàng </a></h4>
+ 						</div>
+		 					<div class="clear"></div>
+	 				     </div>	 
 							 <div class="clear"></div>
 					</div>
 				</div>
@@ -133,26 +109,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
         </div>
 				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
+					<h2> CATEGORIES</h2>
 					<ul class="side-w3ls">
 				      @foreach($categories as $ct)
 				      <li><a href="#">{{$ct->name}}</a></li>
 				      @endforeach
     				</ul>
-    				<div class="subscribe">
-    					<h2>Đăng nhập </h2>
-						    <div class="signup">
-							    <form>
-							    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-							    </form>
-						    </div>
-      				</div>
-      				
  				</div>
  		</div>
  	</div>
     </div>
  </div>
+   @include('layout.section')
   @include('layout.footer')
    <script type="text/javascript">
 		$(document).ready(function() {			

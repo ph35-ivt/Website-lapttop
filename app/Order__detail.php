@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order_detail extends Model
+class Order__detail extends Model
 {
-     protected  $table = "Order_detail";
+   
     protected $fillable = [
         'order_id','product_id','price','quantity'
     ];
