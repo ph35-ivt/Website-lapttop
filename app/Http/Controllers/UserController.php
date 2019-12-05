@@ -16,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $listUsers = User::all();
+        $listUsers = User::orderBy('id', 'desc')->get();
         return view('admin.users.list_user', compact('listUsers'));
     }
 

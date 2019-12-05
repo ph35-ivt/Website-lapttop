@@ -19,9 +19,13 @@ class AdminLoginMiddleware
         if(Auth::check()){
             $user = Auth::user();
             if($user->level == 1)
+            {
                 return $next($request);
+            }
             else
-                return redirect()->route('dangnhapad');
+            {  
+              return redirect()->route('dangnhapad');
+            }
         }
         else
             return redirect()->route('dangnhapad');

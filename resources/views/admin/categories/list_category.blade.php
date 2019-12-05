@@ -37,14 +37,8 @@
               </label>
             </th>
             <th> ID</th>
-            <th>Parent Category ID</th>
             <th>Name</th>
-            <th>Category_slug</th>
-            <th>Description</th>
-            <th>Order</th>
             <th>Status</th>
-            <th>Create At</th>
-            <th>Update At</th>
             <th style="width:30px;">Action</th>
           </tr>
         </thead>
@@ -53,11 +47,7 @@
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td><span class="text-ellipsis">{{$category->id}}</span></td>
-            <td><span class="text-ellipsis">{{$category->parent_category_id}}</span></td>
             <td><span class="text-ellipsis">{{$category->name}}</span></td>
-            <td><span class="text-ellipsis">{{$category->category_slug}}</span></td>
-            <td><span class="text-ellipsis">{{$category->description}}</span></td>
-            <td><span class="text-ellipsis">{{$category->order}}</span></td>
             <td>
               @if($category->status==0)
                 <a href="."><span class="text-ellipsis">ẩn</span></a>
@@ -65,9 +55,10 @@
                 <a href="."><span class="text-ellipsis">hiện</span></a>
               @endif
             </td>
-            <td><span class="text-ellipsis">{{$category->created_at}}</span></td>
-            <td><span class="text-ellipsis">{{$category->updated_at}}</span></td>
             <td>
+              <a class="btn" href="{{route('show-category',$category->id)}}">
+                <button type="submit"><i class="fas fa-scroll"></i></button>
+              </a>
               <a class="btn" href="{{route('edit-category',$category->id)}}">
                 <button type="submit"><i class="fas fa-edit"></i></button>
               </a>

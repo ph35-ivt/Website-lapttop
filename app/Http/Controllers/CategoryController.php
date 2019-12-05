@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
@@ -16,6 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $listCategories = Category::all();
+        $listCategories = Category::orderBy('id', 'desc')->get();
         // dd($listCategories);
         return view('admin.categories.list_category', compact('listCategories'));
         
@@ -53,7 +54,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        
+        $category = Category::find($id);
+        if ($category) {
+            return view('admin.categories.detail_category',compact('category'));
+        }
+            echo "Not found";   
     }
 
     /**

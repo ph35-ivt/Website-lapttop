@@ -51,7 +51,13 @@
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td><span class="text-ellipsis">{{$order->id}}</span></td>
             <td><span class="text-ellipsis">{{$order->customer_id}}</span></td>
-            <td><span class="text-ellipsis">{{$order->payment}}</span></td>
+            <td>
+              @if($order->payment==1)
+              <span class="text-ellipsis">CASH</span>
+              @else
+              <span class="text-ellipsis">ATM</span>
+              @endif
+            </td>
             <td>
               @if($order->status==1)
               <span class="text-ellipsis">active</span>
@@ -69,7 +75,8 @@
                     <form style="padding-left: 13px" action="{{route('delete-order', $order->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
+                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
+                        
                       </form>
                 @endif 
             </td>

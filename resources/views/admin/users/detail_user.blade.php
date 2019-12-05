@@ -13,7 +13,6 @@
             <th> ID</th>
             <th>Name</th>
             <th>email</th>
-            <th>Password</th> 
             <th>level</th>
             <th>Create At</th>
             <th>Update At</th>
@@ -24,8 +23,13 @@
             <td><span class="text-ellipsis">{{$user->id}}</span></td>
             <td><span class="text-ellipsis">{{$user->name}}</span></td>
             <td><span class="text-ellipsis">{{$user->email}}</span></td>
-            <td><span class="text-ellipsis">{{$user->password}}</span></td>
-            <td><span class="text-ellipsis">{{$user->level}}</span></td>
+            <td>
+              @if($user->level==0)
+                  <span class="text-ellipsis">User</span>
+              @else
+                  <span class="text-ellipsis">Admin</span>
+              @endif
+            </td>
             <td><span class="text-ellipsis">{{$user->created_at}}</span></td>
             <td><span class="text-ellipsis">{{$user->updated_at}}</span></td>
           </tr>

@@ -25,10 +25,10 @@ class AdminController extends Controller
     {
         return view('admin.main');
     }
-    public function postDangNhap(Request $req)
+    public function postDangNhap(Request $request)
     {
-        $email=$req->email;
-        $password=$req->password;
+        $email = $request->email;
+        $password = $request->password;
         // dd($email,$password);
 
         if (\Auth::attempt(['email' => $email, 'password' => $password])) {

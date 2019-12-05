@@ -33,7 +33,13 @@
             <td><span class="text-ellipsis">{{$product->price}}</span></td>
             <td><span class="text-ellipsis"><img style="width: 60px" src="{{$product->link}}" alt=""></span></td>
             <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
-            <td><span class="text-ellipsis">{{$product->status}}</span></td>
+            <td>
+                @if($product->status==0)
+                    <span class="text-ellipsis">hết hàng</span>
+                @else
+                    <span class="text-ellipsis">còn hàng</span>
+                @endif
+            </td>
             <td><span class="text-ellipsis">{{$product->created_at}}</span></td>
             <td><span class="text-ellipsis">{{$product->updated_at}}</span></td>
           </tr>

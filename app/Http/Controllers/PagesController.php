@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Categories;
+use App\Category;
 use App\Product;
 use App\News;
 use App\Repairs;
@@ -18,7 +18,7 @@ class PagesController extends Controller
 {
     function __construct()
     {
-        $categories = Categories::all();
+        $categories = Category::all();
         $product = Product::all();
        // $tintuc = News::all();
         view()->share('categories',$categories);

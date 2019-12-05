@@ -38,7 +38,6 @@
             </th>
             <th> ID</th>
             <th>Name</th>
-            <th>Content</th>
             <th>Price</th>
             <th>Link</th>
             <th>Quantity</th>
@@ -51,8 +50,7 @@
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td><span class="text-ellipsis">{{$product->id}}</span></td> 
             <td><span class="text-ellipsis">{{$product->name}}</span></td>
-            <td><span class="text-ellipsis">{{$product->content}}</span></td>
-            <td><span class="text-ellipsis">{{$product->price}}</span></td>
+            <td><span class="text-ellipsis">{{number_format($product->price)}}</span></td>
             <td><span class="text-ellipsis"><img style="width: 60px" src="{{$product->link}}" alt=""></span></td>
             <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
             <td>
@@ -66,7 +64,7 @@
                     <form style="padding-left: 13px" action="{{route('delete-product', $product->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i style="width: 17px; color: #097cef" style="" class="fas fa-trash-alt"></i></button>
+                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px; color: #097cef" style="" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

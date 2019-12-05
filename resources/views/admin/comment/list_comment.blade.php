@@ -36,7 +36,7 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th> ID</th>
+            <th>ID</th>
             <th>New ID</th>
             <th>User ID</th>
             <th>Product ID</th>

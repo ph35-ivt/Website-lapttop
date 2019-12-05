@@ -36,6 +36,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
  	function(){
 		//list category
 		Route::get('/categories', 'CategoryController@index')->name('list-category');
+		// show product_detail
+		Route::get('/categories/{id}/show','CategoryController@show')->name('show-category');
 		// create cat
 		Route::get('/categories/add', 'CategoryController@add')->name('add-category');
 		//store 
@@ -128,6 +130,6 @@ Route::get('giohang','PagesController@giohang')->name('giohang');
 
 Route::get('addcart/{id}','PagesController@addcart')->name('addcart');
 Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
- Route::get('dathang','PagesController@dathang')->name('dathang');
- Route::post('dathang','PagesController@postdathang')->name('postdathangs');
+Route::get('dathang','PagesController@dathang')->name('dathang');
+Route::post('dathang','PagesController@postdathang')->name('postdathangs');
 
