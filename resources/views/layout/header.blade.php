@@ -61,7 +61,7 @@
 					 <p> Tổng tiền : $ {{number_format(Session('cart')->totalPrice)}} Đồng</p>
 					 <br>
 					 <br>
-					 <button class="btn btn-primary">Đặt hàng <a href="{{route('dathang')}}" class="glyphicon glyphicon-triangle-right "></a></button>
+					 <button class="btn btn-primary">Đặt hàng <a href="dathang" class="glyphicon glyphicon-triangle-right "></a></button>
 					 @endif
 					<!--  <button class="run">run</button> -->
 			  </div>
@@ -82,7 +82,7 @@
 	     	<div class="search_box">
 	     		<form action="{{route('timkiem')}}" method="GET">
 	     			@csrf
-	     			<input type="text" name="timkiem" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+	     			<input type="text" name="timkiem"  value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
 	     		</form>
 	     	</div>
 	     	<div class="clear"></div>

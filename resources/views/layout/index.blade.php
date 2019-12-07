@@ -14,7 +14,9 @@
 <link href="user/css/my.css" rel="stylesheet">
 <!-- Semantic UI theme -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--  -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <script
 src="https://code.jquery.com/jquery-2.1.3.js"
@@ -110,11 +112,22 @@ body .no-padding{
 
     </style>
     <script type="text/javascript">
-  $(document).ready(function() {
+   $(document).ready(function() {
     $('#Carousel').carousel({
         interval: 1000
     })
-});
+    });
+  
+  $(document).ready(function($) {
+    var engine1 = new Bloodhound({
+        remote: {
+            url: '/search/name?value=%QUERY%',
+            wildcard: '%QUERY%'
+        },
+        datumTokenizer: Bloodhound.tokenizers.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace
+    });
+
     
     </script>
 

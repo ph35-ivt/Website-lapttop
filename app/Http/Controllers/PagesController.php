@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,6 +11,8 @@ use App\Comment;
 use App\Cart;
 use App\Order;
 use App\Order__detail;
+use App\Mail\CheckMail;
+use Mail;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -110,6 +111,12 @@ class PagesController extends Controller
           $users->password = bcrypt($request->password);
           $users->level =0;
           $users->save();
+          $input = $request->all();
+          Mail::send('pages.dangki', array('name'=>$input["name"],'email'=>$input["email"]),
+           function($message){
+          $message->to('buiduy057@gmail.com', 'Duy')->subject('Visitor Feedback!');
+             });
+          // Session::flash('flash_message', 'Send message successfully!');
           return redirect('trangchu')->with('thongbao','Bạn đã đăng kí thành công thành công');
     }
     function getnguoidung(){
@@ -129,6 +136,8 @@ class PagesController extends Controller
                     ->get();
       return view('pages.timkiem',compact('timkiem'));
     }
+   
+    
     function addcart(Request $rq,$id){
       $product = Product::find($id); 
        // kiểm tra xem có session cart chưa
@@ -140,7 +149,19 @@ class PagesController extends Controller
       $rq->session()->put('cart',$cart);
       return redirect()->back();
     }
-    function editcart($id){
+     function delcartone($id){
+       $oldCart = Session::has('cart')?Session::get('cart'):null;
+       $cart = new Cart($oldCart);
+       $cart->reduceByOne($id);
+       if(count($cart->items)>0){
+        Session::put('cart',$cart);
+       }
+       else {
+         Session::forget('cart');
+       }
+       return redirect()->back();
+    }
+    function delcart($id){
        $oldCart = Session::has('cart')?Session::get('cart'):null;
        $cart = new Cart($oldCart);
        $cart->removeItem($id);
@@ -152,10 +173,45 @@ class PagesController extends Controller
        }
        return redirect()->back();
     }
+    function editcart(Request $req,$id){
+        $product = Product::find($req->id);
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->ThemCoSoLuong($product, $req->id, $req->qty); $req->session()->put('cart', $cart);
+       return redirect()->back();
+    }
     function dathang(){
        $users = Auth::user();
        return view('pages.dathang',compact('users'));
     }
+    // public function postdathang(Request $request){
+    //  $email = $request->email;
+    //  $name = $request->name;
+    //  $phone = $request->phone; 
+    //  $address = $request->address;
+    //  $date_order = $request->date_order; 
+    //  $total = $request->total; 
+     
+
+    //       //gửi email, tạo mail và truyền vào data
+    //   \Mail::to(['email'])->send(new CheckMail($name,$phone,$address,$date_order,$total));
+    //   return redirect()->route('dathang')->with('thongbao','Bạn đã gửi thành công!');
+    // }
+    // function getlienhe(){
+    //    return view('pages.mail');
+    // }
+    //  function postlienhe(Request $request){
+    //   $data = ['hoten'=> $request->input('name'),'email'=>  $request->input('email')];
+    //   Mail::send('mail.contact_mail',$data,function($mes){
+    //     $mes->from('buiduy057@gmail.com','pha');
+    //     $mes->to('buiduy057@gmail.com','duy')->subject('Đây là Mail Duy');
+    //   });
+    //   echo "<script>alert('Cảm ơn các bạn đã góp ý. Chúng tôi sẽ liên hệ bạn sớm nhất');
+    //   window.location ='".url('/trangchu')."'
+    //   </script>";
+
+    // }
+    
     function postdathang(Request $request){
 
        $this->validate($request,
@@ -184,7 +240,7 @@ class PagesController extends Controller
       $or->date_order = date('Y-m-d');
       $or->total = $cart->totalPrice;
       $or->payment = $request->payment;
-       $or->status = 1;
+      $or->status = 1;
       $or->save();
       foreach ($cart->items as $key => $value) {
           $order_detail = new Order__detail;
@@ -196,7 +252,10 @@ class PagesController extends Controller
       }
       Session::forget('cart');
       return redirect()->back()->with('thongbao','Đặt hàng thành công');
-     
+
+      echo "<script>alert('Cảm ơn các bạn đã đặt hàng. Chúng tôi sẽ liên hệ bạn sớm nhất');
+     window.location ='".url('/trangchu')."'
+       </script>";
     }
     
 }

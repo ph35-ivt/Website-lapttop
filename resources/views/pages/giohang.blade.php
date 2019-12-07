@@ -21,8 +21,7 @@
   <div class="wrap">
     @include('layout.header')
    </div>
-<div class="main">
-	
+<div class="main">	
     <div class="content">
     	<div class="content_top">
     		<div class="back-links">
@@ -56,7 +55,8 @@
 					    	<li><a href="#"><img src="user/images/twitter.png" alt="" /></a></li>					    
 			    		</ul>
 					</div>
-					<div class="button"><span><a href="{{route('addcart',$pt->id)}}" class="" >Giỏ hàng</a></span></div>					
+					<br>
+					<span style="margin-left: 100px"><a href="{{route('addcart',$pt->id)}}" class="glyphicon glyphicon-shopping-cart" ></a></span>				
 					<div class="clear"></div>
 				</div>
 			</div>
@@ -113,8 +113,7 @@
 						  </div>
 					    </form>
 				  </div>
-             <hr>
-          
+             <hr>    
             @foreach($comment as $cm)
             <div class="media">
                 <a class="pull-left" href="#">
@@ -122,7 +121,7 @@
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        Tên người bình luận: {{$cm->cm_name}}
+                        <b>{{$cm->cm_name}}</b>
                         <small>Datetime: {{$cm->created_at}}</small>
                     </h4>
                     {{$cm->content}}
@@ -133,18 +132,7 @@
 				</div>
 			</div>
 		 </div>
-	 </div>
-
-	    <script type="text/javascript">
-
-    $(document).ready(function () {
-        $('#horizontalTab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion           
-            width: 'auto', //auto or any width like 600px
-            fit: true   // 100% fit in a container
-        });
-    });
-   </script>		
+	 </div>	
    <div class="content_bottom">
     		<div class="heading">
     		<h3>Related Products</h3>
@@ -182,14 +170,6 @@
 				      <li><a href="#">{{$ct->name}}</a></li>
 				      @endforeach
     				</ul>
-    				<div class="subscribe">
-    					<h2>Đăng nhập</h2>
-						    <div class="signup">
-							    <form>
-							    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-							    </form>
-						    </div>
-      				</div>
  				</div>
  		</div>
  	</div>

@@ -1,7 +1,8 @@
 <?php
 
 namespace App;
-
+use App\Cart;
+use Session;
 class Cart
 {
 	public $items = null;
@@ -27,6 +28,39 @@ class Cart
 		$this->items[$id] = $giohang;
 		$this->totalQty++;
 		$this->totalPrice +=$item->price;
+	}
+   // thêm hàng có số lượng
+	public function ThemCoSoLuong($item, $id, $qty){
+		$giohang = ['qty'=>0, 'price' => $item->price, 'item' => $item]; 
+		if($this->items){ 
+			if(array_key_exists($id, $this->items)){ 
+				$giohang = $this->items[$id]; 
+			} 
+		} 
+		$sanphammua = Session::get('cart');
+		$dem = 0;
+		if($sanphammua != null){
+			foreach($sanphammua->items as $idsp =>$value){
+				if($idsp == $id){
+					$dem++;
+					break;
+				}
+			}
+			if($dem != 0){
+				$giohang['qty'] = $sanphammua->items[$id]['qty'] + $qty;
+				$dem = 0;
+			}
+			else{
+				$giohang['qty'] = $qty;
+			}
+		}
+		else{
+			$giohang['qty'] = $qty;
+		}
+		$giohang['price'] = $item->price * $giohang['qty']; 
+		$this->items[$id] = $giohang; 
+		$this->totalQty += $qty; 
+		$this->totalPrice += $giohang['price']; 
 	}
 	//xóa 1
 	public function reduceByOne($id){

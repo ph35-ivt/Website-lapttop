@@ -3,6 +3,21 @@
                 this.dd = el;
                 this.initEvents();
             }
+            // jQuery(document).ready(function($){
+            //   //lấy vị trí hiện tại các top x px 
+            //    $(#header_top).position();
+            //    $(window).scroll(function(){
+            //      var posScroll = $(document).scrollTop();
+            //       if(parseInt(posScroll)>parseInt(pos.top)){
+            //         $(#header_top).addClass('fixed');
+            //       }
+            //       else 
+            //       {
+            //         $(#header_top).removeClass('fixed');
+
+            //       }
+            //    });
+            // });
             DropDown.prototype = {
                 initEvents : function() {
                     var obj = this;
@@ -24,12 +39,6 @@
                 });
 
             });
-        
-
-           
-
-        </script>
-        <script type="text/javascript">
             $(function(){
                 $(document).on('click', '#success', function(e) {
                     swal(
@@ -115,5 +124,6 @@
                                 }
                             })
                     });
-            });           
+            }); 
+                      
         </script>

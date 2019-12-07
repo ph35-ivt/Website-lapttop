@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+         return view('pages.search');
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -44,9 +44,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+         $product = Product::find($id);
+         return $product->name . '@' . $product->product_slug . '-' . $product->address;
+    }
+   public function find(Request $request)
+    {
+
+       $timkiem = Product::where('name', 'like','%' . $request->get('q')  . '%')->get();
+     // dd($product);
+    return response()->route('index',compact('timkiem'));
     }
 
     /**
