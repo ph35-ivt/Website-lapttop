@@ -10,6 +10,9 @@
             
             <div class="panel-body">
                 <div class="position-center">
+                    @if(Session::has('success'))
+                        <P style="color:black">{{Session::get('success')}}</P>
+                    @endif
                     <form action="{{route('store-product')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -22,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Category</label>
-                            <select name="category_id" class="form-control" id="exampleInputEmail1"">
+                            <select name="category_id" class="form-control" id="exampleInputEmail1">
                                 @foreach($listCategories as $category)
                                     <option value="{{$category->id}}"> {{$category->name}}</option>
                                 @endforeach

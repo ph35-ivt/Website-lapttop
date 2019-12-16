@@ -4,6 +4,12 @@
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
+                <li class="sub-menu">
+                    <a href="{{route('dashboard')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
                 
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -40,18 +46,7 @@
 
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fas fa-cart-arrow-down"></i>
-                        <span>Order_detail</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="{{route('list-order-detail')}}">List order_detail</a></li>
-                        
-                    </ul>
-                </li>
-
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-comments"></i>
                         <span>Comment</span>
                     </a>
                     <ul class="sub">

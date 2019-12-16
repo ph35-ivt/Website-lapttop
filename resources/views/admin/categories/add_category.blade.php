@@ -7,7 +7,11 @@
             <header class="panel-heading">
                 Add Category
             </header>
+
             <div class="panel-body">
+                @if(Session::has('success'))
+                    <P style="color:black">{{Session::get('success')}}</P>
+                @endif
                 <div class="position-center">
                     <form action="{{route('store-category')}}" method="POST">
                         @csrf

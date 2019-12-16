@@ -3,9 +3,9 @@
     <header class="header fixed-top clearfix">
         <!--logo start-->
         <div class="brand">
-            <a style="font-size: 23px; text-transform: capitalize;" class="logo">
-                <i class="fa fa-dashboard"></i>
-                dashboard
+            <a href="{{route('dashboard')}}" style="font-size: 23px; text-transform: capitalize;" class="logo">
+                <i class=""><img style="width: 40px;height: 40px;border-radius: 20px 20px;"  src="{{asset('user/images/logo1.png')}}" alt=""></i>
+                ADMIN
             </a>
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars"></div>

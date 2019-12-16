@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Order_Detail;
+use App\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -15,6 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         $listOrders = Order::all();
+        $listOrders = Order::paginate(5);
         return view('admin.orders.list_order', compact('listOrders'));
     }
 
@@ -36,7 +39,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**
@@ -45,9 +48,15 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+        $detail = Order_Detail::find($id);
+        $product = Product::find($id);
+        $order = Order::find($id);
+        if ($order) {
+            return view('admin.orders.detail_order',compact('order','product','detail'));
+        }
+            echo "Not found"; 
     }
 
     /**
@@ -87,5 +96,15 @@ class OrderController extends Controller
     {
         Order::destroy($id);
         return redirect()->route('list-order');
+    }
+    public function searchOrder(Request $request){
+        $search = Order::where('name','like','%'.$request->search.'%')
+                    ->orwhere('phone',$request->search)
+                    ->get();
+        return view('admin.orders.search_order',compact('search'));
+    }
+    public function getloc()
+    {
+        
     }
 }

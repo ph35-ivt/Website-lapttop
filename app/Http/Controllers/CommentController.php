@@ -15,7 +15,8 @@ class CommentController extends Controller
     public function index()
     {
         $listComments = Comment::all();
-        return view('admin.comment.list_comment', compact('listComments'));
+        $listComments = Comment::paginate(5);
+        return view('admin.comment.list_comment',compact('listComments'));
     }
 
     /**
@@ -42,10 +43,10 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Commment  $commment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Commment $commment)
     {
         //
     }
@@ -53,7 +54,7 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Commment  $commment
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,13 +67,13 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Commment  $commment
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $comment = Comment::find($id);
-        $data= $request->only('new_id','user_id','product_id','content');
+        $data = $request->find($id);
+        $data= $request->only('cm_name','cm_email','product_id','content');
         $comment->update($data);
         return redirect()->route('list-comment');
     }
@@ -80,12 +81,13 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Commment  $commment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Commment $commment)
     {
-        Comment::destroy($id);
-        return redirect()->route('list-comment');
+        //
     }
+   
+    
 }

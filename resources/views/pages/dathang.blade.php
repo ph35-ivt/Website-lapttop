@@ -25,30 +25,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="user/css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" href="user/css/global.css">
 <script src="user/js/slides.min.jquery.js"></script>
+<!-- <script src="user/js/my.js"></script> -->
 <style type="text/css">
 	form{
           width: 900px;
           margin-left: 50px;
 	}
 </style>
-<script>
-		$(function(){
-			$('#products').slides({
-				preload: true,
-				preloadImage: 'img/loading.gif',
-				effect: 'slide, fade',
-				crossfade: true,
-				slideSpeed: 350,
-				fadeSpeed: 500,
-				generateNextPrev: true,
-				generatePagination: false
-			});
-		});
-	</script>
+
 </head>
 <body>
   <div class="wrap">
-    @include('layout.header')
+   	@include('layout.header_user')
    </div>
  <div class="main">
     <div class="content">
@@ -64,61 +52,86 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     		</div>
     		<div class="clear"></div>
     	</div>
+   @if(count($errors) > 0)
+     <div class="alert alert-danger">
+         @foreach($errors ->all() as $err)
+          {{$err}}
+         @endforeach
+     </div>
+    @endif
+    @if(session('thongbao'))
+                      <div class="alert alert-success">
+                          {{session('thongbao')}}
+                      </div>
+    @endif
+     @if(Auth::check())
  <div class="section group">
-   <form action="{{route('postdathang')}}" method="POST" id="form" >
+   <form action="{{route('postdathang')}}" method="POST" id="form"  >
+   	   			@csrf
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-6" >
 						<br>
 						<div class="form-group">
-							<label for="name" >Họ tên: </label>
-							<input type="text" class="form-control" id="name" placeholder="Họ tên" required>
+							<label for="name" >Họ tên <span style="color:red">*</span>: </label>
+							<input type="text" class="form-control" value="{{$users->name}}" name="name" id="name" placeholder="Họ tên" readonly="" >
 						</div>
 						<div class="form-group">
-							<label for="email">Email:</label>
-							<input type="email" class="form-control" id="email" required placeholder="expample@gmail.com">
-						</div>
-
-						<!-- <div class="form-group">
-							<label for="adress">Địa chỉ:</label>
-							<input type="text" class="form-control" id="adress" placeholder="Street Address" required>
-						</div>
-						 -->
-
+							<label for="email">Email <span style="color:red">*</span>:</label>
+							<input type="email" class="form-control" value="{{$users->email}}" name="email" id="email"  placeholder="expample@gmail.com" readonly="">
+						</div> 	
 						<div class="form-group">
-							<label for="phone">Điện thoại:</label>
-							<input type="text" class="form-control" id="phone" required>
+							<label for="phone">Điện thoại <span style="color:red">*</span>:</label>
+							<input type="text" class="form-control" name="phone" id="phone">
 						</div>
-						
-						<!-- <div class="form-group">
-							<label for="notes">Ghi chú</label>
-							<textarea id="notes" class="form-control"></textarea>
-						</div> -->
+						<div class="form-group">
+							<label for="phone">Address <span style="color:red">*</span>:</label>
+							<input type="text" class="form-control" name="address" id="address" >
+						</div>
+							<div class="form-group">
+							<label for="phone">Date_order <span style="color:red">*</span>:</label>
+							<input type="date" class="form-control" name="date_order"  >
+						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="your-order">
 							<div class="your-order-head"><h5>Đơn hàng của bạn</h5></div>
 							<div class="your-order-body" style="padding: 0px 10px">
-								<div class="your-order-item">
+								<div class="your-order-item">								
 									<div>
+										@if(Session::has('cart'))
+								    	@foreach($product_cart as $pt)
 									<!--  one item	 -->
 										<div class="media">
-											<img width="25%" src="user/images/slider/shoping1.jpg" alt="" class="pull-left">
+											<img width="20%" src="{{$pt['item']['link']}}" alt="" class="pull-left">
 											<div class="media-body">
-												<p class="font-large">Men's Belt</p>
-												<br>
-												<span class="color-gray your-order-info">Color: Red</span>
-												<span class="color-gray your-order-info">Size: M</span>
-												<span class="color-gray your-order-info">Qty: 1</span>
+												<table width="350px" height="100px">
+													<tr>
+														<td>{{$pt['item']['name']}}</td>
+														<td><a href="{{route('editcart',$pt['item']['id'])}}" id="success" class=" glyphicon glyphicon-trash "></a></td>
+													</tr>
+													<tr>
+														<td colspan="2"><label for="">Số lượng:</label>
+						                        			<input type="number" value="{{$pt['qty']}}" min=1 onchange="" style="width: 50px"></td>
+													</tr>
+													<tr>
+														<td colspan="2">Đơn giá: {{number_format($pt['item']['price'])}} Đồng</td>
+													</tr>
+												</table>
+												
 											</div>
 										</div>
+										@endforeach
+										@endif
 									<!-- end one item -->
 									</div>
 									<div class="clearfix"></div>
 								</div>
 								<div class="your-order-item">
+									@if(Session::has('cart'))
 									<div class="pull-left"><p class="your-order-f18">Tổng tiền:</p></div>
-									<div class="pull-right"><h5 class="color-black">$235.00</h5></div>
+									<div class="pull-right"><h5 class="color-black">${{number_format(Session('cart')->totalPrice)}}</h5></div>
 									<div class="clearfix"></div>
+									@endif
 								</div>
 							</div>
 							<div class="your-order-head"><h5>Hình thức thanh toán</h5></div>
@@ -126,16 +139,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="your-order-body">
 								<ul class="payment_methods methods">
 									<li class="payment_method_bacs">
-										<input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="COD" checked="checked" data-order_button_text="">
-										<label for="payment_method_bacs">Thanh toán khi nhận hàng </label>
+									
+										<input id="payment_method_bacs" type="radio" class="input-radio" name="payment" value="0" checked="checked" data-order_button_text="">
+										<label for="payment_method_bacs">Tiền mặt</label>
 										<div class="payment_box payment_method_bacs" style="display: block;">
 											Cửa hàng sẽ gửi hàng đến địa chỉ của bạn, bạn xem hàng rồi thanh toán tiền cho nhân viên giao hàng
 										</div>						
 									</li>
 
 									<li class="payment_method_cheque">
-										<input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="ATM" data-order_button_text="">
-										<label for="payment_method_cheque">Chuyển khoản </label>
+										<input id="payment_method_cheque"  type="radio" class="input-radio" name="payment" value="1" data-order_button_text="">
+										<label for="payment_method_cheque">Online </label>
 										<div class="payment_box payment_method_cheque" style="display: none;">
 											Chuyển tiền đến tài khoản sau:
 											<br>- Số tài khoản: 123 456 789
@@ -147,13 +161,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</ul>
 							</div>
 
-							<div class="text-center"><a class="beta-btn primary" href="#">Đặt hàng <i class="fa fa-chevron-right"></i></a></div>
+							<div class="text-center"><button type="submit"  class="btn btn-outline-success">  Đặt hàng <i class="glyphicon glyphicon-chevron-right"></i></button></div>
 						</div> <!-- .your-order -->
 					</div>
 				</div>
-			</form>  	         
-				
- </div>
+			</form>  	         			
+          </div>
+        @else 
+         <div class="section group">
+         	                <br>
+    						<p style="color:red">Bạn cần đăng nhập mới đặt hàng được:</p>
+						    <div class="signup" style="width: 400px">
+							    <form method="POST" action="{{route('getdangnhap')}}">
+							    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
+							    </form>
+						    </div>
+         </div>
+
+        @endif
 				
  </div>
 			 
@@ -165,12 +190,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
  </div>
   @include('layout.footer')
-   <script type="text/javascript">
+  <!--  <script type="text/javascript">
 		$(document).ready(function() {			
 			$().UItoTop({ easingType: 'easeOutQuart' });
 			
 		});
-	</script>
+	</script> -->
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
 </body>
 </html>

@@ -39,7 +39,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
   <div class="wrap">
-    @include('layout.header')
+    @include('layout.header_user')
    </div>
  <div class="main">
     <div class="content">
@@ -88,7 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	</div>
    <div class="section group">
    	          @foreach($product1 as $pt)
-				<div class="grid_1_of_4 images_1_of_4">				
+				<div class="grid_1_of_4 images_1_of_4" style="width: 150px ;height: 322px">				
 					<div class="price" style="border:none">
 			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
 							<h2>{{$pt->name}}</h2>
@@ -97,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
 	 					</div>
 	 					<div class="add-cart">								
-	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+	 						<h4><a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" class="">Giỏ hàng </a></h4>
 	 					</div>
 	 					<div class="clear"></div>
  				     </div>	 
@@ -114,20 +114,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				      <li><a href="#">{{$ct->name}}</a></li>
 				      @endforeach
     				</ul>
-    				<div class="subscribe">
-    					<h2>Đăng nhập </h2>
-						    <div class="signup">
-							    <form>
-							    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-							    </form>
-						    </div>
-      				</div>
-      				
  				</div>
  		</div>
  	</div>
     </div>
  </div>
+    @include('layout.section')
   @include('layout.footer')
    <script type="text/javascript">
 		$(document).ready(function() {			

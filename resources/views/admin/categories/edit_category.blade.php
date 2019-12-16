@@ -14,8 +14,11 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="exampleInputPassword1">parent_category_id</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" 
-                            name="parent_category_id" value="{{$category->parent_category_id}}">
+                            <select name="parent_category_id" class="form-control" id="exampleInputEmail1">
+                                @foreach($listCategories as $category)
+                                    <option value="{{$category->parent_category_id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -32,7 +35,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputFile">Description</label>
-                            <input type="text" id="exampleInputFile" class="form-control" name="description" value="{{$category->description}}">
+                            <textarea style="resize: none" rows="5" id="exampleInputFile" class="form-control" name="description">{{$category->description}}"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -43,8 +46,12 @@
 
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
-                            name="status" value="{{$category->status}}">
+                            <select name="status" class="form-control" id="exampleInputEmail1">
+                                <option value="0" @if($category->status==0) checked @endif>ẩn
+                                </option>
+                                <option value="1" @if($category->status==1) checked @endif>hiện
+                                </option>
+                            </select>
                         </div>
                         
                         <button type="submit" class="btn btn-info">Edit</button>

@@ -7,6 +7,9 @@
             <header class="panel-heading">
                 Add User
             </header>
+            @if(Session::has('success'))
+                <P style="color:black">{{Session::get('success')}}</P>
+            @endif
             <div class="panel-body">
                 <div class="position-center">
                     <form action="{{route('store-user')}}" method="POST">

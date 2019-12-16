@@ -35,6 +35,16 @@ class AppServiceProvider extends ServiceProvider
             }
             
         });
+        view()->composer('pages.dathang',function($views){
+            if(Session('cart')){
+                //lấy session giỏ hàng hiện tại
+                $oldCart = Session::get('cart');
+                // kiểm tra giỏ hàng cũ đã có hay chưa nếu chưa gắn vòa giỏ hàng mới
+                $cart = new Cart($oldCart);
+                $views->with(['cart'=> Session::get('cart'),'product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
+            }
+            
+        });
         
     }
 }

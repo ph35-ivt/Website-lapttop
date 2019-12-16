@@ -7,7 +7,7 @@ function doMove(panelWidth, tooFar) {
 	// Fix for IE
 	if (leftValue == "auto") { leftValue = 0; };
 	
-	var movement = parseFloat(leftValue, 10) - panelWidth;
+	var movement = parseFloat(leftValue, 30) - panelWidth;
 	
 	if (movement == tooFar) {
 		$(".slide img").animate({

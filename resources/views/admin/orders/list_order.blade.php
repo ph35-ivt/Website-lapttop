@@ -9,10 +9,11 @@
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
             <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">...</option>
-                <option value="1">...</option>
-                <option value="2">...</option>
-                <option value="3">...</option>
+                <option value="0">--lọc đơn hàng</option>
+                <option value="1">Chưa thanh toán </option>
+                <option value="2">Thanh toán</option>
+                <option value="3">ATM</option>
+                <option value="4">CASH</option>
             </select>
             <button class="btn btn-sm btn-default">Apply</button>                
         </div>
@@ -20,10 +21,11 @@
         </div>
         <div class="col-sm-3">
             <div class="input-group">
-                <input type="text" class="input-sm form-control" placeholder="Search">
-                <span class="input-group-btn">
-                <button class="btn btn-sm btn-default" type="button">Go!</button>
-                </span>
+                <form action="{{route('order-search')}}" method="GET">
+                    @csrf
+                      <input style="float: left;width: 150px;height: 28px;" type="text" class="input-sm form-control" placeholder=" Search" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                      <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
             </div>
         </div>
     </div>
@@ -36,12 +38,10 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>ID</th>
-            <th>Customer ID</th>
-            <th>Payment</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>payment</th>
             <th>Status</th>
-            <th>Create At</th>
-            <th>Update At</th>
             <th style="width:30px;">Action</th>
           </tr>
         </thead>
@@ -49,8 +49,8 @@
           @foreach($listOrders as $order)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td><span class="text-ellipsis">{{$order->id}}</span></td>
-            <td><span class="text-ellipsis">{{$order->customer_id}}</span></td>
+            <td><span class="text-ellipsis">{{$order->name}}</span></td>
+            <td><span class="text-ellipsis">{{$order->phone}}</span></td>
             <td>
               @if($order->payment==1)
               <span class="text-ellipsis">CASH</span>
@@ -60,14 +60,18 @@
             </td>
             <td>
               @if($order->status==1)
-              <span class="text-ellipsis">active</span>
+              <span class="text-ellipsis">Thanh toán</span>
               @else
-              <span class="text-ellipsis">unactive</span>
+              <span class="text-ellipsis">Chưa thanh toán</span>
               @endif
             </td>
-            <td><span class="text-ellipsis">{{$order->created_at}}</span></td>
-            <td><span class="text-ellipsis">{{$order->updated_at}}</span></td>
             <td>
+              <a class="btn" href="{{route('list-order',)}}">
+                <button type="submit"><i class="fas fa-sync"></i></button>
+              </a>
+              <a class="btn" href="{{route('show-order',$order->id)}}">
+                <button type="submit"><i class="fas fa-scroll"></i></button>
+              </a>
               <a class="btn" href="{{route('edit-order',$order->id)}}">
                 <button type="submit"><i class="fas fa-edit"></i></button>
               </a>
@@ -88,16 +92,11 @@
     <footer class="panel-footer">
       <div class="row">
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm"></small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-            <li><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+            {{ $listOrders->links() }}
           </ul>
         </div>
       </div>

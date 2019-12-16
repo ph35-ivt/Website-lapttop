@@ -17,9 +17,9 @@ class CategoryController extends Controller
     {
         $listCategories = Category::all();
         $listCategories = Category::orderBy('id', 'desc')->get();
+        $listCategories = Category::paginate(5);
         // dd($listCategories);
-        return view('admin.categories.list_category', compact('listCategories'));
-        
+        return view('admin.categories.list_category', compact('listCategories'));  
     }
     
     /**
@@ -29,7 +29,8 @@ class CategoryController extends Controller
      */
     public function add()
     {
-        return view('admin.categories.add_category');
+        $listCategories = Category::all();
+        return view('admin.categories.add_category',compact('listCategories'));
     }
 
     /**
@@ -43,7 +44,7 @@ class CategoryController extends Controller
         $data =$request->except('_token');
         // dd($data);
         Category::create($data);
-        return redirect()->route('list-category');
+        return redirect()->route('list-category')->with(['success'=>'Thêm sản phẩm thành công']);
     }
 
     /**
@@ -69,10 +70,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $listCategories = Category::all();
         $category = Category::find($id);
-        return view('admin.categories.edit_category',compact('category'));
+        return view('admin.categories.edit_category',compact('category','listCategories'));
     }
-
     /**
      * Update the specified resource in storage.
      *

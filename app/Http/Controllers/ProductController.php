@@ -19,7 +19,8 @@ class ProductController extends Controller
     {
         $listProducts = Product::all();
         $listProducts = Product::orderBy('id', 'desc')->get();
-        // dd($listProducts);
+        $listProducts = Product::paginate(5);
+        // dd($product);
         return view('admin.products.list_product', compact('listProducts'));
     }
 
@@ -48,7 +49,7 @@ class ProductController extends Controller
         $data['link'] = 'user/images/product/'.$link;
         $request->file('link')->move('user/images/product/',$link);
         Product::create($data);
-        return redirect()->route('list-product');
+        return redirect()->route('list-product')->with(['success'=>'Thêm sản phẩm thành công']);
     }
 
     /**

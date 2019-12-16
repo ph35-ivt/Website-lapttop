@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.main');
+        return view('admin.dashboard');
     }
     public function postDangNhap(Request $request)
     {
@@ -32,7 +32,7 @@ class AdminController extends Controller
         // dd($email,$password);
 
         if (\Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('list-category');
+            return redirect()->route('dashboard');
         }
         else{
             return redirect()->back()->with(['errorLogin'=>'Email đăng nhập hoặc mật khẩu không đúng!!!']);

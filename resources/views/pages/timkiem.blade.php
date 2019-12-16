@@ -39,7 +39,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
   <div class="wrap">
-    @include('layout.header')
+     @include('layout.header_user')
    </div>
  <div class="main">
     <div class="content">
@@ -82,6 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  	</div>
     </div>
  </div>
+   @include('layout.section')
   @include('layout.footer')
    <script type="text/javascript">
 		$(document).ready(function() {			

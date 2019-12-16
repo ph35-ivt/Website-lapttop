@@ -24,6 +24,7 @@ class CreateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
+            
             'parent_category_id'=>'required|numeric',
             'name'=>'required|min:3',
             'category_slug'=>'required|min:3',
@@ -35,6 +36,7 @@ class CreateCategoryRequest extends FormRequest
     public  function messages()
     {
         return [
+            
             'parent_category_id.required'=>'vui lòng nhập ',
             'parent_category_id.numeric'=>'nhập ký tự là chữ số',
             'name.required'=>'vui lòng nhập tên',

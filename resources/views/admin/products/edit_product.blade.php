@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Content</label>
-                            <<textarea  style="resize: none" rows="5"  id="exampleInputFile" class="form-control" name="content" >{{$product->content}}</textarea>
+                            <textarea  style="resize: none" rows="5"  id="exampleInputFile" class="form-control" name="content" >{{$product->content}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Price</label>

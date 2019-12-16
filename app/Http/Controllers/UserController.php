@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         $listUsers = User::all();
         $listUsers = User::orderBy('id', 'desc')->get();
+        $listUsers = User::paginate(5);
         return view('admin.users.list_user', compact('listUsers'));
     }
 
@@ -40,7 +41,7 @@ class UserController extends Controller
     {
         $data =$request->except('_token');
         User::create($data);
-        return redirect()->route('list-user');
+        return redirect()->route('list-user')->with(['success'=>'Thêm thành công']);
     }
 
     /**
@@ -95,5 +96,11 @@ class UserController extends Controller
     {
         User::destroy($id);
         return redirect()->route('list-user');
+    }
+    public function searchUser(Request $request){
+        $search = User::where('name','like','%'.$request->search.'%')
+                    ->orwhere('email',$request->search)
+                    ->get();
+        return view('admin.users.search_user',compact('search'));
     }
 }
