@@ -19,7 +19,7 @@
  			@php
  			$count++;
  			@endphp
- 			<div class="grid_1_of_4 images_1_of_4" style="width: 224px;height: 416px">
+ 			<div class="grid_1_of_4 images_1_of_4" style="width: 25%px;height: 430px">
  				<div class="container">
  				<a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" ><img width="400px" height="250px" src="{{asset($pt->link)}}" alt="" /></a>
  				<div class="overlay">
@@ -41,7 +41,7 @@
  			@endif
  			@endforeach
  		</div>
- 		<a href="" class="glyphicon glyphicon-fast-forward" style="float: right;"></a>
+ 		<a href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html" class="glyphicon glyphicon-fast-forward" style="float: right;"></a>
         <br>
  		@endforeach
 

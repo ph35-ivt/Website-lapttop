@@ -12,9 +12,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-         return view('pages.search');
+    public function index(Request $request)
+    {   
+        $timkiem = Product::select('name')
+                    ->where('name','like','%'.$request->timkiem.'%')
+                    ->get();
+        //return dd($timkiem);
+        return view('pages.search',compact('timkiem'));
     }
 
     /**
@@ -50,11 +54,9 @@ class ProductController extends Controller
          return $product->name . '@' . $product->product_slug . '-' . $product->address;
     }
    public function find(Request $request)
-    {
-
-       $timkiem = Product::where('name', 'like','%' . $request->get('q')  . '%')->get();
-     // dd($product);
-    return response()->route('index',compact('timkiem'));
+    { 
+        
+      return view('pages.search',compact('timkiem'));
     }
 
     /**

@@ -29,38 +29,13 @@ class Cart
 		$this->totalQty++;
 		$this->totalPrice +=$item->price;
 	}
-   // thêm hàng có số lượng
-	public function ThemCoSoLuong($item, $id, $qty){
-		$giohang = ['qty'=>0, 'price' => $item->price, 'item' => $item]; 
-		if($this->items){ 
-			if(array_key_exists($id, $this->items)){ 
-				$giohang = $this->items[$id]; 
-			} 
-		} 
-		$sanphammua = Session::get('cart');
-		$dem = 0;
-		if($sanphammua != null){
-			foreach($sanphammua->items as $idsp =>$value){
-				if($idsp == $id){
-					$dem++;
-					break;
-				}
-			}
-			if($dem != 0){
-				$giohang['qty'] = $sanphammua->items[$id]['qty'] + $qty;
-				$dem = 0;
-			}
-			else{
-				$giohang['qty'] = $qty;
-			}
-		}
-		else{
-			$giohang['qty'] = $qty;
-		}
-		$giohang['price'] = $item->price * $giohang['qty']; 
-		$this->items[$id] = $giohang; 
+   // Sua so luong
+	public function SuaSoLuong($item, $id, $qty){
+		$this->totalPrice -= $this->items[$id]['price'];  
+		$this->items[$id]['qty'] = $qty;
+		$this->items[$id]['price'] = $item->price * $qty;
 		$this->totalQty += $qty; 
-		$this->totalPrice += $giohang['price']; 
+		$this->totalPrice += $this->items[$id]['price']; 
 	}
 	//xóa 1
 	public function reduceByOne($id){
