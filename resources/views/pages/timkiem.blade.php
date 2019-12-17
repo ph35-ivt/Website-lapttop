@@ -101,7 +101,7 @@
                 <div class="search_box the-basic">
                     <form action="{{route('timkiem')}}" method="GET">
                         @csrf
-                        <input type="text" name="timkiem" class="typeahead" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                        <input type="text" name="search" class="typeahead" autocomplete="off" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
                         <input type="submit" value="">
                     </form>
                 </div>
@@ -127,7 +127,7 @@
                         @foreach($timkiem as $tk)
                         <div class="grid_1_of_4 images_1_of_4" style="width: 224px;height: 416px">
                             <div class="price" style="border:none">
-                                <a href="preview.html"><img src="{{asset($tk->link)}}" alt="" /></a>
+                                <a href="preview.html"><img src="{{asset($tk->link)}}" width="400px" height="200px" alt="" /></a>
                                 <h2>{{$tk->name}}</h2>
                                 <div class="price-details">
                                     <div class="price-number">
@@ -144,6 +144,11 @@
                         </div>
                         @endforeach
                    </div>
+                    <div class="content-pagenation" style="text-align: center;">
+
+                         {!! $timkiem->appends($_GET)->links() !!}
+
+                    </div>
               
                 </div>
             </div>

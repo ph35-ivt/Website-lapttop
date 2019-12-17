@@ -83,10 +83,7 @@
                                 <label for="phone">Address <span style="color:red">*</span>:</label>
                                 <input type="text" class="form-control" name="address" id="address">
                             </div>
-                            <div class="form-group">
-                                <label for="phone">Date_order <span style="color:red">*</span>:</label>
-                                <input type="date" class="form-control" name="date_order">
-                            </div>
+                            
                         </div>
                         <div class="col-sm-6">
                             <div class="your-order">

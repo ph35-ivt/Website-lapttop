@@ -16,21 +16,22 @@
 			<th>Sản Phẩm</th>
 			<th>Số Lượng</th>
 			<th>Giá</th>
-			<th>Thành Tiền</th>
+
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($order->order_detail as $ord)
+		@foreach($order->order__details as $ord)
 		<tr>
-			<td>{{$loop->iteration}}</td>
-			<td>{{$ord->product->name}}</td>
+			<td>{{$ord->id}}</td>
+			<td>{{$ord->products->name}}</td>
 			<td>{{$ord->quantity}}</td>
-			<td>{{number_format($orderDetail->product->price)}} vnđ</td>
+			<td>{{number_format($ord->products->price)}} vnđ</td>
+
 		</tr>
 		@endforeach
 	</tbody>
 	<tfoot>
-		<td colspan="4" style="text-align: right;">Tổng Tiền:</td>
+		<td colspan="3" style="text-align: right;">Tổng Tiền</td>
 		<td>{{number_format($order->total)}} vnđ</td>
 	</tfoot>
 </table>

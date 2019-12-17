@@ -43,7 +43,7 @@
         </div>
 
         <div class="cart">
-            <p> <span class="glyphicon glyphicon-shopping-cart">:( @if(Session::has('cart')){{Session('cart')->totalQty}}
+            <p> <span class="glyphicon glyphicon-shopping-cart">Giỏ hàng:( @if(Session::has('cart')){{Session('cart')->totalQty}}
 	  	   @else Trống @endif)  </span>
             <div id="dd" class="wrapper-dropdown-2">
                 <ul class="dropdown" style="background: white">
@@ -71,7 +71,7 @@
         <div class="search_box">
             <form action="{{route('timkiem')}}" method="GET">
                 @csrf
-                <input type="text" name="timkiem" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                <input type="text" name="search" value="Search" autocomplete="off" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
                 <input type="submit" value="">
             </form>
         </div>

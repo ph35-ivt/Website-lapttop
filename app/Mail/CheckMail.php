@@ -15,7 +15,7 @@ class CheckMail extends Mailable
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($order)
     {
         $this->order = $order;
     }
@@ -27,6 +27,6 @@ class CheckMail extends Mailable
      */
     public function build()
     {
-       return $this->from('buiduy057@gmail.com')->subject('Đơn hàng')->view('mail.checkmail')->with('data', $this->data);
+       return $this->from('buiduy057@gmail.com')->subject('Đơn hàng')->view('mail.checkmail');
     }
 }

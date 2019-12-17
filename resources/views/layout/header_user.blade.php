@@ -56,7 +56,7 @@
         <div class="search_box" id="the-basics">
             <form action="{{route('timkiem')}}" method="GET">
                 @csrf
-                <input type="text" class="typeahead" name="timkiem" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                <input type="text" class="typeahead" name="search" autocomplete="off" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
                 <input type="submit" value="">
             </form>
         </div>
