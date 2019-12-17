@@ -28,9 +28,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputFile">Category_slug</label>
+                            <label for="exampleInputFile">Category Slug</label>
                             <input type="text" id="exampleInputFile" class="form-control" 
-                            name="category_slug" value="{{$category->category_slug}}">
+                            name="category_slug" value="{{$category->slug}}">
                         </div>
 
                         <div class="form-group">

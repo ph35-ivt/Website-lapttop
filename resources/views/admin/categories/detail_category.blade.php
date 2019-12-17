@@ -23,7 +23,7 @@
                             name="name" value="{{$category->name}}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">category_slug</label>
+                            <label for="exampleInputFile">Category Slug</label>
                             <input type="text" id="exampleInputFile" class="form-control" 
                             name="category_slug" value="{{$category->category_slug}}">
                         </div>

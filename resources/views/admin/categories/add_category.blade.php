@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <input type="text" class="form-control" id="name"
                             name="name" value="{{old('name')}}">
                             @if($errors->has('name'))
                                 <p style="color: red">{{$errors->first('name')}}</p>
@@ -36,10 +36,10 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Category_slug</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
+                            <input type="text" id="slug" class="form-control" 
                             name="category_slug" value="{{old('category_slug')}}">
                             @if($errors->has('category_slug'))
-                                <p style="color: red">{{$errors->first('category_slug')}}</p>
+                                <p style="color: red">{{$errors->first('slug')}}</p>
                             @endif
                         </div>
                         <div class="form-group">
@@ -76,4 +76,9 @@
         </section>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <base href="{{asset('')}}">
+    <script src="backend/js/slug.js"></script>
 @endsection

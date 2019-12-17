@@ -11,7 +11,7 @@
             <div class="panel-body">
                 <div class="position-center">
                     @if(Session::has('success'))
-                        <P style="color:black">{{Session::get('success')}}</P>
+                        <P style="color:red">{{Session::get('success')}}</P>
                     @endif
                     <form action="{{route('store-product')}}" method="POST" enctype="multipart/form-data">
                         @csrf

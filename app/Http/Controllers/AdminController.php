@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Product;
+use App\Order;
+use App\User;
 
 
 class AdminController extends Controller
@@ -23,7 +26,14 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $product_count = Product::count();
+        $order_count = Order::count();
+        $user_count = User::count();
+        $orders = Order::where('status',0)->get();
+        if (request()->date_from && request()->date_to) {
+            $orders = Order::where('status',0)->whereBetween('created_at',[request()->date_from, request()->date_to])->get();
+        }
+        return view('admin.dashboard',compact('product_count','order_count','user_count','orders'));
     }
     public function postDangNhap(Request $request)
     {
