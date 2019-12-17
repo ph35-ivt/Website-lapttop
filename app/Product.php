@@ -21,7 +21,7 @@ class Product extends Model
     }
     public function order_details()
     {
-    	return $this->hasMany('App\Order__details');
+    	return $this->hasMany('App\Order_detail');
     }
     public function getImageAttribute()
     {

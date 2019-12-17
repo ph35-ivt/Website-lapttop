@@ -22,7 +22,7 @@
             <div class="input-group">
                 <form action="{{route('order-search')}}" method="GET">
                     @csrf
-                      <input style="float: left;width: 150px;height: 28px;" type="text" class="input-sm form-control" placeholder=" Search" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                      <input style="float: left;width: 150px;height: 28px;" type="text" autocomplete="off" class="input-sm form-control" placeholder=" Search" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
                       <button type="submit"><i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>

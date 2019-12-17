@@ -15,8 +15,10 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">parent_category_id</label>
                             <select name="parent_category_id" class="form-control" id="exampleInputEmail1">
-                                @foreach($listCategories as $category)
-                                    <option value="{{$category->parent_category_id}}">{{$category->name}}</option>
+                                @foreach($listCategories as $cate)
+                                    @if($cate->id != $category->id)
+                                    <option value="{{$category->id}}">{{$cate->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

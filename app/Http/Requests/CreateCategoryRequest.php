@@ -23,6 +23,7 @@ class CreateCategoryRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
             
             'parent_category_id'=>'required|numeric',

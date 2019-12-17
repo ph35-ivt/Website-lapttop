@@ -9,9 +9,7 @@
             </header>
 
             <div class="panel-body">
-                @if(Session::has('success'))
-                    <P style="color:black">{{Session::get('success')}}</P>
-                @endif
+                
                 <div class="position-center">
                     <form action="{{route('store-category')}}" method="POST">
                         @csrf
@@ -19,7 +17,7 @@
                             <label for="exampleInputPassword1">Parent Category ID</label>
                             <select name="parent_category_id" class="form-control" id="exampleInputEmail1" value="{{old('parent_category_id')}}">
                                 @foreach($listCategories as $category)
-                                    <option value="{{$category->parent_category_id}}"> {{$category->name}}</option>
+                                    <option value="{{$category->id}}"> {{$category->name}}</option>
                                 @endforeach
                             </select>
                             @if($errors->has('parent_category_id'))
@@ -44,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Description</label>
-                            <textarea style="resize: none" rows="5" id="exampleInputFile" class="form-control" name="description" value="{{old('description')}}"></textarea>
+                            <textarea style="resize: none" rows="5" id="exampleInputFile" class="form-control" name="description" ></textarea>
                             @if($errors->has('description'))
                                 <p style="color: red">{{$errors->first('description')}}</p>
                             @endif
@@ -79,6 +77,6 @@
 @endsection
 
 @section('js')
-    <base href="{{asset('')}}">
+    
     <script src="backend/js/slug.js"></script>
 @endsection

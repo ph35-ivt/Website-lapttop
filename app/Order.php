@@ -10,9 +10,9 @@ class Order extends Model
     protected $fillable = [
         'name','email','phone','address','date_order','payment','status'
     ];
-    public function order__details()
+    public function order_details()
     {
-    	return $this->hasMany('App\Order__detail');
+    	return $this->hasMany('App\Order_detail');
     }
     
 }

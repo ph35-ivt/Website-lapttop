@@ -20,9 +20,9 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('phone');
             $table->string('address');
             $table->date('date_order');
-            $table->unsignedBigInteger('total');
+            $table->unsignedBigInteger('total')->nullable();
             $table->unsignedBigInteger('payment');
-            $table->unsignedBigInteger('status');
+            $table->unsignedBigInteger('status')->default(1);
             $table->timestamps();
         });
     }

@@ -6,6 +6,9 @@
     <div class="panel-heading">
         List Category
     </div>
+    @if(Session::has('success'))
+      <P style="color:red">{{Session::get('success')}}</P>
+    @endif
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
             <select class="input-sm form-control w-sm inline v-middle">

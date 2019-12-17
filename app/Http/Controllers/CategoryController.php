@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $listCategories = Category::all();
-        $listCategories = Category::orderBy('id', 'desc')->get();
+        // $listCategories = Category::orderBy('id', 'desc');
         $listCategories = Category::paginate(5);
         // dd($listCategories);
         return view('admin.categories.list_category', compact('listCategories'));  
@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $data =$request->except('_token');
         // dd($data);
         Category::create($data);
-        return redirect()->route('list-category')->with(['success'=>'Thêm sản phẩm thành công']);
+        return redirect()->route('list-category')->with('success','Thêm sản phẩm thành công!');
     }
 
     /**
@@ -70,7 +70,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $listCategories = Category::all();
+        // \DB::enableQueryLog();
+        $listCategories = Category::where('id','<>', $id)->where('parent_category_id','<>',$id)->orWhere('parent_category_id', NULL)->get();
+        // dd(\DB::getQueryLog());
         $category = Category::find($id);
         return view('admin.categories.edit_category',compact('category','listCategories'));
     }
