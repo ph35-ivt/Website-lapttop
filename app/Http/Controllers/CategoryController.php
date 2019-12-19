@@ -99,6 +99,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $listProducts = Product::where('category_id',$id)->get();
+        // suwa
         Category::destroy($id);
         return redirect()->route('list-category');
     }

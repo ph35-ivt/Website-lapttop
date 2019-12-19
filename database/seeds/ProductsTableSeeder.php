@@ -15,7 +15,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Latitude E5470',
-           'product_slug'=>'dell-latitude-e5470',
+           'slug'=>'dell-latitude-e5470',
             'content'=>'CPU	Intel® Core™ i5 - 6300U (4M Cache), 2.4 GHz
 			RAM	8 GB DDR4 2133 MHz
 			Card Đồ Họa	Intel HD Graphics 520
@@ -35,7 +35,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Latitude E7240',
-           'product_slug'=>'dell-latitude-e7240',
+           'slug'=>'dell-latitude-e7240',
             'content'=>'CPU	Intel Core i7- 4600U Processor 2.1Ghz (Turbo Boot 3.30 GHz)
 			RAM	4GB DDR4 2133MHz, 2 slots
 			Card Đồ Họa	Intel HD Graphics 620
@@ -54,7 +54,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell XPS 13 9360',
-           'product_slug'=>'dell-xps-13-9360',
+           'slug'=>'dell-xps-13-9360',
             'content'=>'CPU	 Intel Skylake Core i7-7560U, ~ 2.4 GHz
 			RAM	 16GB LPDDR3 1867Mhz
 			Card Đồ Họa	Đồ họa tích hợp Intel Iris Plus HD 540
@@ -74,7 +74,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Vostro V5568',
-           'product_slug'=>'dell-vostro-v5568',
+           'slug'=>'dell-vostro-v5568',
             'content'=>'CPU	 Intel® Core™ i5 - 7200U Processor (3M Cache, up to 3.10 GHz)
 			Memory	 4 GB (DDR4 bus 2400MHz)
 			HDD	 HDD 1TB / SSD 128GB
@@ -92,7 +92,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell XPS 15 9550',
-           'product_slug'=>'dell-xps-9550',
+           'slug'=>'dell-xps-9550',
             'content'=>'CPU	Intel Core i7 - 6700HQ ( 2.9 GHz - 3.5 GHz / 6MB / 4 nhân, 8 luô`ng )
 			RAM	DDR4 8GB (2 x 4GB) 2666MHz, 2 slots, up to 32GB
 			Card Đồ Họa	GeForce GTX 960M 2GB GDDR5 + Intel HD Graphics 530
@@ -113,7 +113,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Inspiron 5577',
-           'product_slug'=>'dell-inspriron-5577',
+           'slug'=>'dell-inspriron-5577',
             'content'=>'CPU	Intel Core i7 - 7700H ( 2.8 GHz - 3.8 GHz / 6MB / 4 nhân, 8 luồng )
 			RAM	DDR4 8GB (2 x 4GB) 2666MHz, 2 slots, up to 32GB
 			Card đồ họa	NVIDIA® GeForce® GTX 1050 4GB GDDR5 + HD Graphics 630
@@ -138,7 +138,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Inspiron 3580 ',
-           'product_slug'=>'dell-inspriron-3580',
+           'slug'=>'dell-inspriron-3580',
             'content'=>'CPU	Intel Core i5 Coffee Lake, 8265U ~ 1.60 GHz
 			RAM	DDR4 4GB (1x 4GB) 2666MHz, 2 slots, up to 32GB
 			VGA	Card đồ họa rời, AMD Radeon 520 2GB
@@ -159,7 +159,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Latitude E6540 Core i7',
-           'product_slug'=>'dell-latitude-e6540-core-i7',
+           'slug'=>'dell-latitude-e6540-core-i7',
             'content'=>'CPU	 Intel® Core™ i7 - 4610QM, 2.8GHz
 			Memory	  8GB DDR3L Bus 1600MHz ( 2 khe RAM)
 			Hard Disk	  HDD 320GB/ SSD 128GB ( BH 03 năm)
@@ -179,7 +179,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Precision M6800 Core i7',
-           'product_slug'=>'dell-precision-m6800-core-i7',
+           'slug'=>'dell-precision-m6800-core-i7',
             'content'=>'CPU	 Intel Core i7 - 4810MQ, 2.8 GHz up to 3.8GHz
 			Memory	  8GB DDR3L 1600MHz  ( Tối đa 32GB)
 			Hard Disk	 SSD 256GB (Hỗ trợ khe cắm SSD M.2 PCIe)
@@ -197,7 +197,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 1,
            'name'=>'Dell Inspiron N3543 Core i5',
-           'product_slug'=>'dell-inspriron-n3543-core-i5',
+           'slug'=>'dell-inspriron-n3543-core-i5',
             'content'=>'CCPU	 Intel® Core™ i5 - 5200U, 2.20 GHz
 			Memory	4 GB, DDR3L bus 1600 MHz
 			Hard Disk	  HDD 500GB/ SSD 128GB ( BH 03 năm )
@@ -217,7 +217,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus Vivobook S330FA ',
-           'product_slug'=>'asus-vivobook-s330fa',
+           'slug'=>'asus-vivobook-s330fa',
             'content'=>'CPU	Intel Core i5 - 6200U (3M Cache, up to 2.8 GHz)
 			RAM	4GB DDR3L 1600MHz
 			Card Đồ Họa	Intel HD Graphics 520 + nVIDIA 940MX
@@ -237,7 +237,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus K501UQ Core i5',
-           'product_slug'=>'asus-k501uq-core-i5',
+           'slug'=>'asus-k501uq-core-i5',
             'content'=>'CPU	Intel Core i5 - 6200U (3M Cache, up to 2.8 GHz)
 			RAM	4GB DDR3L 1600MHz
 			Card Đồ Họa	Intel HD Graphics 520 + nVIDIA 940MX
@@ -257,7 +257,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus P550LD Core i7',
-           'product_slug'=>'asus-p550ld-core-i7',
+           'slug'=>'asus-p550ld-core-i7',
             'content'=>'CPU	Intel® Core™ i7 - 4510U Processor (3M Cache, up to 3.0 GHz)
 			RAM	4GB DDR3L bus 1600Mhz
 			Card Đồ Họa	Card rời nVIDIA® GeForce® 820M + Intel HD Graphic
@@ -277,7 +277,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus F555LF Core i7',
-           'product_slug'=>'asus-f555lf-core-i7',
+           'slug'=>'asus-f555lf-core-i7',
             'content'=>'CPU	Intel Core i7 - 5500U (3M Cache, up to 3.0 GHz)
 			RAM	 8GB DDR3L bus 1600MHz
 			Card Đồ Họa	 Card rời nVIDIA Geforce GT 930M
@@ -297,7 +297,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus K550JK Core i5',
-           'product_slug'=>'asus-k550jk-core-i5',
+           'slug'=>'asus-k550jk-core-i5',
             'content'=>'CPU	Core™ i5  - 4200H ( 2.8GHz upto 3.4GHz, 4Thread, 3M cache )
 			RAM	6GB DDR3L bus 1600 MHz
 			Card Đồ Họa	NVIDIA GeForce GTX 850M 2GB /Intel HD Graphics 4600
@@ -316,7 +316,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus Gaming GL552VW Core i5 ',
-           'product_slug'=>'asus-gaming-gl552vw-core-i5',
+           'slug'=>'asus-gaming-gl552vw-core-i5',
             'content'=>'CPU	Intel Core i5 - 6300H (4 x 2.3GHz up to 3.2GHz Cache 6Mb)
 			RAM	8GB DDR4 2133MHz
 			VGA	Intel HD Graphics 530 + nVIDIA GeForce GTX 960M
@@ -337,7 +337,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus Vivobook S15 S510UQR Core i5 ',
-           'product_slug'=>'asus-vivobook-s15-s510uqr-core-i5',
+           'slug'=>'asus-vivobook-s15-s510uqr-core-i5',
             'content'=>'CPU	Intel Core i5 Kabylake Refresh, 8250U
 			Memory	8 GB, DDR4 (2 khe), 2400 MHz.
 			HDD	  HDD 1 TB 
@@ -356,7 +356,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus Gaming F570ZD-E4297T AMD R5',
-           'product_slug'=>'asus-gaming-f560zd-e4297t-amd-r5',
+           'slug'=>'asus-gaming-f560zd-e4297t-amd-r5',
             'content'=>'CPU	AMD Ryzen 5-2500U 2.0GHz up to 3.6GHz 4MB
 			RAM	8GB DDR4 2400MHz (2x SO-DIMM socket, up to 16GB SDRAM)
 			Ổ cứng	HDD 1TB 5400rpm / SSD 128GB 
@@ -379,7 +379,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'Asus P550LD Core i5',
-           'product_slug'=>'asus-p550ld-core-i5',
+           'slug'=>'asus-p550ld-core-i5',
             'content'=>'CPU	Intel® Core™ i5 - 4310U Processor (3M Cache, up to 2.9 GHz)
 			RAM	4GB DDR3L bus 1600Mhz
 			Card Đồ Họa	Card rời nVIDIA® GeForce® 820M + Intel HD Graphic
@@ -399,7 +399,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 2,
            'name'=>'ASUS GL552VX Core i5 -6300HQ',
-           'product_slug'=>'asus-gaming-gl552vw-core-i5-6300hq',
+           'slug'=>'asus-gaming-gl552vw-core-i5-6300hq',
             'content'=>'CPU 	Intel Core i5 - 6300HQ . 2.30 GHz ~ 3.20 GHz
 			RAM	4 GB DDR4 2400 MHz, 4 slot up to 32 GB
 			Hard Disk	 SSD 128GB/ HDD 1TB
@@ -422,7 +422,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'MSI GL63 9SD core i7',
-           'product_slug'=>'msi-gl63-9sd-core-i7',
+           'slug'=>'msi-gl63-9sd-core-i7',
             'content'=>'
 			CPU	Intel Core i7-9750H (2.60Ghz upto 4.50Ghz, 6 nhân 12 luồng, 12MB)
 			RAM	8 GB DDR4 2666 MHz ( Dual DIMM)
@@ -443,7 +443,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Dell Gaming G3 3579 Core i5',
-           'product_slug'=>'dell-gaming-g3-3579-core-i5',
+           'slug'=>'dell-gaming-g3-3579-core-i5',
             'content'=>'
 			CPU	Intel Core i5 - 8300H ( 2.8 GHz - 3.8 GHz / 6MB / 4 nhân, 8 luồng )
 			RAM	DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB
@@ -465,7 +465,7 @@ class ProductsTableSeeder extends Seeder
             DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Dell Inspiron 5577 Core i7',
-           'product_slug'=>'dell-inspriron-5577-core-i7',
+           'slug'=>'dell-inspriron-5577-core-i7',
             'content'=>'
 			CPU	Intel Core i7 - 7700H ( 2.8 GHz - 3.8 GHz / 6MB / 4 nhân, 8 luồng )
 			RAM	DDR4 8GB (2 x 4GB) 2666MHz, 2 slots, up to 32GB
@@ -491,7 +491,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Dell Inspiron 5577 Core i5',
-           'product_slug'=>'dell-inspriron-5577-core-i5',
+           'slug'=>'dell-inspriron-5577-core-i5',
             'content'=>'
 			CPU	Intel Core i5 - 7300H ( 2.8 GHz - 3.8 GHz / 6MB / 4 nhân, 8 luồng )
 			RAM	DDR4 8GB (2 x 4GB) 2666MHz, 2 slots, up to 32GB
@@ -517,7 +517,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Dell Inspiron 7559 Core i5 ',
-           'product_slug'=>'dell-inspriron-7559-core-i5',
+           'slug'=>'dell-inspriron-7559-core-i5',
             'content'=>'
 			CPU	 Intel® Core™ i5 - 6300HQ Processor (6M Cache, up to 3.20 GHz)
 			Memory	 8 GB (DDR3 bus 1600MHz)
@@ -536,7 +536,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Asus K550JK Core i5 ',
-           'product_slug'=>'asus-k550jk-core-i5',
+           'slug'=>'asus-k550jk-core-i5',
             'content'=>'
 			CPU	Core™ i5  - 4200H ( 2.8GHz upto 3.4GHz, 4Thread, 3M cache )
 			RAM	6GB DDR3L bus 1600 MHz
@@ -556,7 +556,7 @@ class ProductsTableSeeder extends Seeder
             DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Dell Inspiron 7447 Core i5  ',
-           'product_slug'=>'dell-inspriron-7447-core-i5',
+           'slug'=>'dell-inspriron-7447-core-i5',
             'content'=>'
 			CPU	Intel Core i5 - 4710HQ, 2.50 GHz
 			RAM	8 GB, DDR3L (2 khe RAM), 1600 MHz
@@ -578,7 +578,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Asus Gaming GL552VW Core i5  ',
-           'product_slug'=>'asus-gaming-gl552vw-core-i5',
+           'slug'=>'asus-gaming-gl552vw-core-i5',
             'content'=>'
 			CPU	Intel Core i5 - 6300H (4 x 2.3GHz up to 3.2GHz Cache 6Mb)
 			RAM	8GB DDR4 2133MHz
@@ -600,7 +600,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 3,
            'name'=>'Acer Predator Helios 300 Core i7 ',
-           'product_slug'=>'acer-predator-helios-300-g3-Core-i7',
+           'slug'=>'acer-predator-helios-300-g3-Core-i7',
             'content'=>'
 			CPU	Intel Core i7 - 7700H ( 2.8 GHz - 3.8 GHz / 6MB / 4 nhân, 8 luồng )
 			RAM	DDR4 8GB (2 x 4GB) 2666MHz, 2 slots, up to 32GB
@@ -623,7 +623,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Pro 13 i5 ',
-           'product_slug'=>'macbook-pro-13-i5',
+           'slug'=>'macbook-pro-13-i5',
             'content'=>'
 			CPU	Intel Core i5 3MB L3 Cache ~2.3 GHz
 			RAM	 4GB 1333MHZ DDR3
@@ -642,7 +642,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Air MQD32SA ',
-           'product_slug'=>'macbook-air-mqd32sa',
+           'slug'=>'macbook-air-mqd32sa',
             'content'=>'
 			CPU	Intel, Core i5 ~1.8GHz up to 2.9Ghz
 			RAM	8 GB, LPDDR3
@@ -661,7 +661,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook 12 Core M',
-           'product_slug'=>'macbook-12-core-m',
+           'slug'=>'macbook-12-core-m',
             'content'=>'
 			CPU	Intel Core M Dual-Core  , 1.1GHz ~ 2.9GHz
 			RAM	8GB LPDDR3
@@ -681,7 +681,7 @@ class ProductsTableSeeder extends Seeder
             DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Air 13 2013 ',
-           'product_slug'=>'macbook-air-13-2013',
+           'slug'=>'macbook-air-13-2013',
             'content'=>'
 			CPU	Intel Core i5 Dual-Core ~1.3GHz ( (I5-4250U))
 			RAM	4GB 1600MHz LPDDR3
@@ -701,7 +701,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Pro 13 inch 2017 i5 ',
-           'product_slug'=>'macbook-pro-13-inch-2017-i5',
+           'slug'=>'macbook-pro-13-inch-2017-i5',
             'content'=>'
 			CPU	 Intel Core i5 Processor 2.3GHz Boost to 3.6GHZ, 4MB L3 Cache
 			RAM	8GB 2133MHz LPDDR3
@@ -721,7 +721,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Air 13 MQD42SA Core i5 ',
-           'product_slug'=>'macbook-air-13-mqd42sa-core-i5',
+           'slug'=>'macbook-air-13-mqd42sa-core-i5',
             'content'=>'
 			CPU: Core i5 ~ 1.40 GHz
 			RAM: 8 GB, DDR3L(On board), 1600 MHz
@@ -742,7 +742,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Air Mid 2013',
-           'product_slug'=>'macbook-air-mid-2013',
+           'slug'=>'macbook-air-mid-2013',
             'content'=>'
 			 CPU	 Intel Core i5 Dual-Core (Haswell) ~ 1.3GHz
 			 RAM	 4GB 1600MHz LPDDR3
@@ -760,7 +760,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Pro 13 Retina ME865 2013',
-           'product_slug'=>'macbook-air-pro-13-retina-me865-2013',
+           'slug'=>'macbook-air-pro-13-retina-me865-2013',
             'content'=>'
 		    CPU	 Intel® Core i7 Dual-Core (Hasswell) ~ 2.4GHz
 			Memory	 8 GB (LPDDR3 bus 1600MHz)
@@ -778,7 +778,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Macbook Pro 13 2016 Core i5',
-           'product_slug'=>'macbook-air-pro-13-2016-core-i5',
+           'slug'=>'macbook-air-pro-13-2016-core-i5',
             'content'=>'
 		    CPU	 Intel Core i5 ~ 3.0 GHz
 			Memory	  8GB LPDDR3 1866MHz
@@ -796,7 +796,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 4,
            'name'=>'Apple Macbook Air 2015 Core i5',
-           'product_slug'=>'apple-macbook-air-2015-core-i5',
+           'slug'=>'apple-macbook-air-2015-core-i5',
             'content'=>'
 		    Bộ vi xử lý: Intel Core i5 (2×1.6GHz Turbo Boost 2.6GHz, Cache 3MB, Bus 2500)
 			Bộ nhớ trong: 8GB DDR3 1600MHz
@@ -821,7 +821,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer Aspire VX5 Core i7',
-           'product_slug'=>'acer-aspire-vx5-core-i7',
+           'slug'=>'acer-aspire-vx5-core-i7',
             'content'=>'
 		    CPU	 Intel® Core i7 - 7700HQ KabyLake. 2.8GHz ~ 3.8GHz
 			Memory	  8GB DDR4 Bus 2400MHz ( 2 khe)
@@ -841,7 +841,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer Spin core i5 ',
-           'product_slug'=>'acer-spin-core-i5',
+           'slug'=>'acer-spin-core-i5',
             'content'=>'
 		    CPU	 Intel® Core i5 Coffee Lake, 8250U, 1.60 GHz
 			Memory	  4GB DDR4 Bus 2400MHz
@@ -861,7 +861,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer Aspire Z1402 Core i3 ',
-           'product_slug'=>'acer-aspire-z1402-core-i3',
+           'slug'=>'acer-aspire-z1402-core-i3',
             'content'=>'
 		   CPU: Intel Core i3 Broadwell, 5005U, 2.00 GHz
 			RAM: 4 GB, DDR3L (1 khe RAM), 1600 MHz
@@ -882,7 +882,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer Aspire E5 575G Core i5',
-           'product_slug'=>'acer-aspire-e5-575g-core-i5',
+           'slug'=>'acer-aspire-e5-575g-core-i5',
             'content'=>'
 		   CPU:Intel Core i5 Kabylake, 7200U, 2.50 GHz
 			RAM:4 GB, DDR4 (2 khe), 2133 MHz
@@ -903,7 +903,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer Aspire E5 575G Core i5',
-           'product_slug'=>'acer-aspire-e5-575g-core-i5',
+           'slug'=>'acer-aspire-e5-575g-core-i5',
             'content'=>'
 		   CPU:Intel Core i5 Kabylake, 7200U, 2.50 GHz
 			RAM:4 GB, DDR4 (2 khe), 2133 MHz
@@ -924,7 +924,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'ACER ASPRISE E5',
-           'product_slug'=>'acer-aspire-e5',
+           'slug'=>'acer-aspire-e5',
             'content'=>'
 		    CPU:
 			Intel Core i3 Skylake, 6006U, 2.00 GHz
@@ -953,7 +953,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'ACER ASPIRE E5 575G Core i5',
-           'product_slug'=>'acer-aspire-e5-575-core-i5',
+           'slug'=>'acer-aspire-e5-575-core-i5',
             'content'=>'
 			CPU:Intel Core i5 Kabylake, 7200U, 2.50 GHz
 			RAM:4 GB, DDR4 (2 khe), 2133 MHz
@@ -974,7 +974,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'ACER F5-571',
-           'product_slug'=>'acer-f5-571',
+           'slug'=>'acer-f5-571',
             'content'=>'
 			CPU : Intel, Core i3-5005U Tốc độ 2.0 ghz
 			RAM : 4 GB, DDR3L
@@ -995,7 +995,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer VX5 591G',
-           'product_slug'=>'acer-vx5-591g',
+           'slug'=>'acer-vx5-591g',
             'content'=>'
 			CPU : Intel, Core i7-7700HQ 2.8 GHZ
 			RAM : 8 GB, DDR4
@@ -1016,7 +1016,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'ACER E1 470G Core i3',
-           'product_slug'=>'acer-e1-470g-core-i3',
+           'slug'=>'acer-e1-470g-core-i3',
             'content'=>'
 			CPU: ACER, i3-3127U.
 			RAM: DDR3, 2 GB.
@@ -1039,7 +1039,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 5,
            'name'=>'Acer ES1 512',
-           'product_slug'=>'acer-es1-512',
+           'slug'=>'acer-es1-512',
             'content'=>'
 			CPU :Intel Pentium® Processor N3540
 			RAM :4 GB DDR3
@@ -1060,7 +1060,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 6,
            'name'=>'HP Pavilion 15',
-           'product_slug'=>'hp-pavilion-15',
+           'slug'=>'hp-pavilion-15',
             'content'=>'
 			CPU	Intel Core i5 Kabylake, 8250U, (8CPUs)
 			RAM	4 GB, DDR4 (2 khe), 2400 MHz
@@ -1080,7 +1080,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 6,
            'name'=>'HP Elitebook Folio 9470M Core i5',
-           'product_slug'=>'hp-elitebook-folio-9470m-core-15',
+           'slug'=>'hp-elitebook-folio-9470m-core-15',
             'content'=>'
 			CPU	Intel Core i5 Kabylake, 8250U, (8CPUs)
 			RAM	4 GB, DDR4 (2 khe), 2400 MHz
@@ -1100,7 +1100,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 6,
            'name'=>'HP Pavilion 15',
-           'product_slug'=>'hp-pavilion-15',
+           'slug'=>'hp-pavilion-15',
             'content'=>'
 			CPU	Intel® Core™ i5 - 8265U (6MB, 4 x 1.6GHz max 3.90GHz)
 			R AM	4GB DDR4 2400MHz, 2 slots max 16GB
@@ -1121,7 +1121,7 @@ class ProductsTableSeeder extends Seeder
            DB::table('products')->insert([
            'category_id'=> 6,
            'name'=>'HP Pavilion X360 11',
-           'product_slug'=>'hp-pavilion-x360-11',
+           'slug'=>'hp-pavilion-x360-11',
             'content'=>'
 			CPU 	  Intel Core i3 Kabylake, 7100U, 2.40 GHz
 			RAM	  4 GB DDR4 2400 MHz, 4 slot up to 32 GB
@@ -1144,7 +1144,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
            'category_id'=> 7,
            'name'=>'Lenovo Thinkpad T440s i5',
-           'product_slug'=>'lenovo-thinkpad-t440s-i5',
+           'slug'=>'lenovo-thinkpad-t440s-i5',
             'content'=>'
 			CPU	Intel® Core™ i5 - 4300U
 			RAM	DDR3L 4GB bus 1600MHz
@@ -1166,7 +1166,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 7,
            'name'=>'Lenovo Thinkpad T440s i5',
-           'product_slug'=>'lenovo-thinkpad-t440s-i5',
+           'slug'=>'lenovo-thinkpad-t440s-i5',
             'content'=>'
 			CPU	Intel® Core™ i5 - 4300U
 			RAM	DDR3L 4GB bus 1600MHz
@@ -1188,7 +1188,7 @@ class ProductsTableSeeder extends Seeder
          DB::table('products')->insert([
            'category_id'=> 7,
            'name'=>'Lenovo ThinkPad E460 i5',
-           'product_slug'=>'lenovo-thinkpad-e460-i5',
+           'slug'=>'lenovo-thinkpad-e460-i5',
             'content'=>'
 			CPU	Intel® Core™ i5 - 4300U
 			RAM	DDR3L 4GB bus 1600MHz
@@ -1210,7 +1210,7 @@ class ProductsTableSeeder extends Seeder
           DB::table('products')->insert([
            'category_id'=> 7,
            'name'=>'Lenovo Yoga 500 14IBD',
-           'product_slug'=>'lenovo-yoga-500-14ibd',
+           'slug'=>'lenovo-yoga-500-14ibd',
             'content'=>'
 			CPU	Intel® Core™ i5 - 4300U
 			RAM	DDR3L 4GB bus 1600MHz
