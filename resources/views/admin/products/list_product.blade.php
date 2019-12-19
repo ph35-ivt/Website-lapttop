@@ -6,15 +6,12 @@
     <div class="panel-heading">
         List Product
     </div>
+    @if(Session::has('success'))
+      <P style="color:red">{{Session::get('success')}}</P>
+    @endif
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
-            <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">...</option>
-                <option value="1">...</option>
-                <option value="2">...</option>
-                <option value="3">...</option>
-            </select>
-            <button class="btn btn-sm btn-default">Apply</button>                
+                            
         </div>
         <div class="col-sm-4">
         </div>
@@ -37,12 +34,12 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Link</th>
-            <th>Quantity</th>
-            <th style="width:30px;">Action</th>
+            <th style="color: black">ID</th>
+            <th style="color: black" style="color: black">Name</th>
+            <th style="color: black">Price</th>
+            <th style="color: black">Link</th>
+            <th style="color: black">Quantity</th>
+            <th style="width:30px;color: black">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -56,16 +53,16 @@
             <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
             <td>
               <a class="btn" href="{{route('show-product',$product->id)}}">
-                <button type="submit"><i class="fas fa-scroll"></i></button>
+                <button style="color: #0000EE" type="submit"><i class="fas fa-scroll"></i></button>
               </a>
               <a  class="btn" href="{{route('edit-product',$product->id)}}">
-                <button type="submit"><i class="fas fa-edit"></i></button>
+                <button style="color: red" type="submit"><i class="fas fa-edit"></i></button>
               </a>
                 @if (empty($product->deleted_at))
                     <form style="padding-left: 13px" action="{{route('delete-product', $product->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px; color: #097cef" style="" class="fas fa-trash-alt"></i></button>
+                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px; color: black" style="" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>

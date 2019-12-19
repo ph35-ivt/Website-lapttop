@@ -44,11 +44,11 @@
 	<div class="col-md-3 market-update-gd">
 		<div class="market-update-block clr-block-4">
 			<div class="col-md-4 market-update-right">
-				<i class="fa fa-usd" aria-hidden="true"></i>
+				<i class="fa fa-commenting-o" style="font-size:36px;color: #fff" aria-hidden="true"></i>
 			</div>
 			<div class="col-md-8 market-update-left">
-				<h4>Sales</h4>
-				<h3>1,500</h3>
+				<h4>Comment</h4>
+				<h3>{{$comment_count}}</h3>
 				<p>Other hand, we denounce</p>
 			</div>
 		  <div class="clearfix"> </div>
@@ -56,10 +56,13 @@
 	</div>
    <div class="clearfix"> </div>
 </div>
-<div class="panel panel-default">
-	<!-- Default panel contents -->
-	<div class="panel-heading">New Order</div>
-	<div class="panel-body">
+
+<div class="table-agile-info">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+       	New Order
+    </div>
+    <div class="panel-body">
 		<form action="" method="GET" class="form-inline" role="form">
 		
 			<div class="form-group">
@@ -72,25 +75,30 @@
 			<button type="submit" class="btn btn-primary">Go!</button>
 		</form>
 	</div>
-
-	<!-- Table -->
-	<table class="table">
-		<thead>
-			<tr>
-				<th>STT</th>
-				<th>Name</th>
-				<th>Date</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($orders as $od)
-			<tr>
-				<td>1</td>
-				<td>{{$od->name}}</td>
-				<td>{{$od->created_at}}</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            <th style="width:20px;">
+              <label class="i-checks m-b-none">
+                <input type="checkbox"><i></i>
+              </label>
+            </th>
+            <th style="color: black">STT</th>
+            <th style="color: black">Name</th>
+            <th style="color: black">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+	        @foreach($orders as $od)
+	            <tr>
+	              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+	              <td><span class="text-ellipsis">{{$od->id}}</span></td>
+	              <td><span class="text-ellipsis">{{$od->name}}</span></td>
+	              <td><span class="text-ellipsis">{{$od->created_at}}</span></td>
+	            </tr>
+          @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Product;
 use App\Order;
 use App\User;
+use App\Comment;
 
 
 class AdminController extends Controller
@@ -29,11 +30,12 @@ class AdminController extends Controller
         $product_count = Product::count();
         $order_count = Order::count();
         $user_count = User::count();
+        $comment_count = Comment::count();
         $orders = Order::where('status',0)->get();
         if (request()->date_from && request()->date_to) {
             $orders = Order::where('status',0)->whereBetween('created_at',[request()->date_from, request()->date_to])->get();
         }
-        return view('admin.dashboard',compact('product_count','order_count','user_count','orders'));
+        return view('admin.dashboard',compact('product_count','order_count','user_count','comment_count','orders'));
     }
     public function postDangNhap(Request $request)
     {

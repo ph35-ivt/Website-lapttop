@@ -35,8 +35,8 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Category_slug</label>
                             <input type="text" id="slug" class="form-control" 
-                            name="category_slug" value="{{old('category_slug')}}">
-                            @if($errors->has('category_slug'))
+                            name="slug" value="{{old('slug')}}">
+                            @if($errors->has('slug'))
                                 <p style="color: red">{{$errors->first('slug')}}</p>
                             @endif
                         </div>
@@ -58,9 +58,9 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
                             <select name="status" class="form-control" id="exampleInputEmail1">
-                                <option value="0" >ẩn
+                                <option value="0" >UnPublish
                                 </option>
-                                <option value="1" >hiện
+                                <option value="1" >Publish
                                 </option>
                             </select>
                             @if($errors->has('status'))
@@ -74,9 +74,4 @@
         </section>
     </div>
 </div>
-@endsection
-
-@section('js')
-    
-    <script src="backend/js/slug.js"></script>
 @endsection

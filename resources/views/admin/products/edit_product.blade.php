@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Product_slug</label>
                             <input type="text" id="exampleInputFile" class="form-control" 
-                            name="product_slug" value="{{$product->product_slug}}">
+                            name="slug" value="{{$product->slug}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Content</label>

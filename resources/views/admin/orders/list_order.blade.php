@@ -9,9 +9,9 @@
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
             <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">--lọc đơn hàng</option>
-                <option value="1">Chưa thanh toán </option>
-                <option value="2">Thanh toán</option>
+                <option value="0">---lọc đơn hàng---</option>
+                <option value="1">Đã xử lý </option>
+                <option value="2">Chưa xử lý</option>
                 <option value="3">ATM</option>
                 <option value="4">CASH</option>
             </select>
@@ -38,11 +38,11 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>name</th>
-            <th>phone</th>
-            <th>payment</th>
-            <th>Status</th>
-            <th style="width:30px;">Action</th>
+            <th style="color: black">Name</th>
+            <th style="color: black">Phone</th>
+            <th style="color: black">Payment</th>
+            <th style="color: black">Status</th>
+            <th style="width:30px;color: black">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -60,26 +60,28 @@
             </td>
             <td>
               @if($order->status==1)
-              <span class="text-ellipsis">Thanh toán</span>
+              <a style="border: 3px solid bisque;border-radius: 7px;background: bisque;"  href="">
+                <span class="text-ellipsis">Đã xử lý</span></a>
               @else
-              <span class="text-ellipsis">Chưa thanh toán</span>
+              <a style="border: 3px solid aqua;border-radius: 7px;background: aqua;" href="{{route('order-active',$order->id)}}">
+                <span class="text-ellipsis">Chưa xử lý</span></a>
               @endif
             </td>
             <td>
-              <a class="btn" href="{{route('list-order',)}}">
-                <button type="submit"><i class="fas fa-sync"></i></button>
+              <a class="btn" href="{{route('list-order')}}">
+                <button style="color: #0000EE" type="submit"><i class="fas fa-sync"></i></button>
               </a>
               <a class="btn" href="{{route('show-order',$order->id)}}">
-                <button type="submit"><i class="fas fa-scroll"></i></button>
+                <button style="color: red" type="submit"><i class="fas fa-scroll"></i></button>
               </a>
               <a class="btn" href="{{route('edit-order',$order->id)}}">
-                <button type="submit"><i class="fas fa-edit"></i></button>
+                <button style="color: #00DD00" type="submit"><i class="fas fa-edit"></i></button>
               </a>
                 @if(empty($order->deleted_at))
                     <form style="padding-left: 13px" action="{{route('delete-order', $order->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
+                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px;color: black" class="fas fa-trash-alt"></i></button>
                         
                       </form>
                 @endif 

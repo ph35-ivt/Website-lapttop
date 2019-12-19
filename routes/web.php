@@ -89,6 +89,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::put('/orders/{id}','OrderController@update')->name('update-order');
 		//search
 		Route::get('orders/searchs','OrderController@searchOrder')->name('order-search');
+		// Status
+		Route::get('active/{id}','OrderController@active')->name('order-active');
 		// lọc 
 		Route::get('orders/{id}/loc','OrderController@getloc')->name('loc');
 ///////////

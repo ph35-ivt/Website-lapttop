@@ -98,13 +98,27 @@ class OrderController extends Controller
         return redirect()->route('list-order');
     }
     public function searchOrder(Request $request){
+        $listOrders = Order::paginate(5);
         $search = Order::where('name','like','%'.$request->search.'%')
                     ->orwhere('phone',$request->search)
                     ->get();
-        return view('admin.orders.search_order',compact('search'));
+        return view('admin.orders.search_order',compact('search','listOrders'));
     }
-    public function getloc()
+    public function active($id)
     {
-        
+        $order = Order::find($id);
+        $listOrder_details = Order_Detail::all();
+        // trừ đi số lượng sản phẩm
+        if ($listOrder_details) {
+            foreach ($listOrder_details as $od) {
+                $product = Product::find($od->product_id);
+                // $product->quantity = $product->products->quantity - $product->order_details->quantity;
+                $product->save();
+            }
+        }
+         // cập nhật lại trạng thái đơn hàng
+        $order->status = Order::STATUS_DONE;
+        $order->save(); 
+        return redirect()->back()->with('success','Xử lý đơn hàng thành công!');     
     }
 }

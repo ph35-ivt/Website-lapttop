@@ -66,16 +66,16 @@
             </td>
             <td>
               <a class="btn" href="{{route('show-order',$tk->id)}}">
-                <button type="submit"><i class="fas fa-scroll"></i></button>
+                <button style="color: #0000EE" type="submit"><i class="fas fa-scroll"></i></button>
               </a>
               <a class="btn" href="{{route('edit-order',$tk->id)}}">
-                <button type="submit"><i class="fas fa-edit"></i></button>
+                <button style="color: red" type="submit"><i class="fas fa-edit"></i></button>
               </a>
                 @if(empty($tk->deleted_at))
                     <form style="padding-left: 13px" action="{{route('delete-order', $tk->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px;color: #097cef" class="fas fa-trash-alt"></i></button>
+                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px;color: black" class="fas fa-trash-alt"></i></button>
                         
                       </form>
                 @endif 
@@ -92,12 +92,7 @@
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-            <li><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+            {{ $listOrders->links() }}
           </ul>
         </div>
       </div>

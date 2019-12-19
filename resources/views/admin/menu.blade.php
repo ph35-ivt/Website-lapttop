@@ -6,7 +6,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <li class="sub-menu">
                     <a href="{{route('dashboard')}}">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>

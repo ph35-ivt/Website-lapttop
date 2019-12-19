@@ -28,7 +28,7 @@ class CreateCategoryRequest extends FormRequest
             
             'parent_category_id'=>'required|numeric',
             'name'=>'required|min:3',
-            'category_slug'=>'required|min:3',
+            'slug'=>'required|min:3',
             'description'=>'required|min:6',
             'order'=>'required|numeric',
             'status'=>'required|numeric'
@@ -42,8 +42,8 @@ class CreateCategoryRequest extends FormRequest
             'parent_category_id.numeric'=>'nhập ký tự là chữ số',
             'name.required'=>'vui lòng nhập tên',
             'name.min'=>'nhập ít nhất 3 ký tự',
-            'category_slug.required'=>'vui lòng tên danh mục',
-            'category_slug.min'=>'nhập ít nhất 3 ký tự',
+            'slug.required'=>'vui lòng tên danh mục',
+            'slug.min'=>'nhập ít nhất 3 ký tự',
             'description.required'=> 'vui lòng nhập nội dung',
             'description.min'=>'vui long nhập ít nhất 6 ký tự',
             'order.required'=>'vui lòng nhập',

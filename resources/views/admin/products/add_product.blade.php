@@ -10,14 +10,12 @@
             
             <div class="panel-body">
                 <div class="position-center">
-                    @if(Session::has('success'))
-                        <P style="color:red">{{Session::get('success')}}</P>
-                    @endif
+                    
                     <form action="{{route('store-product')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <input type="text" class="form-control" id="name"
                             name="name" value="{{old('name')}}">
                             @if($errors->has('name'))
                                 <p style="color: red">{{$errors->first('name')}}</p>
@@ -35,11 +33,11 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">Product_slug</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
-                            name="product_slug" value="{{old('product_slug')}}">
-                            @if($errors->has('product_slug'))
-                                <p style="color: red">{{$errors->first('product_slug')}}</p>
+                            <label for="exampleInputFile">Product Slug</label>
+                            <input type="text" id="slug" class="form-control" 
+                            name="slug" value="{{old('slug')}}">
+                            @if($errors->has('slug'))
+                                <p style="color: red">{{$errors->first('slug')}}</p>
                             @endif
                         </div>
                         <div class="form-group">

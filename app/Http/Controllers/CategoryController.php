@@ -16,8 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $listCategories = Category::all();
-        // $listCategories = Category::orderBy('id', 'desc');
         $listCategories = Category::paginate(5);
+        // $listCategories = Category::orderBy('id', 'desc');
         // dd($listCategories);
         return view('admin.categories.list_category', compact('listCategories'));  
     }
@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $data =$request->except('_token');
         // dd($data);
         Category::create($data);
-        return redirect()->route('list-category')->with('success','Thêm sản phẩm thành công!');
+        return redirect()->route('list-category')->with('success','Thêm danh mục thành công!');
     }
 
     /**

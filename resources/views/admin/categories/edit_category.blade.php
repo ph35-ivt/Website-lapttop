@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Category Slug</label>
                             <input type="text" id="exampleInputFile" class="form-control" 
-                            name="category_slug" value="{{$category->slug}}">
+                            name="slug" value="{{$category->slug}}">
                         </div>
 
                         <div class="form-group">
@@ -49,9 +49,9 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
                             <select name="status" class="form-control" id="exampleInputEmail1">
-                                <option value="0" @if($category->status==0) checked @endif>ẩn
+                                <option value="0" @if($category->status==0) checked @endif>UnPublish
                                 </option>
-                                <option value="1" @if($category->status==1) checked @endif>hiện
+                                <option value="1" @if($category->status==1) checked @endif>Publish
                                 </option>
                             </select>
                         </div>

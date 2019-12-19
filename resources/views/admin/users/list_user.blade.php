@@ -6,15 +6,12 @@
     <div class="panel-heading">
         List User
     </div>
+    @if(Session::has('success'))
+        <P style="color:red">{{Session::get('success')}}</P>
+    @endif
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
-            <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">...</option>
-                <option value="1">...</option>
-                <option value="2">...</option>
-                <option value="3">...</option>
-            </select>
-            <button class="btn btn-sm btn-default">Apply</button>                
+                            
         </div>
         <div class="col-sm-4">
         </div>
@@ -52,16 +49,16 @@
             <td><span class="text-ellipsis">{{$user->email}}</span></td>
             <td>
               <a class="btn" href="{{route('show-user',$user->id)}}">
-                <button type="submit"><i class="fas fa-scroll"></i></button>
+                <button style="color: #0000EE"type="submit"><i class="fas fa-scroll"></i></button>
               </a>
               <a class="btn" href="{{route('edit-user',$user->id)}}">
-                <button type="submit"><i class="fas fa-edit"></i></button>
+                <button style="color: red" type="submit"><i class="fas fa-edit"></i></button>
               </a>
                 @if(empty($category->deleted_at))
                     <form style="padding-left: 13px" action="{{route('delete-user', $user->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px; color: #097cef" class="fas fa-trash-alt"></i></button>
+                        <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px; color: black" class="fas fa-trash-alt"></i></button>
                       </form>
                 @endif 
             </td>
