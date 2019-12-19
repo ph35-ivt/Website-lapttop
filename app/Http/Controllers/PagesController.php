@@ -28,8 +28,13 @@ class PagesController extends Controller
 
     }
     function trangchu()
-    {         
-    	return view('pages.trangchu');
+    {    
+       $tintuc1 = News::paginate(2);
+    	return view('pages.trangchu',compact('tintuc1'));
+    }
+     function tk()
+    {    
+      return view('pages.loctk');
     }
     
     function lap_gioithieu()

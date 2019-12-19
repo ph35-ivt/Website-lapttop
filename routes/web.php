@@ -18,9 +18,9 @@ Route::get('/', function () {
 // Route::get('mail', function () {
 //     return view('mail.mail');
 // });
-// Route::get('giohanguser', function () {
-//     return view('pages.giohang_user');
-// });
+Route::get('tk', function () {
+    return view('pages.loctk');
+});
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/dashboard', 'AdminController@showdashboard')->name('login');
 Route::post('/admin/dashboard', 'AdminController@dashboard');
