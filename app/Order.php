@@ -14,7 +14,7 @@ class Order extends Model
     const STATUS_DEFAULT = 0;
     public function order_details()
     {
-    	return $this->hasMany('App\Order_detail');
+    	return $this->hasMany('App\OrderDetail');
     }
     
 }

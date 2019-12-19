@@ -12,7 +12,7 @@ class Order_detailsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        DB::table('order__details')->insert([
+        DB::table('order_details')->insert([
            'order_id'=> rand(1, 4),
             'product_id'=>rand(1, 58),
             'price'=>5000000,
@@ -20,7 +20,7 @@ class Order_detailsTableSeeder extends Seeder
             'created_at' => date("Y-m-d"),
             'updated_at' => date("Y-m-d"),
         ]);
-        DB::table('order__details')->insert([
+        DB::table('order_details')->insert([
            'order_id'=> rand(1, 4),
             'product_id'=>rand(1, 58),
             'price'=>1000000,
@@ -28,7 +28,7 @@ class Order_detailsTableSeeder extends Seeder
             'created_at' => date("Y-m-d"),
             'updated_at' => date("Y-m-d"),
         ]);
-        DB::table('order__details')->insert([
+        DB::table('order_details')->insert([
            'order_id'=> rand(1, 4),
             'product_id'=>rand(1, 58),
             'price'=>2000000,
@@ -36,7 +36,7 @@ class Order_detailsTableSeeder extends Seeder
             'created_at' => date("Y-m-d"),
             'updated_at' => date("Y-m-d"),
         ]);
-         DB::table('order__details')->insert([
+         DB::table('order_details')->insert([
            'order_id'=> rand(1, 4),
             'product_id'=>rand(1, 58),
             'price'=>1000000,

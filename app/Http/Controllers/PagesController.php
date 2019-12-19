@@ -10,7 +10,7 @@ use App\User;
 use App\Comment;
 use App\Cart;
 use App\Order;
-use App\Order__detail;
+use App\OrderDetail;
 use App\Mail\CheckMail;
 use Mail;
 use Session;
@@ -216,7 +216,7 @@ class PagesController extends Controller
       $or->status = 1;
       $or->save();
       foreach ($cart->items as $key => $value) {
-          $order_detail = new Order_Detail;
+          $order_detail = new OrderDetail;
           $order_detail->order_id = $or->id;
           $order_detail->product_id = $key;
           $order_detail->quantity = $value['qty'];

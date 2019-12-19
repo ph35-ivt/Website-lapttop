@@ -144,7 +144,6 @@ Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
 Route::get('dathang','PagesController@dathang')->name('dathang');
 Route::post('dathang','PagesController@postdathang')->name('postdathang');
 
-);
 Route::get('tk', function () {
     return view('pages.loctk');
 });
