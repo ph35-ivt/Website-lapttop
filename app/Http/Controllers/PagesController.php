@@ -225,7 +225,8 @@ class PagesController extends Controller
         // OrderDetail::create($order_detail);
       }
       \DB::enableQueryLog();
-      $order = Order::with(['order__details', 'order__details.products'])->find($or->id);
+      $order = Order::with(['order_details', 'order_details.products'])->find($or->id);
+      // dd($order);
       \Mail::to($request->email)->send(new CheckMail($order));
       Session::forget('cart');
       echo "<script>alert('Cảm ơn các bạn đã đặt hàng. Chúng tôi sẽ liên hệ bạn sớm nhất');

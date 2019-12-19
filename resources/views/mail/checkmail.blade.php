@@ -20,7 +20,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($order->order__details as $ord)
+		@foreach($order->order_details as $ord)
 		<tr>
 			<td>{{$ord->id}}</td>
 			<td>{{$ord->products->name}}</td>

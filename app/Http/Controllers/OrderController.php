@@ -52,9 +52,9 @@ class OrderController extends Controller
     {
         $detail = OrderDetail::find($id);
         $product = Product::find($id);
-        $order = Order::find($id);
+        $order = Order::with(['order_details', 'order_details.products'])->find($id);
         if ($order) {
-            return view('admin.orders.detail_order',compact('order','product','detail'));
+            return view('admin.orders.detail_order',compact('order'));
         }
             return redirect()->route('list-order')->with('success','Không tồn tạir!');
     }
