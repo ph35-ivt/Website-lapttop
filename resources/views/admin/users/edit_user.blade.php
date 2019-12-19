@@ -33,8 +33,12 @@
 
                         <div class="form-group">
                             <label for="exampleInputFile">Level</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
-                            name="level" value="{{$user->level}}">
+                            <select name="level" class="form-control" id="exampleInputEmail1">
+                                <option value="0" @if($user->level==0) checked @endif>User
+                                </option>
+                                <option value="1" @if($user->level==1) checked @endif>Admin
+                                </option>
+                            </select>
                         </div>
                         
                         <button type="submit" class="btn btn-info">Edit</button>

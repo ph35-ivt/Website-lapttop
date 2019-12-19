@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -35,6 +37,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
  	function(){
 		//list category
 		Route::get('/categories', 'CategoryController@index')->name('list-category');
+		// show product_detail
+		Route::get('/categories/{id}/show','CategoryController@show')->name('show-category');
 		// create cat
 		Route::get('/categories/add', 'CategoryController@add')->name('add-category');
 		//store 
@@ -75,12 +79,20 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 ///////////
 		//list order
 		Route::get('/orders', 'OrderController@index')->name('list-order');
+		//show
+		Route::get('/orders/{id}/show','OrderController@show')->name('show-order');
 		//delete 
 		Route::delete('/orders/{id}', 'OrderController@destroy')->name('delete-order');
 		// show form edit
 		Route::get('/orders/{id}/edit','OrderController@edit')->name('edit-order');
 		// update 
 		Route::put('/orders/{id}','OrderController@update')->name('update-order');
+		//search
+		Route::get('orders/searchs','OrderController@searchOrder')->name('order-search');
+		// Status
+		Route::get('active/{id}','OrderController@active')->name('order-active');
+		// lọc 
+		Route::get('orders/{id}/loc','OrderController@getloc')->name('loc');
 ///////////
 		//list order_detail
 		Route::get('/order-details', 'OrderDetailController@index')->name('list-order-detail');
@@ -105,9 +117,13 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::get('/users/{id}/edit','UserController@edit')->name('edit-user');
 		// update 
 		Route::put('/users/{id}','UserController@update')->name('update-user');
-///////////
-});
+		// search
+		Route::get('users/searchs','UserController@searchUser')->name('user-search');
 
+///////////
+
+		
+});
 
 Route::get('trangchu','PagesController@trangchu')->name('trangchu');
 Route::get('dangki','PagesController@getdangki');
@@ -116,11 +132,21 @@ Route::get('dangnhap','PagesController@getdangnhap')->name('dangnhap');
 Route::post('dangnhap','PagesController@postdangnhap')->name('postdangnhap');
 Route::get('nguoidung','PagesController@getnguoidung')->name('getnguoidung');
 Route::post('nguoidung','PagesController@postnguoidung')->name('postnguoidung');
+Route::get('timkiem','PagesController@timkiem')->name('timkiem');
 Route::get('dangxuat','PagesController@getdangxuat');
 Route::get('lap_gioithieu','PagesController@lap_gioithieu')->name('lap_gioithieu');
+Route::get('giohang/{id}/{product_slug}.html','PagesController@getgiohang')->name('getgiohang');
 Route::get('sanpham/{id}/{product_slug}.html','PagesController@sanpham')->name('sanpham');
 Route::get('repair','PagesController@repair')->name('repair');
 Route::get('tintuc','PagesController@tintuc')->name('tintuc');
 Route::get('lienhe','PagesController@lienhe')->name('lienhe');
+Route::post('comment/{id}','PagesController@postcomment');
 Route::get('giohang','PagesController@giohang')->name('giohang');
+
+Route::get('addcart/{id}','PagesController@addcart')->name('addcart');
+Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
+
+Route::get('dathang','PagesController@dathang')->name('dathang');
+Route::post('dathang','PagesController@postdathang')->name('postdathang');
+
 

@@ -35,7 +35,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
   <div class="wrap">
-    @include('layout.header')
+     @include('layout.header_user')
    </div>
  <div class="main">
     <div class="content">
@@ -51,11 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				  <h2 style="color: red">Liên hệ :</h2>
 				  <hr>								
 				<div class="desc span_3_of_3">
-					 <p>Thông tin liên hệ của Laptop T&T – <a href="">Bán laptop Đà nẵng </a>:</p>
-                    <p> - Địa chỉ : 11 lê văn sỹ, Tp Đà Nẵng</p>
-                    <p> - Điện thoại: 0386556593</p>
-                    <p> - Facebook: facebook/enterlap/09999</p>
-                    <p> - Email:enterlaptop@gmail.com</p>						
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.930744438672!2d108.20384721415881!3d16.06908324371179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219d22e47e813%3A0xea8b389f35d66c28!2zU-G7rWEgQ2jhu69hIExhcHRvcCDEkMOgIE7hurVuZyAtIGxlbWluaFNUT1JF!5e0!3m2!1svi!2s!4v1575131908900!5m2!1svi!2s" width="724" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>					
 			</div>
 			<div class="clear"></div>
 		  </div>
@@ -80,7 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	</div>
    <div class="section group">
 		 @foreach($product1 as $pt)
-				<div class="grid_1_of_4 images_1_of_4">				
+				<div class="grid_1_of_4 images_1_of_4" style="width: 150px ;height: 320px">				
 					<div class="price" style="border:none">
 			       		<a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
 							<h2>{{$pt->name}}</h2>
@@ -89,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
 	 					</div>
 	 					<div class="add-cart">								
-	 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
+	 						<h4><a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" class="">Chi tiết sản phẩm </a></h4>
 	 					</div>
 	 					<div class="clear"></div>
  				     </div>	 
@@ -104,24 +100,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h2>CATEGORIES</h2>
 		<ul class="side-w3ls">
 	     @foreach($categories as $ct)
-	      <li><a href="#">{{$ct->name}}</a></li>
+	      <li><a href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html">{{$ct->name}}</a></li>
 	      @endforeach
 		</ul>
-		<div class="subscribe">
-			<h2>Đăng nhập</h2>
-			    <div class="signup">
-				    <form method="POST" action="{{route('dangnhap')}}}">
-				     <input type="hidden" name="_token" value="{{csrf_token()}}">
-				    	<input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-				    	
-				    </form>
-			    </div>
-			</div>
 		</div>
  		</div>
  	</div>
     </div>
  </div>
+   @include('layout.section')
   @include('layout.footer')
    <script type="text/javascript">
 		$(document).ready(function() {			

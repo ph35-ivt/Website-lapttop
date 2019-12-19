@@ -13,22 +13,42 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Customer ID</label>
+                            <label for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" id="exampleInputEmail1"
-                            name="customer_id" value="{{$order->customer_id}}">
+                            name="customer_id" value="{{$order->name}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">phone</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            name="customer_id" value="{{$order->phone}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">address</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            name="customer_id" value="{{$order->address}}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Payment</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" 
-                            name="payment" value="{{$order->payment}}">
+                            <select name="payment" class="form-control" id="exampleInputEmail1">
+                                <option value="0" @if($order->payment==0) checked @endif>ATM
+                                </option>
+                                <option value="1" @if($order->payment==1) checked @endif>CASH
+                                </option>
+                            </select>
                         </div>
 
 
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
-                            name="status" value="{{$order->status}}">
+                            <select name="status" class="form-control" id="exampleInputEmail1">
+                                <option value="0" @if($order->payment==0) checked @endif>Chưa xử lý
+                                </option>
+                                <option value="1" @if($order->payment==1) checked @endif>Đã xử lý
+                                </option>
+                            </select>
                         </div>
                         
                         <button type="submit" class="btn btn-info">Edit</button>

@@ -86,6 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  	</div>
     </div>
  </div>
+   @include('layout.section')
   @include('layout.footer')
    <script type="text/javascript">
 		$(document).ready(function() {			

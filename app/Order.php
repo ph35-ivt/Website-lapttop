@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
     protected $fillable = [
-        'customer_id','payment','status'
+        'name','email','phone','address','date_order','payment','status'
     ];
-     public function customers()
+    const STATUS_DONE = 1;
+    const STATUS_DEFAULT = 0;
+    public function order_details()
     {
-    	return $this->belongsToMany('App\Customer');
+    	return $this->hasMany('App\Order_detail');
     }
-     public function order__details()
-    {
-    	return $this->hasMany('App\Order__detail');
-    }
+    
 }

@@ -20,16 +20,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="backend/css/font.css" type="text/css"/>
 <link href="backend/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
-<script src="js/jquery2.0.3.min.js"></script>
+<script src="backend/js/jquery2.0.3.min.js"></script>
 </head>
 <body>
 <div class="log-w3">
 <div class="w3layouts-main">
     <h2>Đăng nhập</h2>
     @if(Session::has('errorLogin'))
-    <p>{{Session::get('errorLogin')}}</p>
+        <p>{{Session::get('errorLogin')}}</p>
     @endif
-        <form action="{{route('dangnhap')}}" method="POST">
+        <form action="{{route('dangnhapad')}}" method="POST">
             @csrf
             <input type="email" class="ggg" name="email" placeholder="E-MAIL" required="">
             <input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">

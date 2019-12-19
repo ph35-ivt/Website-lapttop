@@ -20,7 +20,7 @@
 					<h4>Địa chỉ</h4>
 						<ul>
 							<li><a href="{{route('lienhe')}}">Cơ sở chính: 11 Lê Văn Sỹ - Đà nẵng</a></li>
-							<li><a href="{{route('lienhe')}}">Cơ sở 2: 28 Trần Cao Vân – Đà Nẵng</a></li>
+							<li><a href="{{route('lienhe')}}">Cơ sở 2: 36 hải phòng – Đà Nẵng</a></li>
 							<li><a href="{{route('lienhe')}}">Hotline: 0386 556 593 – 0988 578 952</a></li>
 							<li><a href="{{route('lienhe')}}">Email:enterlaptop@gmail.com</a></li>
 						</ul>
@@ -34,9 +34,10 @@
 			</div>			
         </div>
         <div class=""><a href="{{route('trangchu')}}"><img style="float: right; position: fixed" src="user/images/slider/home2.png" alt=""></a></div>
-
+         
          <div class="copy_right">
 				<p>&copy; 2013 Laptop_home</p>
 		   </div>
+
 		   
     </div>

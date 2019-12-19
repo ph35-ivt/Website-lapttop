@@ -38,9 +38,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
              @endforeach
           </div>
      @endif
+     @if(session('thongbao'))
+                      <div class="alert alert-success">
+                          {{session('thongbao')}}
+                      </div>
+    @endif
 	<div class="content-agile2">
 		<form action="nguoidung" method="POST">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+			@csrf
 			<div class="form-control w3layouts"> 
 				<input type="text"  name="name" value="{{$user->name}}" id="firstname"  placeholder="Tên tài khoản"  required="">
 			</div>
@@ -50,11 +55,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 
 			<div class="form-control agileinfo">	
-				<input type="password" class="lock" value=" {{$user->email}}" name="password" placeholder="Password" id="password1" required="">
+				<input type="password" class="lock" value=" {{$user->password}}" name="password" placeholder="Password" id="password1" required="">
 			</div>	
 
 			<div class="form-control agileinfo">	
-				<input type="password" class="lock"value=" {{$user->email}}" name="confirm_password" placeholder="Đăng nhập lại password" id="password2" required="">
+				<input type="password" class="lock"value=" {{$user->password}}" name="confirm_password" placeholder="Đăng nhập lại password" id="password2" required="">
 			</div>			
 			
 			<input type="submit" class="register" value="Thay đổi thông tin">

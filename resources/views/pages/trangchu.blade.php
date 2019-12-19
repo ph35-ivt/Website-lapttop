@@ -5,7 +5,7 @@
  		@foreach($categories as $ct) 	
  		<div class="content_top">
  			<div class="heading">
- 				<h3>{{$ct->name}}</h3>
+ 				<h3><a href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html" class="glyphicon glyphicon-apple"></a>{{$ct->name}}</h3>
  			</div>
 
  			<div class="clear"></div>
@@ -19,24 +19,30 @@
  			@php
  			$count++;
  			@endphp
- 			<div class="grid_1_of_4 images_1_of_4">
- 				<a href="preview.html"><img  src="{{asset($pt->link)}}" alt="" /></a>
- 				<h2>{{$pt->name}}</h2>
+ 			<div class="grid_1_of_4 images_1_of_4" style="width: 224px;height: 416px">
+ 				<div class="container">
+ 				<a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" ><img width="400px" height="250px" src="{{asset($pt->link)}}" alt="" /></a>
+ 				<div class="overlay">
+			    <div class="text">Sản phẩm mới
+			    </div>
+			  </div>
+ 			</div>
+ 				<h2 >{{$pt->name}}</h2>
  				<div class="price-details">
  					<div class="price-number">
- 						<p><span class="rupees">{{number_format($pt->price)}} ₫</span></p>
+ 						<p><span class="rupees">Giá:  {{number_format($pt->price)}} Đ</span></p>
  					</div>
- 					<div class="add-cart">								
- 						<h4><a href="{{route('giohang')}}}">Add to Cart</a></h4>
- 					</div>
+ 					<br>	
  					<div class="clear"></div>
- 				</div>	 
+ 				</div>	
+ 				<a href="{{route('addcart',$pt->id)}}"  class="glyphicon glyphicon-shopping-cart"></a> 
+ 				<a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" style="padding: 30px" class="glyphicon glyphicon-list"></a>
  			</div>
  			@endif
  			@endforeach
  		</div>
- 		<div class="content_right" style="text-align: right;"><a class="btn btn-danger" href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html">Xem thêm >></a></div>
-
+ 		<a href="" class="glyphicon glyphicon-fast-forward" style="float: right;"></a>
+        <br>
  		@endforeach
 
  	</div>

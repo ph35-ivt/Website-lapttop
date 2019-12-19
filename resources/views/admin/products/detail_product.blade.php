@@ -1,45 +1,82 @@
 @extends('admin.main')
 @section('content')
 
-<div class="table-agile-info">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        Product Detail
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Detail Product
+            </header>
+            <div class="panel-body">
+                <div class="position-center">
+                    <form action="{{route('update-product', $product->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">ID</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            name="id" value="{{$product->id}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            name="name" value="{{$product->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Category</label>
+                            <input type="text" id="exampleInputFile" class="form-control" 
+                            name="category_id" value="{{$product->category_id}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Product_slug</label>
+                            <input type="text" id="exampleInputFile" class="form-control" 
+                            name="slug" value="{{$product->slug}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Content</label>
+                            <textarea  style="resize: none" rows="5"  id="exampleInputFile" class="form-control" name="content" >{{$product->content}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Price</label>
+                            <input type="text" id="exampleInputFile" class="form-control" 
+                            name="price" value="{{$product->price}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Link</label>
+                            <label for="exampleInputFile"></label>
+                            <img style="width: 100px" src="{{$product->link}}" alt="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Quantity</label>
+                            <input type="text" id="exampleInputFile" class="form-control" 
+                            name="quantity" value="{{$product->quantity}}">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                            <label for="exampleInputEmail1">Status: </label>
+                            @if($product->status==0)
+                                <span class="text-ellipsis">hết hàng</span>
+                            @else
+                                <span class="text-ellipsis">còn hàng</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Create At</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            name="created_at" value="{{$product->created_at}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Update At</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            name="updated_at" value="{{$product->updated_at}}">
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
-        <thead>
-          <tr>
-            <th> ID</th>
-            <th>Name</th>
-            <th>Category ID</th>
-            <th>Product_slug</th>
-            <th>Content</th>
-            <th>Price</th>
-            <th>Link</th>
-            <th>Quantity</th>
-            <th>Status</th>
-            <th>Create At</th>
-            <th>Update At</th>
-          </tr>
-        </thead>
-        <tbody>
-	        <tr>
-            <td><span class="text-ellipsis">{{$product->id}}</span></td>
-            <td><span class="text-ellipsis">{{$product->name}}</span></td>
-            <td><span class="text-ellipsis">{{$product->category_id}}</span></td>
-            <td><span class="text-ellipsis">{{$product->product_slug}}</span></td>
-            <td><span class="text-ellipsis">{{$product->content}}</span></td>
-            <td><span class="text-ellipsis">{{$product->price}}</span></td>
-            <td><span class="text-ellipsis"><img style="width: 60px" src="{{$product->link}}" alt=""></span></td>
-            <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
-            <td><span class="text-ellipsis">{{$product->status}}</span></td>
-            <td><span class="text-ellipsis">{{$product->created_at}}</span></td>
-            <td><span class="text-ellipsis">{{$product->updated_at}}</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 </div>
 @endsection
+
+

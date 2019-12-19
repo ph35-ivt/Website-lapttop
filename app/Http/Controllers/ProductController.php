@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
 
@@ -13,14 +14,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
     public function index()
     {
         $listProducts = Product::all();
-        // dd($listProducts);
+        $listProducts = Product::paginate(5);
+        // $listProducts = Product::orderBy('id', 'desc')->get(); 
+        // dd($product);
         return view('admin.products.list_product', compact('listProducts'));
     }
 
@@ -31,7 +31,8 @@ class ProductController extends Controller
      */
     public function add()
     {
-        return view('admin.products.add_product');
+        $listCategories = Category::all();
+        return view('admin.products.add_product',compact('listCategories'));
     }
 
     /**
@@ -43,14 +44,13 @@ class ProductController extends Controller
     public function store(CreateProductRequest $request)
     {
         $data =$request->except('_token');
-        $link = $request->file('link')->getClientOriginalName();
+        $link = rand(1,9999).$request->file('link')->getClientOriginalName();
         // dd($link);
-        $data['link'] = $link;
-        $request->file('link')->move('user/images/product',$link);
+        $data['link'] = 'user/images/product/'.$link;
+        $request->file('link')->move('user/images/product/',$link);
         Product::create($data);
-        return redirect()->route('list-product');
+        return redirect()->route('list-product')->with('success','---Thêm sản phẩm thành công!---');
     }
-
     /**
      * Display the specified resource.
      *
@@ -75,7 +75,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('admin.products.edit_product',compact('product'));
+        $listCategories = Category::all();
+        return view('admin.products.edit_product',compact('product','listCategories'));
     }
 
     /**
@@ -89,6 +90,13 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $data= $request->only('name','category_id','product_slug','content','price','link','quantity','status');
+        if($request->hasFile('link'))
+        {
+            $link = rand(1,9999).$request->file('link')->getClientOriginalName();        
+            $data['link'] = 'user/images/product/'.$link;
+            $request->file('link')->move('user/images/product/',$link);
+        }
+        // dd('link')
         $product->update($data);
         return redirect()->route('list-product');
     }
