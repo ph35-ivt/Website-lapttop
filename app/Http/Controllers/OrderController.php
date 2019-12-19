@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use App\Order_Detail;
+use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -50,13 +50,13 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $detail = Order_Detail::find($id);
+        $detail = OrderDetail::find($id);
         $product = Product::find($id);
         $order = Order::find($id);
         if ($order) {
             return view('admin.orders.detail_order',compact('order','product','detail'));
         }
-            echo "Not found"; 
+            return redirect()->route('list-order')->with('success','Không tồn tạir!');
     }
 
     /**

@@ -63,7 +63,7 @@ class ProductController extends Controller
         if ($product) {
             return view('admin.products.detail_product',compact('product'));
         }
-            echo "Not found";
+            return redirect()->route('list-product')->with('success','---Sản phẩm không tồn tại---');
     }
 
     /**
