@@ -59,7 +59,7 @@ class CategoryController extends Controller
         if ($category) {
             return view('admin.categories.detail_category',compact('category'));
         }
-            echo "Not found";   
+            return redirect()->route('list-category')->with('success','Danh mục không tồn tại!');   
     }
 
     /**

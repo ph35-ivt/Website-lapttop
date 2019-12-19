@@ -56,7 +56,7 @@ class UserController extends Controller
         if ($user) {
             return view('admin.users.detail_user',compact('user'));
         }
-            echo "Not found";       
+            return redirect()->route('list-user')->with(['success'=>'---Không tồn tại!---']); 
     }
 
     /**

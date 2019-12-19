@@ -56,7 +56,7 @@ class OrderController extends Controller
         if ($order) {
             return view('admin.orders.detail_order',compact('order','product','detail'));
         }
-            echo "Not found"; 
+            return redirect()->route('list-order')->with('success','Không tồn tạir!');
     }
 
     /**
