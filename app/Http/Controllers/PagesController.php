@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -11,13 +10,15 @@ use App\User;
 use App\Comment;
 use App\Cart;
 use App\Order;
-use App\Order_detail;
+use App\OrderDetail;
+use App\Mail\CheckMail;
+use Mail;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
-    function __construct()
+    function __construct(Request $request)
     {
         $categories = Category::all();
         $product = Product::all();
@@ -27,9 +28,15 @@ class PagesController extends Controller
 
     }
     function trangchu()
-    {   
-    	return view('pages.trangchu');
+    {    
+       $tintuc1 = News::paginate(2);
+    	return view('pages.trangchu',compact('tintuc1'));
     }
+     function tk()
+    {    
+      return view('pages.loctk');
+    }
+    
     function lap_gioithieu()
     {   $product1 = Product::paginate(4);
         return view('pages.lap_gioithieu',compact('product1'));
@@ -89,7 +96,7 @@ class PagesController extends Controller
             // Đăng nhập
       if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
       {
-           return redirect('trangchu');
+           return redirect('trangchu.html');
       }
       else {
         return redirect('dangnhap')->with('thongbao','Đăng nhập không thành công');
@@ -98,7 +105,7 @@ class PagesController extends Controller
     function getdangxuat()
     {
       Auth::logout();
-      return redirect('trangchu');
+      return redirect('trangchu.html');
     }
     function getdangki(){
      return view('pages.dangki');
@@ -110,7 +117,13 @@ class PagesController extends Controller
           $users->password = bcrypt($request->password);
           $users->level =0;
           $users->save();
-          return redirect('trangchu')->with('thongbao','Bạn đã đăng kí thành công thành công');
+          $input = $request->all();
+          Mail::send('pages.dangki', array('name'=>$input["name"],'email'=>$input["email"]),
+           function($message){
+          $message->to('buiduy057@gmail.com', 'Duy')->subject('Visitor Feedback!');
+             });
+          // Session::flash('flash_message', 'Send message successfully!');
+          return redirect('trangchu.html')->with('thongbao','Bạn đã đăng kí thành công thành công');
     }
     function getnguoidung(){
        $user = Auth::user();
@@ -121,14 +134,19 @@ class PagesController extends Controller
         $users->name = $request->name;
         $users->password = bcrypt($request->password);
         $users->save();
-        return redirect('trangchu')->with('thongbao','Bạn đã sửa thành công');
+        return redirect('trangchu.html')->with('thongbao','Bạn đã sửa thành công');
     }
     function timkiem(Request $rq){
-      $timkiem = Product::where('name','like','%'.$rq->timkiem.'%')
-                    ->orwhere('price',$rq->key)
-                    ->get();
-      return view('pages.timkiem',compact('timkiem'));
+   
+      $timkiem = Product::where('name','like','%'.$rq->search.'%')
+                    ->orWhere('price',$rq->search)
+                    ->paginate(5);
+                  
+       return view('pages.timkiem',compact('timkiem'));                        
+      
     }
+   
+    
     function addcart(Request $rq,$id){
       $product = Product::find($id); 
        // kiểm tra xem có session cart chưa
@@ -140,7 +158,7 @@ class PagesController extends Controller
       $rq->session()->put('cart',$cart);
       return redirect()->back();
     }
-    function editcart($id){
+    function delcart($id){
        $oldCart = Session::has('cart')?Session::get('cart'):null;
        $cart = new Cart($oldCart);
        $cart->removeItem($id);
@@ -152,10 +170,20 @@ class PagesController extends Controller
        }
        return redirect()->back();
     }
+    function editcart(Request $req, $id, $qty){
+
+        $product = Product::find($id);
+        $oldCart = Session('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->SuaSoLuong($product, $id, $qty); 
+        $req->session()->put('cart', $cart);
+       return redirect()->back();
+    }
     function dathang(){
        $users = Auth::user();
        return view('pages.dathang',compact('users'));
     }
+    
     function postdathang(Request $request){
 
        $this->validate($request,
@@ -175,6 +203,7 @@ class PagesController extends Controller
               'phone.required' =>'Bạn chưa nhập số điện thoại',
               'address.required' =>'Bạn chưa nhập address'
           ]);
+      $data = $request->except('carts');
       $cart= Session::get('cart');
       $or= new Order;
       $or->name= $request->name;
@@ -184,19 +213,24 @@ class PagesController extends Controller
       $or->date_order = date('Y-m-d');
       $or->total = $cart->totalPrice;
       $or->payment = $request->payment;
-       $or->status = 1;
+      $or->status = 1;
       $or->save();
       foreach ($cart->items as $key => $value) {
-          $order_detail = new Order_Detail;
+          $order_detail = new OrderDetail;
           $order_detail->order_id = $or->id;
           $order_detail->product_id = $key;
           $order_detail->quantity = $value['qty'];
           $order_detail->price = ($value['price']/$value['qty']);
           $order_detail->save();
+        // OrderDetail::create($order_detail);
       }
+      \DB::enableQueryLog();
+      $order = Order::with(['order__details', 'order__details.products'])->find($or->id);
+      \Mail::to($request->email)->send(new CheckMail($order));
       Session::forget('cart');
-      return redirect()->back()->with('thongbao','Đặt hàng thành công');
-     
+      echo "<script>alert('Cảm ơn các bạn đã đặt hàng. Chúng tôi sẽ liên hệ bạn sớm nhất');
+     window.location ='".url('/dathang')."'
+       </script>";
     }
     
 }

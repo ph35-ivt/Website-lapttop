@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Order_Detail;
+use App\OrderDetail;
 use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
@@ -45,7 +45,7 @@ class OrderDetailController extends Controller
      * @param  \App\Order_Detail  $order_Detail
      * @return \Illuminate\Http\Response
      */
-    public function show(Order_Detail $order_Detail)
+    public function show(OrderDetail $order_Detail)
     {
         //
     }

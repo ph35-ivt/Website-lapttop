@@ -1,9 +1,3 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!doctype html>
 <html>
 <head>
@@ -14,10 +8,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Official Signup Form Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 <!-- fonts -->
 <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <!-- /fonts -->
+ <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- css -->
 <link href="user/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="user/css/dangki.css" rel='stylesheet' type='text/css' media="all"/>
@@ -25,14 +21,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- /css -->
 </head>
 <body>
-
-<h1 class="w3ls">Đăng kí thành viên</h1>
-<div class="content-w3ls">
-	<div class="content-agile1">
-		<h2 class="agileits1">Dang ki</h2>
-		<p class="agileits2">Đăng kí thành viên</p>
-	</div>
-	<div class="content-agile2">
+<div class="wrap">
+        @include('layout.header_user')
+ </div>
+ <div class="main">
+     <div class="content">
+		<h1 style="font-size: 40px;text-align: center;padding: 20px;color: red;font-weight: bold;">Đăng kí thành viên</h1>
+		<div class="content-w3ls">
+			<div class="content-agile1">
+				<h2 class="agileits1">Dang ki</h2>
+				<p class="agileits2">Đăng kí thành viên</p>
+			</div>
+		<div class="content-agile2">
 		<form action="dangki" method="POST">
 			@csrf
 			<div class="form-control w3layouts"> 
@@ -77,6 +77,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<div class="clear"></div>
 </div>
-<p class="copyright w3l">© 2019 <a href="https://w3layouts.com/" target="_blank">W3layouts</a></p>
+</div>
+</div>
+  @include('layout.section') 
+  @include('layout.footer')
 </body>
 </html>

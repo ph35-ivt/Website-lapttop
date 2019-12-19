@@ -1,7 +1,8 @@
 <?php
 
 namespace App;
-
+use App\Cart;
+use Session;
 class Cart
 {
 	public $items = null;
@@ -27,6 +28,14 @@ class Cart
 		$this->items[$id] = $giohang;
 		$this->totalQty++;
 		$this->totalPrice +=$item->price;
+	}
+   // Sua so luong
+	public function SuaSoLuong($item, $id, $qty){
+		$this->totalPrice -= $this->items[$id]['price'];  
+		$this->items[$id]['qty'] = $qty;
+		$this->items[$id]['price'] = $item->price * $qty;
+		$this->totalQty += $qty; 
+		$this->totalPrice += $this->items[$id]['price']; 
 	}
 	//xóa 1
 	public function reduceByOne($id){

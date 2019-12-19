@@ -14,7 +14,6 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function index()
     {
         $listProducts = Product::all();
@@ -63,7 +62,7 @@ class ProductController extends Controller
         if ($product) {
             return view('admin.products.detail_product',compact('product'));
         }
-            echo "Not found";
+        echo "Not found";
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use App\Order_Detail;
+use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -50,7 +50,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $detail = Order_Detail::find($id);
+        $detail = OrderDetail::find($id);
         $product = Product::find($id);
         $order = Order::find($id);
         if ($order) {
@@ -107,7 +107,7 @@ class OrderController extends Controller
     public function active($id)
     {
         $order = Order::find($id);
-        $listOrder_details = Order_Detail::all();
+        $listOrder_details = OrderDetail::all();
         // trừ đi số lượng sản phẩm
         if ($listOrder_details) {
             foreach ($listOrder_details as $od) {
