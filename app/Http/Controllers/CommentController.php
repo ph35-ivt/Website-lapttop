@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Commment;
-use App\Product;
+use App\Comment;
 use Illuminate\Http\Request;
 
-class CommmentController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,9 @@ class CommmentController extends Controller
      */
     public function index()
     {
-        //
+        $listComments = Comment::all();
+        $listComments = Comment::paginate(5);
+        return view('admin.comment.list_comment',compact('listComments'));
     }
 
     /**
@@ -56,9 +57,10 @@ class CommmentController extends Controller
      * @param  \App\Commment  $commment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Commment $commment)
+    public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('admin.comment.edit_comment',compact('comment'));
     }
 
     /**
@@ -68,9 +70,12 @@ class CommmentController extends Controller
      * @param  \App\Commment  $commment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Commment $commment)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->find($id);
+        $data= $request->only('cm_name','cm_email','product_id','content');
+        $comment->update($data);
+        return redirect()->route('list-comment');
     }
 
     /**

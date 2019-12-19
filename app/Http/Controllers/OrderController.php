@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Order_Detail;
+use App\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $listOrders = Order::all();
+        $listOrders = Order::paginate(5);
+        return view('admin.orders.list_order', compact('listOrders'));
     }
 
     /**
@@ -35,7 +39,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**
@@ -44,9 +48,15 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+        $detail = Order_Detail::find($id);
+        $product = Product::find($id);
+        $order = Order::find($id);
+        if ($order) {
+            return view('admin.orders.detail_order',compact('order','product','detail'));
+        }
+            echo "Not found"; 
     }
 
     /**
@@ -55,9 +65,10 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        return view('admin.orders.edit_order',compact('order'));
     }
 
     /**
@@ -67,9 +78,12 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $data= $request->only('customer_id','payment','status');
+        $order->update($data);
+        return redirect()->route('list-order');
     }
 
     /**
@@ -78,8 +92,33 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        Order::destroy($id);
+        return redirect()->route('list-order');
+    }
+    public function searchOrder(Request $request){
+        $listOrders = Order::paginate(5);
+        $search = Order::where('name','like','%'.$request->search.'%')
+                    ->orwhere('phone',$request->search)
+                    ->get();
+        return view('admin.orders.search_order',compact('search','listOrders'));
+    }
+    public function active($id)
+    {
+        $order = Order::find($id);
+        $listOrder_details = Order_Detail::all();
+        // trừ đi số lượng sản phẩm
+        if ($listOrder_details) {
+            foreach ($listOrder_details as $od) {
+                $product = Product::find($od->product_id);
+                // $product->quantity = $product->products->quantity - $product->order_details->quantity;
+                $product->save();
+            }
+        }
+         // cập nhật lại trạng thái đơn hàng
+        $order->status = Order::STATUS_DONE;
+        $order->save(); 
+        return redirect()->back()->with('success','Xử lý đơn hàng thành công!');     
     }
 }

@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+
 	protected $fillable = [
-        'category_id','name','product_slug','content','price','images','quantity','status'
+        'category_id','name','slug','content','price','link','quantity','status'
     ];
-     public function categories()
+    public function categories()
     {
     	return $this->belongsToMany('App\Category');
     }
@@ -19,7 +21,10 @@ class Product extends Model
     }
     public function order_details()
     {
-    	return $this->hasOne('App\Order__detail');
+    	return $this->hasMany('App\Order_detail');
     }
-    
+    public function getImageAttribute()
+    {
+       return $this->link;
+    }
 }

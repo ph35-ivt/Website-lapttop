@@ -183,33 +183,6 @@ class PagesController extends Controller
        $users = Auth::user();
        return view('pages.dathang',compact('users'));
     }
-    // public function postdathang(Request $request){
-    //  $email = $request->email;
-    //  $name = $request->name;
-    //  $phone = $request->phone; 
-    //  $address = $request->address;
-    //  $date_order = $request->date_order; 
-    //  $total = $request->total; 
-     
-
-    //       //gửi email, tạo mail và truyền vào data
-    //   \Mail::to(['email'])->send(new CheckMail($name,$phone,$address,$date_order,$total));
-    //   return redirect()->route('dathang')->with('thongbao','Bạn đã gửi thành công!');
-    // }
-    // function getlienhe(){
-    //    return view('pages.mail');
-    // }
-    //  function postlienhe(Request $request){
-    //   $data = ['hoten'=> $request->input('name'),'email'=>  $request->input('email')];
-    //   Mail::send('mail.contact_mail',$data,function($mes){
-    //     $mes->from('buiduy057@gmail.com','pha');
-    //     $mes->to('buiduy057@gmail.com','duy')->subject('Đây là Mail Duy');
-    //   });
-    //   echo "<script>alert('Cảm ơn các bạn đã góp ý. Chúng tôi sẽ liên hệ bạn sớm nhất');
-    //   window.location ='".url('/trangchu')."'
-    //   </script>";
-
-    // }
     
     function postdathang(Request $request){
 
@@ -242,9 +215,8 @@ class PagesController extends Controller
       $or->payment = $request->payment;
       $or->status = 1;
       $or->save();
-      // $order = Order::create($data);
       foreach ($cart->items as $key => $value) {
-          $order_detail = new Order__detail;
+          $order_detail = new Order_Detail;
           $order_detail->order_id = $or->id;
           $order_detail->product_id = $key;
           $order_detail->quantity = $value['qty'];
@@ -254,11 +226,8 @@ class PagesController extends Controller
       }
       \DB::enableQueryLog();
       $order = Order::with(['order__details', 'order__details.products'])->find($or->id);
-      // dd(\DB::getQueryLog());
-      // dd($order);
       \Mail::to($request->email)->send(new CheckMail($order));
       Session::forget('cart');
-      // /return redirect()->back()->with('thongbao','Đặt hàng thành công');
       echo "<script>alert('Cảm ơn các bạn đã đặt hàng. Chúng tôi sẽ liên hệ bạn sớm nhất');
      window.location ='".url('/dathang')."'
        </script>";

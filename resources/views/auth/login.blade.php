@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE HTML>
 <head>
 <title>Enter Laptop </title>
@@ -25,10 +26,16 @@
      @include('layout.header_user')
    </div>
 <div class="main">
+=======
+@extends('layouts.app')
+
+@section('content')
+>>>>>>> ea0ea21279a3e0cc9a3740997c61b0df56f6b9e2
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+<<<<<<< HEAD
                 <div class="card-header" style="text-align: center;font-weight: bold;font-size: 30px">{{ __('Login') }}</div>
 
                 <div class="card-body" style="width: 400px;text-align: center;margin:  0 auto;">
@@ -48,6 +55,14 @@
                             </p>
                           </div>
                         @endif
+=======
+                <div class="card-header">{{ __('Login') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+>>>>>>> ea0ea21279a3e0cc9a3740997c61b0df56f6b9e2
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -107,8 +122,12 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 </div>
   @include('layout.section')
   @include('layout.footer')
 </body>
 </html>
+=======
+@endsection
+>>>>>>> ea0ea21279a3e0cc9a3740997c61b0df56f6b9e2
