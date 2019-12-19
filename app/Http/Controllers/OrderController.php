@@ -107,7 +107,7 @@ class OrderController extends Controller
     public function active($id)
     {
         $order = Order::find($id);
-        $listOrder_details = Order_Detail::all();
+        $listOrder_details = OrderDetail::all();
         // trừ đi số lượng sản phẩm
         if ($listOrder_details) {
             foreach ($listOrder_details as $od) {
