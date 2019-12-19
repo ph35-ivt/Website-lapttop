@@ -1,30 +1,4 @@
 <section id="footer-top">
-<h1 style="text-align: center;color: red; font-size: 30px;">
-Tin Tức :
-<hr width="200px" style="border: 2px solid green">
-</h1>
-<div class="container">
-	<div class="row">
-         @foreach($tintuc1 as $tt)
-		<div class="col-md-6">
-          <div class="card" style="width: 100%;">
-          <div class="img-article ">
-          <a href="">
-          <img src="user/images/tintuc/img3.jpg" class="card-img-top img-thumbnail" alt="">
-          </a>
-         </div>
-          <div class="card-body">
-          <h5 class="card-title" style="font-size: 20px">Tin mới :</h5>
-          <p class="card-text">{{$tt->title}}</p>
-          <br>
-          <br>
-          <a href="#" class="btn btn-primary">Xem thêm</a>
-          </div>
-          </div>
-         </div>
-         @endforeach
-	</div>
-</div>
 <table  style="width: 900px; margin: 0 auto;  text-align: center; font-weight: bold; font-size: 20px">
 	<hr style="border: 2px solid green">
 		<tr>

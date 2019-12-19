@@ -51,12 +51,14 @@
           </tr>
         </thead>
         <tbody>
+          @foreach($order->order_details as $orderDetail)
           <tr>
-            <td><span class="text-ellipsis">{{$product->name}}</span></td>
-            <td><span class="text-ellipsis">{{$product->price}}</span></td>
-            <td><span class="text-ellipsis">{{$detail->quantity}}</span></td>
-            <td><span class="text-ellipsis">{{$detail->price}}</span></td>
+            <td><span class="text-ellipsis">{{$orderDetail->products->name}}</span></td>
+            <td><span class="text-ellipsis">{{$orderDetail->products->price}}</span></td>
+            <td><span class="text-ellipsis">{{$orderDetail->products->quantity}}</span></td>
+            <td><span class="text-ellipsis">{{$orderDetail->products->price}}</span></td>
           </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
