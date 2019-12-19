@@ -144,12 +144,8 @@ Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
 Route::get('dathang','PagesController@dathang')->name('dathang');
 Route::post('dathang','PagesController@postdathang')->name('postdathang');
 
-Route::get('tk', function () {
-    return view('pages.loctk');
-});
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/dashboard', 'AdminController@showdashboard')->name('login');
-Route::post('/admin/dashboard', 'AdminController@dashboard');
+
+
 Route::get('trangchu.html', 'PagesController@trangchu')->name('trangchu');
 Route::get('dangki', 'PagesController@getdangki');
 Route::post('dangki', 'PagesController@postdangki')->name('login');

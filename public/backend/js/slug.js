@@ -6,11 +6,11 @@ $('input#name').keyup(function (event) {
 		// đổi chữ hoa thành chữ thường
 		slug = title.toLowerCase();
 		// đổi ký tự có dấu thành không dấu
-		slug = slug.replace(/á|à|ạ|ả|ã|ấ|ầ|ậ|ẩ|ẫ|ắ|ằ|ặ|ẵ|ẳ/gi, 'a');
-		slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ế|ề|ệ|ể|ễ/gi, 'e');
-		slug = slug.replace(/ò|ó|ọ|ỏ|õ|ố|ồ|ộ|ổ|ỗ|ớ|ờ|ợ|ỡ|ở/gi, 'o');
+		slug = slug.replace(/á|à|ạ|ả|ã|ấ|ầ|ậ|ẩ|ẫ|ắ|ằ|ặ|ẵ|ẳ|â/gi, 'a');
+		slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ế|ề|ệ|ể|ễ|ê/gi, 'e');
+		slug = slug.replace(/ò|ó|ọ|ỏ|õ|ố|ồ|ộ|ổ|ỗ|ớ|ờ|ợ|ỡ|ở|ơ/gi, 'o');
 		slug = slug.replace(/ì|í|ỉ|ị|ĩ/gi, 'i');
-		slug = slug.replace(/ù|ú|ụ|ủ|ũ|ừ|ứ|ự|ử|ữ/gi, 'u');
+		slug = slug.replace(/ù|ú|ụ|ủ|ũ|ừ|ứ|ự|ử|ữ|ư/gi, 'u');
 		slug = slug.replace(/ỳ|ý|ỵ|ỷ|ỹ/gi, 'y');
 		slug = slug.replace(/đ/gi, 'd');
 		// xóa các ký tự đặc biệt

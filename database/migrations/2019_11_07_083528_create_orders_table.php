@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->unsignedBigInteger('phone');
             $table->string('address');
-            $table->date('date_order');
+            $table->date('date_order')->nullable();
             $table->unsignedBigInteger('total')->nullable();
             $table->unsignedBigInteger('payment');
             $table->unsignedBigInteger('status')->default(1);
