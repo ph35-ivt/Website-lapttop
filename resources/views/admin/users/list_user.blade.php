@@ -7,7 +7,7 @@
         List User
     </div>
     @if(Session::has('success'))
-        <P style="color:red">{{Session::get('success')}}</P>
+        <P style="color:#00CCFF">{{Session::get('success')}}</P>
     @endif
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">

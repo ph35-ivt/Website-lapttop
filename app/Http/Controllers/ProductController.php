@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\OrderDetai;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
 
@@ -16,9 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $listProducts = Product::all();
-        $listProducts = Product::paginate(5);
-        // $listProducts = Product::orderBy('id', 'desc')->get(); 
+        $listProducts = Product::orderBy('id','desc')->paginate(5);
         // dd($product);
         return view('admin.products.list_product', compact('listProducts'));
     }
@@ -48,7 +47,7 @@ class ProductController extends Controller
         $data['link'] = 'user/images/product/'.$link;
         $request->file('link')->move('user/images/product/',$link);
         Product::create($data);
-        return redirect()->route('list-product')->with('success','---Thêm sản phẩm thành công!---');
+        return redirect()->route('list-product')->with('success','Create Product successful !');
     }
     /**
      * Display the specified resource.
@@ -59,10 +58,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        if ($product) {
-            return view('admin.products.detail_product',compact('product'));
-        }
-            return redirect()->route('list-product')->with('success','---Sản phẩm không tồn tại---');
+        return view('admin.products.detail_product',compact('product'));
     }
 
     /**
@@ -97,7 +93,7 @@ class ProductController extends Controller
         }
         // dd('link')
         $product->update($data);
-        return redirect()->route('list-product');
+        return redirect()->route('list-product')->with('success','Update Product successful !');
     }
 
     /**
@@ -108,7 +104,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        
         Product::destroy($id);
-        return redirect()->route('list-product');
+        return redirect()->route('list-product')->with('success','Delete product successful !');
     }
 }

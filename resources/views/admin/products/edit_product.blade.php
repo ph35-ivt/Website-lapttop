@@ -53,9 +53,9 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
                             <select name="status" class="form-control" id="exampleInputEmail1">
-                                <option value="0" @if($product->status==0) checked @endif>hết hàng
+                                <option value="0" @if($product->status==0) checked @endif>unactive
                                 </option>
-                                <option value="1" @if($product->status==1) checked @endif>còn hàng
+                                <option value="1" @if($product->status==1) checked @endif>active
                                 </option>
                             </select>
                         </div>

@@ -14,8 +14,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $listComments = Comment::all();
-        $listComments = Comment::paginate(5);
+        $listComments = Comment::orderBy('id','desc')->paginate(5);
         return view('admin.comment.list_comment',compact('listComments'));
     }
 

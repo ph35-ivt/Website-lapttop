@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-// {{asset('images/->path')}}
+
 
 Route::get('/admin/dang-nhap','AdminController@getDangNhap')->name('dangnhapad');
 
