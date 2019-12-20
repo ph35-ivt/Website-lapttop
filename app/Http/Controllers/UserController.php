@@ -15,10 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $listUsers = User::all();
-        $listUsers = User::paginate(5);
+        $listUsers = User::orderBy('id','desc')->paginate(5);
         return view('admin.users.list_user', compact('listUsers'));
-        // $listUsers = User::orderBy('id', 'desc')->get();
     }
 
     /**
@@ -41,7 +39,7 @@ class UserController extends Controller
     {
         $data =$request->except('_token');
         User::create($data);
-        return redirect()->route('list-user')->with(['success'=>'---Thêm thành công!---']);
+        return redirect()->route('list-user')->with('success','Create user successful !');
     }
 
     /**
@@ -53,10 +51,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        if ($user) {
-            return view('admin.users.detail_user',compact('user'));
-        }
-            return redirect()->route('list-user')->with(['success'=>'---Không tồn tại!---']); 
+        return view('admin.users.detail_user',compact('user'));
+        
     }
 
     /**
@@ -83,7 +79,7 @@ class UserController extends Controller
         $user = User::find($id);
         $data= $request->only('name', 'email', 'password','level');
         $user->update($data);
-        return redirect()->route('list-user');
+        return redirect()->route('list-user')->with('success','Update user successful !');;
     }
 
     /**
@@ -95,7 +91,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->route('list-user');
+        return redirect()->route('list-user')->with('success','Delete user successful !');
     }
     public function searchUser(Request $request){
         $listUsers = User::paginate(5);

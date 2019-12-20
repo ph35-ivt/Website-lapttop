@@ -55,8 +55,8 @@
           <tr>
             <td><span class="text-ellipsis">{{$orderDetail->products->name}}</span></td>
             <td><span class="text-ellipsis">{{$orderDetail->products->price}}</span></td>
-            <td><span class="text-ellipsis">{{$orderDetail->products->quantity}}</span></td>
-            <td><span class="text-ellipsis">{{$orderDetail->products->price}}</span></td>
+            <td><span class="text-ellipsis">{{$orderDetail->quantity}}</span></td>
+            <td><span class="text-ellipsis">{{$orderDetail->price}}</span></td>
           </tr>
           @endforeach
         </tbody>

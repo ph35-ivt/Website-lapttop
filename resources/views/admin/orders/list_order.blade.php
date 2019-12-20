@@ -6,6 +6,9 @@
     <div class="panel-heading">
         List Order
     </div>
+    @if(Session::has('success'))
+      <P style="color:#00CCFF">{{Session::get('success')}}</P>
+    @endif
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
             <select class="input-sm form-control w-sm inline v-middle">
@@ -59,11 +62,11 @@
               @endif
             </td>
             <td>
-              @if($order->status==1)
-              <a style="border: 3px solid bisque;border-radius: 7px;background: bisque;"  href="">
+              @if($order->status==0)
+              <a style="border: 3px solid aqua;border-radius: 7px;background: aqua;"  href="">
                 <span class="text-ellipsis">Đã xử lý</span></a>
               @else
-              <a style="border: 3px solid aqua;border-radius: 7px;background: aqua;" href="{{route('order-active',$order->id)}}">
+              <a style="border: 3px solid bisque;border-radius: 7px;background: bisque;" href="{{route('order-active',$order->id)}}">
                 <span class="text-ellipsis">Chưa xử lý</span></a>
               @endif
             </td>

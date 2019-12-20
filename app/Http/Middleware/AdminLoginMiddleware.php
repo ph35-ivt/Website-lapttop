@@ -24,10 +24,10 @@ class AdminLoginMiddleware
             }
             else
             {  
-              return redirect()->route('dangnhapad');
+              return redirect()->route('trangchu');
             }
         }
         else
-            return redirect()->route('dangnhapad');
+            return redirect()->route('trangchu');
     }
 }

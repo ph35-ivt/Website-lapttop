@@ -72,9 +72,9 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
                             <select name="status" class="form-control" id="exampleInputEmail1">
-                                <option value="0" >hết hàng
+                                <option value="0" >unactive
                                 </option>
-                                <option value="1" >còn hàng
+                                <option value="1" >active
                                 </option>
                             </select>
                             @if($errors->has('status'))

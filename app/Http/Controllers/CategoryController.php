@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\OrderDetail;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
 
@@ -15,9 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $listCategories = Category::all();
-        $listCategories = Category::paginate(5);
-        // $listCategories = Category::orderBy('id', 'desc');
+        $listCategories = Category::orderBy('id','desc')->paginate(5);
+        
         // dd($listCategories);
         return view('admin.categories.list_category', compact('listCategories'));  
     }
@@ -44,7 +45,7 @@ class CategoryController extends Controller
         $data =$request->except('_token');
         // dd($data);
         Category::create($data);
-        return redirect()->route('list-category')->with('success','Thêm danh mục thành công!');
+        return redirect()->route('list-category')->with('success','Create category successful !');
     }
 
     /**
@@ -56,10 +57,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        if ($category) {
-            return view('admin.categories.detail_category',compact('category'));
-        }
-            return redirect()->route('list-category')->with('success','Danh mục không tồn tại!');   
+        return view('admin.categories.detail_category',compact('category'));
+   
     }
 
     /**
@@ -88,7 +87,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $data= $request->only('parent_category_id','name','category_slug','description','order','status');
         $category->update($data);
-        return redirect()->route('list-category');
+        return redirect()->route('list-category')->with('success','Update category successful !');
     }
 
     /**
@@ -100,8 +99,14 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $listProducts = Product::where('category_id',$id)->get();
-        // suwa
+        foreach ($listProducts as $product) {
+            $listOrder_details = OrderDetail::where('product_id', $product->id)->get();
+            foreach ($listOrder_details as $detail) {
+                $detail->delete();
+            }
+            $product->delete();
+        }
         Category::destroy($id);
-        return redirect()->route('list-category');
+        return redirect()->route('list-category')->with('success','Delete category successful !');
     }
 }
