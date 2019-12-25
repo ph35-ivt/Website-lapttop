@@ -62,11 +62,11 @@
               @endif
             </td>
             <td>
-              @if($order->status==0)
+              @if($order->status==1)
               <a style="border: 3px solid aqua;border-radius: 7px;background: aqua;"  href="">
                 <span class="text-ellipsis">Đã xử lý</span></a>
               @else
-              <a style="border: 3px solid bisque;border-radius: 7px;background: bisque;" href="{{route('order-active',$order->id)}}">
+              <a style="border: 3px solid bisque;border-radius: 7px;background: bisque;">
                 <span class="text-ellipsis">Chưa xử lý</span></a>
               @endif
             </td>

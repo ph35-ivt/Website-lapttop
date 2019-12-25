@@ -14,8 +14,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        // $listOrder_details = Order_Detail::all();
-        // return view('admin.order_details.list_order_detail', compact('listOrder_details'));
+        $listOrder_details = Order_Detail::all();
+        return view('admin.order_details.list_order_detail', compact('listOrder_details'));
     }
 
     /**
@@ -89,4 +89,5 @@ class OrderDetailController extends Controller
         // Order_Detail::destroy($id);
         // return redirect()->route('list-order-detail');
     }
+    
 }

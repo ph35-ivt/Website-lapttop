@@ -106,19 +106,5 @@ class OrderController extends Controller
                     ->get();
         return view('admin.orders.search_order',compact('search','listOrders'));
     }
-    public function active($id)
-    {
-        $order = Order::find($id);
-        $listOrder_details = OrderDetail::all();
-        if ($listOrder_details) {
-            foreach ($listOrder_details as $od) {
-                $product = Product::find($od->product_id);               
-                $product->save();
-            }
-        }
-         // cập nhật lại trạng thái đơn hàng
-        $order->status = Order::STATUS_DONE;
-        $order->save(); 
-        return redirect()->back()->with('success','Xử lý đơn hàng thành công!');     
-    }
+    
 }
