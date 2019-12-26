@@ -60,7 +60,7 @@
                     </a>
                     <ul class="sub">
                         <li><a href="{{route('list-user')}}">List user</a></li>
-                        <li><a href="{{route('add-user')}}">Add user</a></li>
+                        
                     </ul>
                 </li>
                 </li>

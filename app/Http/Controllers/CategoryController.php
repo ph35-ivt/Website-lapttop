@@ -44,7 +44,7 @@ class CategoryController extends Controller
     {
         $data =$request->except('_token');
         // dd($data);
-        Category::create($data);
+        Category::create($data);//chen data vào database
         return redirect()->route('list-category')->with('success','Create category successful !');
     }
 
@@ -85,8 +85,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        $data= $request->only('parent_category_id','name','category_slug','description','order','status');
-        $category->update($data);
+        $data= $request->only('parent_category_id','name','category_slug','description','order','status');//lấy data form
+        $category->update($data);//update
         return redirect()->route('list-category')->with('success','Update category successful !');
     }
 
