@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Email</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
+                            <input type="email" id="exampleInputFile" class="form-control" 
                             name="email" value="{{old('email')}}">
                             @if($errors->has('email'))
                                 <p style="color: red">{{$errors->first('email')}}</p>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Password</label>
-                            <input type="text" id="exampleInputFile" class="form-control" 
+                            <input type="password" id="exampleInputFile" class="form-control"
                             name="password" value="{{old('password')}}">
                             @if($errors->has('password'))
                                 <p style="color: red">{{$errors->first('password')}}</p>
