@@ -26,7 +26,7 @@ Route::get('/admin/dang-nhap','AdminController@getDangNhap')->name('dangnhapad')
 
 Route::get('admin/dashboard','AdminController@dashboard')->name('dashboard')->middleware('adminLogin');
 
-Route::post('admin/dang-nhap', 'AdminController@postDangNhap')->name('dangnhap');
+Route::post('admin/dang-nhap', 'AdminController@postDangNhap')->name('dangnhap-ad');
 
 Route::get('admin/dang-xuat', 'AdminController@dangXuat')->name('dangxuatad');
 
@@ -89,17 +89,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		//search
 		Route::get('orders/searchs','OrderController@searchOrder')->name('order-search');
 		
- 
-
-///////////
-		//list order_detail
-		Route::get('/order-details', 'OrderDetailController@index')->name('list-order-detail');
-		//delete 
-		Route::delete('/order-details/{id}','OrderDetailController@destroy')->name('delete-order-detail');
-		// show form edit
-		Route::get('/order-details/{id}/edit','OrderDetailController@edit')->name('edit-order-detail');
-		// update 
-		Route::put('/order-details/{id}','OrderDetailController@update')->name('update-order-detail');
 //////////////
 		//list uesr
 		Route::get('/users', 'UserController@index')->name('list-user');

@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @if(Session::has('errorLogin'))
         <p>{{Session::get('errorLogin')}}</p>
     @endif
-        <form action="{{route('dangnhapad')}}" method="POST">
+        <form action="{{route('dangnhap-ad')}}" method="POST">
             @csrf
             <input type="email" class="ggg" name="email" placeholder="E-MAIL" required="">
             <input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">

@@ -42,9 +42,9 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Status</label>
                             <select name="status" class="form-control" id="exampleInputEmail1">
-                                <option value="0" @if($order->status==0) checked @endif>chưa xử lý
+                                <option value="1" @if($order->status==1) checked @endif>chưa xử lý
                                 </option>
-                                <option value="1" @if($order->status==1) checked @endif>Đã xử lý
+                                <option value="0" @if($order->status==0) checked @endif>Đã xử lý
                                 </option>
                             </select>
                         </div>

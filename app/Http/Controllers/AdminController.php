@@ -9,7 +9,6 @@ use App\Order;
 use App\User;
 use App\Comment;
 
-
 class AdminController extends Controller
 {
         use AuthenticatesUsers;
@@ -31,19 +30,19 @@ class AdminController extends Controller
         $order_count = Order::count();
         $user_count = User::count();
         $comment_count = Comment::count();
-        $orders = Order::where('status',0)->get();
+        $orders = Order::where('status',1)->get();
         if (request()->date_from && request()->date_to) {
-            $orders = Order::where('status',0)->whereBetween('created_at',[request()->date_from, request()->date_to])->get();
+            $orders = Order::where('status',1)->whereBetween('created_at',[request()->date_from, request()->date_to])->get();
         }
         return view('admin.dashboard',compact('product_count','order_count','user_count','comment_count','orders'));
     }
     public function postDangNhap(Request $request)
     {
-        $email = $request->email;
-        $password = $request->password;
-        // dd($email,$password);
+        $data = $request->only('email','password');
+        
+        // dd($data);
 
-        if (\Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (\Auth::attempt($data)) {
             return redirect()->route('dashboard');
         }
         else{
@@ -57,7 +56,7 @@ class AdminController extends Controller
 
         $request->session()->invalidate();
 
-        return view('admin.dangnhap');
+        return redirect()->route('dangnhapad');
     }
 
     public function getQuenmatkhau()

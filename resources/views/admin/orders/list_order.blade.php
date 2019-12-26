@@ -11,14 +11,7 @@
     @endif
     <div class="row w3-res-tb">
         <div class="col-sm-5 m-b-xs">
-            <select class="input-sm form-control w-sm inline v-middle">
-                <option value="0">---lọc đơn hàng---</option>
-                <option value="1">Đã xử lý </option>
-                <option value="2">Chưa xử lý</option>
-                <option value="3">ATM</option>
-                <option value="4">CASH</option>
-            </select>
-            <button class="btn btn-sm btn-default">Apply</button>                
+                            
         </div>
         <div class="col-sm-4">
         </div>
@@ -62,7 +55,7 @@
               @endif
             </td>
             <td>
-              @if($order->status==1)
+              @if($order->status==0)
               <a style="border: 3px solid aqua;border-radius: 7px;background: aqua;"  href="">
                 <span class="text-ellipsis">Đã xử lý</span></a>
               @else
