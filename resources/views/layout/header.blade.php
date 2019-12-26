@@ -5,11 +5,6 @@
             </p>
         </div>
         <div class="account_desc">
-            @if(session('thongbao'))
-            <div class="alert alert-success">
-                {{session('thongbao')}}
-            </div>
-            @endif
             <ul class="nav navbar-nav pull-right">
                 @if(Auth::check())
                 <li>
@@ -43,16 +38,11 @@
         </div>
 
         <div class="cart">
-            <p> <span class="glyphicon glyphicon-shopping-cart">Giỏ hàng:( @if(Session::has('cart')){{Session('cart')->totalQty}}
+            <p> <span class="glyphicon glyphicon-shopping-cart"> ( @if(Session::has('cart')){{Session('cart')->totalQty}}
 	  	   @else Trống @endif)  </span>
-            <div id="dd" class="wrapper-dropdown-2">
-                <ul class="dropdown" style="background: white">
-                    <br>
-                    <button class="btn btn-success" style="margin-left: 40px">Đặt hàng
+            <button class="btn btn-success" style="margin-left: 20px">Đặt hàng
                         <a href="dathang" class="glyphicon glyphicon-triangle-right"></a>
-                    </button>
-                </ul>
-            </div>
+            </button>
         </div>
 
         <div class="clear"></div>

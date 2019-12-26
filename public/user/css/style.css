@@ -29,8 +29,8 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 @font-face {
-    font-family: 'ambleregular';
-    src:url(../font/Amble-Regular-webfont.ttf) format('truetype');
+    font-family: 'Gelasio', serif;
+    src:url(https://fonts.googleapis.com/css?family=Gelasio&display=swap) format('truetype');
 }
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -202,6 +202,7 @@ body {
 }
 .menu li a:hover,.menu li.active a{
 	background:#B81D22;
+	text-decoration: none;
 }
 .menu li:first-child  a{
 	border-radius:6px 0 0 6px;
@@ -274,6 +275,7 @@ body {
 }
 .categories li a:hover{
 	color:#B81D22;
+	text-decoration: none;
 }
 .header_bottom_right{
 	float:left;
@@ -472,6 +474,7 @@ body {
 }
 .span_1_of_4  li a:hover, .span_1_of_4  li span:hover {
 	color:#DD0F0E;
+	text-decoration: none;
 }
 section #footer-top h1 {
 	text-align: center;
@@ -906,6 +909,7 @@ section #footer-top h1 {
 .span_3_of_1 li a:hover {
 	background: url(../images/drop_arrow-hover.png) no-repeat 0;
 	color:#B81D22;
+	text-decoration: none
 }
 .span_3_of_2 .button {
 	float: right;

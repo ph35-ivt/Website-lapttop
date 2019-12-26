@@ -21,29 +21,24 @@ class PagesController extends Controller
     function __construct(Request $request)
     {
         $categories = Category::all();
-        $product = Product::all();
+        $product = Product::orderBy('id','desc')->get();
        // $tintuc = News::all();
         view()->share('categories',$categories);
         view()->share('product',$product);
 
     }
     function trangchu()
-    {    
-       $tintuc1 = News::paginate(2);
-    	return view('pages.trangchu',compact('tintuc1'));
-    }
-     function tk()
-    {    
-      return view('pages.loctk');
+    {   
+    	return view('pages.trangchu');
     }
     
     function lap_gioithieu()
-    {   $product1 = Product::paginate(4);
+    {    $product1 = Product::where('status','=', 1)->paginate(4);
         return view('pages.lap_gioithieu',compact('product1'));
     }
     function repair(){
         $repair = Repairs::paginate(2);
-        $product1 = Product::paginate(4);
+        $product1 = Product::where('status','=', 1)->paginate(4);
     	  return view('pages.repair',compact('repair','product1'));
     }
     function sanpham($id)
@@ -54,11 +49,11 @@ class PagesController extends Controller
     }
      function tintuc(){
          $tintuc1 = News::paginate(2);
-         $product1 = Product::paginate(4);
+         $product1 = Product::where('status','=', 1)->paginate(4);
     	 return view('pages.tintuc',compact('tintuc1','product1'));
     }
     function lienhe(){
-         $product1 = Product::paginate(4);
+          $product1 = Product::where('status','=', 1)->paginate(4);
     	  return view('pages.lienhe',compact('product1'));
     }
 
@@ -72,7 +67,7 @@ class PagesController extends Controller
         return back();
     }
     function getgiohang($id){
-          $product1 = Product::paginate(4);
+          $product1 = Product::where('status','=', 1)->paginate(4);
           $comment = Comment::where('product_id',$id)->get();
           $pt = Product::find($id);
           return view('pages.giohang',compact('product1','pt','comment'));
@@ -81,20 +76,8 @@ class PagesController extends Controller
           return view('pages.dangnhap');
     }
     function postdangnhap (Request $request){
-     
-       $this->validate($request,
-          [
-              'email' =>'required',
-              'password' =>'required|min:3|max:32'
-          ],
-          [
-              'email.required' =>'Bạn chưa nhập Email',
-              'password.required'=>'Bạn chưa nhập password',
-              'password.min'=>'Độ dài kí tự lớn hơn 3 nhỏ hơn 32',
-              'password.max'=>'Độ dài kí tự lớn hơn 3 nhỏ hơn 32'
-          ]);
             // Đăng nhập
-      if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+   if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
       {
            return redirect('trangchu.html');
       }
@@ -105,25 +88,40 @@ class PagesController extends Controller
     function getdangxuat()
     {
       Auth::logout();
+      $cart= Session::get('cart');
+      Session::forget('cart');
       return redirect('trangchu.html');
     }
     function getdangki(){
      return view('pages.dangki');
     }
      function postdangki(Request $request){
+           $this->validate($request,
+          [
+              'name' =>'required',
+              'email' =>'required',
+              'password' =>'required|min:7|max:32',
+              'passwordAgain'=> 'required|min:7|max:32'
+          ],
+          [
+              'name.required' =>'Bạn chưa nhập Email',
+              'email.required' =>'Bạn chưa nhập Email',
+              'password.required'=>'Bạn chưa nhập password',
+              'password.min'=>'Độ dài kí tự lớn hơn 7 nhỏ hơn 32',
+              'password.max'=>'Độ dài kí tự lớn hơn 7 nhỏ hơn 32',
+              'passwordAgain.min'=>'Độ dài kí tự lớn hơn 7 nhỏ hơn 32',
+              'passwordAgain.max'=>'Độ dài kí tự lớn hơn 7 nhỏ hơn 32'
+          ]);
           $users = new User();
           $users->name = $request->name;
           $users->email = $request->email;
           $users->password = bcrypt($request->password);
           $users->level =0;
           $users->save();
-          $input = $request->all();
-          Mail::send('pages.dangki', array('name'=>$input["name"],'email'=>$input["email"]),
-           function($message){
-          $message->to('buiduy057@gmail.com', 'Duy')->subject('Visitor Feedback!');
-             });
-          // Session::flash('flash_message', 'Send message successfully!');
-          return redirect('trangchu.html')->with('thongbao','Bạn đã đăng kí thành công thành công');
+          if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+              return redirect('trangchu.html')->with('thongbaodangkythanhcong','Bạn đã đăng kí thành công');
+           }
+        
     }
     function getnguoidung(){
        $user = Auth::user();
@@ -134,18 +132,21 @@ class PagesController extends Controller
         $users->name = $request->name;
         $users->password = bcrypt($request->password);
         $users->save();
-        return redirect('trangchu.html')->with('thongbao','Bạn đã sửa thành công');
+        return redirect('trangchu.html')->with('thongbaosuathanhcong','Bạn đã sửa thành công');
     }
     function timkiem(Request $rq){
-   
       $timkiem = Product::where('name','like','%'.$rq->search.'%')
                     ->orWhere('price',$rq->search)
                     ->paginate(5);
-                  
-       return view('pages.timkiem',compact('timkiem'));                        
-      
+      return view('pages.timkiem',compact('timkiem'));           
     }
-   
+    function timkiemdanhmuc(Request $rq)
+    {
+
+        $timkiem = Product::whereIn('category_id', $rq->category_id)->paginate(5);
+    
+       return view('pages.timkiem',compact('timkiem')); 
+    }
     
     function addcart(Request $rq,$id){
       $product = Product::find($id); 

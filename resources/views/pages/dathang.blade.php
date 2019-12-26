@@ -1,43 +1,17 @@
-<!DOCTYPE HTML>
-
-<head>
-    <title>Enter Laptop </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <base href="{{asset('')}}">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="user/css/cart.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link href="user/css/bootstrap.min.css" rel="stylesheet">
-    <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="user/css/shop-homepage.css" rel="stylesheet">
-    <link href="user/css/my.css" rel="stylesheet">
-    <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="user/text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="user/text/javascript" src="js/move-top.js"></script>
-    <script type="user/text/javascript" src="js/easing.js"></script>
-    <link rel="stylesheet" href="user/css/global.css">
-    <!-- <script src="user/js/my.js"></script> -->
-    <style type="text/css">
-        form {
-            width: 900px;
-            margin-left: 50px;
-        }
-        
+@extends('layout.index')
+@section('css')
+  <style type="text/css">
         .back-links {
             width: 150px;
             height: 30px;
         }
+         h2 {
+            font-family: 'Gelasio', serif !important;
+            font-family: 'Vollkorn', serif !important;
+        }
     </style>
-
-</head>
-
-<body>
-    <div class="wrap">
-        @include('layout.header_user')
-    </div>
+ @endsection
+ @section('content')
     <div class="main">
         <div class="content">
             <div class="content_top">
@@ -54,13 +28,17 @@
             </div>
             @if(count($errors) > 0)
             <div class="alert alert-danger">
-                @foreach($errors ->all() as $err) {{$err}} @endforeach
+                @foreach($errors ->all() as $err) 
+                {{$err}} <br>
+                 @endforeach
             </div>
-            @endif @if(session('thongbao'))
+            @endif 
+            @if(session('thongbao'))
             <div class="alert alert-success">
                 {{session('thongbao')}}
             </div>
-            @endif @if(Auth::check())
+            @endif 
+            @if(Auth::check())
             <div class="section group">
                 <form action="{{route('postdathang')}}" method="POST" id="form">
                     @csrf
@@ -130,7 +108,7 @@
                                     <div class="your-order-item">
                                         @if(Session::has('cart'))
                                         <div class="pull-left">
-                                            <p class="your-order-f18">Tổng tiền:</p>
+                                            <p class="your-order-f18"><b>Tổng tiền:</b></p>
                                         </div>
                                         <div class="pull-right">
                                             <h5 class="color-black">{{number_format(Session('cart')->totalPrice)}} Đồng</h5></div>
@@ -147,14 +125,12 @@
 
                                             <input id="payment_method_bacs" type="radio" class="input-radio" name="payment" value="0" checked="checked" data-order_button_text="">
                                             <label for="payment_method_bacs">Tiền mặt</label>
-                                            <div class="payment_box payment_method_bacs" style="display: block;">
-                                                Cửa hàng sẽ gửi hàng đến địa chỉ của bạn, bạn xem hàng rồi thanh toán tiền cho nhân viên giao hàng
-                                            </div>
+                                            
                                         </li>
 
                                         <li class="payment_method_cheque">
                                             <input id="payment_method_cheque" type="radio" class="input-radio" name="payment" value="1" data-order_button_text="">
-                                            <label for="payment_method_cheque">Online </label>
+                                            <label for="payment_method_cheque">Tính tiền bằng thẻ </label>
                                             <div class="payment_box payment_method_cheque" style="display: none;">
                                                 Chuyển tiền đến tài khoản sau:
                                                 <br>- Số tài khoản: 123 456 789
@@ -178,9 +154,12 @@
             @else
             <div class="section group">
                 <br>
-                <p style="color:red">Bạn cần đăng nhập mới đặt hàng được:</p>
-                <div class="col-sm-4">
-                    <form method="POST" action="dangnhap">
+                
+                <div class="col-sm-4" style="margin-left: 50px">
+                    <h2 style="font-weight: bold;color: green; text-align: center;">Đăng nhập</h2>
+                    <p style="color:red" >Bạn cần đăng nhập mới đặt hàng được:</p>
+                    <br>
+                    <form method="POST" action="{{route('postdangnhap')}}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label for="name">Email <span style="color:red">*</span>: </label>
@@ -190,7 +169,36 @@
                             <label>Password <span style="color:red">*</span>:</label>
                             <input type="password" class="form-control" name="password" placeholder="nhập pass">
                         </div>
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        <button type="submit" class="btn btn-outline-success">Đăng nhập</button>
+                    </form>
+                </div>
+                  <div class="col-sm-2">
+                       <button  class="btn btn-warning" style="margin-left: 50px;margin-top: 100px">Hoặc</button>
+                  </div>
+                  <div class="col-sm-4" >
+                    <h2 style="font-weight: bold;color: green; text-align: center;">Đăng kí thành viên</h2>
+                    <p style="color:red" >Bạn cần đăng nhập mới đặt hàng được:</p>
+                    <br>
+                    <form method="POST" action="{{route('dangki')}}">
+                       <input type="hidden" name="_token" value="{{csrf_token()}}">
+                       <div class="form-group">
+                            <label>Tên <span style="color: red">*</span>:</label> 
+                            <br>
+                            <input type="text" class="form-control"  name ="name" placeholder="Tên của bạn" required name="">
+                       </div>
+                       <div class="form-group">
+                            <label>Email <span style="color: red">*</span>:</label><br>
+                            <input type="email" class="form-control" name="email" placeholder="Email của bạn" required name="">
+                        </div>
+                        <div class="form-group">
+                           <label>Mật khẩu <span style="color: red">*</span>:</label><br>
+                           <input type="password" class="form-control" name ="password" placeholder="Password của bạn" required name="">
+                        </div>
+                         <div class="form-group">
+                           <label>Nhập lại mật khẩu <span style="color: red">*</span>:</label><br>
+                           <input type="password" class="form-control" name="passwordAgain"  placeholder="Password của bạn" required name="">
+                        </div>
+                        <button type="submit" class="btn btn-outline-success">Đăng kí </button>
                     </form>
                 </div>
             </div>
@@ -200,23 +208,7 @@
         </div>
 
     </div>
+@endsection
 
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-     @include('layout.section')
-    @include('layout.footer')
-    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
-    <script>
-        function ChangeQuantity(id) {
-            var so_luong = document.getElementById("Quantity-" + id).value
-            if (so_luong != '') {
-                location.href = 'editcart/' + id + '/' + so_luong;
-            }
-        }
-    </script>
-</body>
-
-</html>
+    
+   

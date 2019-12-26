@@ -108,49 +108,41 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::get('users/searchs','UserController@searchUser')->name('user-search');	
 });
 
-Route::get('trangchu','PagesController@trangchu')->name('trangchu');
-Route::get('dangki','PagesController@getdangki');
-Route::post('dangki','PagesController@postdangki')->name('login');
-Route::get('dangnhap','PagesController@getdangnhap')->name('dangnhap');
-Route::post('dangnhap','PagesController@postdangnhap')->name('postdangnhap');
-Route::get('nguoidung','PagesController@getnguoidung')->name('getnguoidung');
-Route::post('nguoidung','PagesController@postnguoidung')->name('postnguoidung');
-Route::get('timkiem','PagesController@timkiem')->name('timkiem');
-Route::get('dangxuat','PagesController@getdangxuat');
-Route::get('lap_gioithieu','PagesController@lap_gioithieu')->name('lap_gioithieu');
-Route::get('giohang/{id}/{product_slug}.html','PagesController@getgiohang')->name('getgiohang');
-Route::get('sanpham/{id}/{product_slug}.html','PagesController@sanpham')->name('sanpham');
-Route::get('repair','PagesController@repair')->name('repair');
-Route::get('tintuc','PagesController@tintuc')->name('tintuc');
-Route::get('lienhe','PagesController@lienhe')->name('lienhe');
-Route::post('comment/{id}','PagesController@postcomment');
-Route::get('giohang','PagesController@giohang')->name('giohang');
-
-Route::get('addcart/{id}','PagesController@addcart')->name('addcart');
-Route::get('editcart/{id}','PagesController@editcart')->name('editcart');
-
-Route::get('dathang','PagesController@dathang')->name('dathang');
-Route::post('dathang','PagesController@postdathang')->name('postdathang');
 
 
 
 Route::get('trangchu.html', 'PagesController@trangchu')->name('trangchu');
+// Đăng kí
 Route::get('dangki', 'PagesController@getdangki');
-Route::post('dangki', 'PagesController@postdangki')->name('login');
+Route::post('dangki', 'PagesController@postdangki')->name('dangki');
+// Đăng nhập
 Route::get('dangnhap', 'PagesController@getdangnhap')->name('dangnhap');
 Route::post('dangnhap', 'PagesController@postdangnhap')->name('postdangnhap');
+// Thông tin nguoi dung
 Route::get('nguoidung', 'PagesController@getnguoidung')->name('getnguoidung');
 Route::post('nguoidung', 'PagesController@postnguoidung')->name('postnguoidung');
+// Tìm kiếm
 Route::get('timkiem', 'PagesController@timkiem')->name('timkiem');
+Route::get('timkiemdanhmuc', 'PagesController@timkiemdanhmuc')->name('timkiemdanhmuc');
+
+// Đăng xuất
 Route::get('dangxuat', 'PagesController@getdangxuat');
+// Trang giới thiệu
 Route::get('lap_gioithieu.html', 'PagesController@lap_gioithieu')->name('lap_gioithieu');
-Route::get('giohang/{id}/{product_slug}.html', 'PagesController@getgiohang')->name('getgiohang');
+// Trang sản phẩm
 Route::get('sanpham/{id}/{product_slug}.html', 'PagesController@sanpham')->name('sanpham');
+// Trang tin tức về sửa laptop
 Route::get('repair.html', 'PagesController@repair')->name('repair');
+// Trang tin tức
 Route::get('tintuc.html', 'PagesController@tintuc')->name('tintuc');
+// TRang liên hệ
 Route::get('lienhe.html', 'PagesController@lienhe')->name('lienhe');
+// Trang comment
 Route::post('comment/{id}', 'PagesController@postcomment');
-Route::get('giohang', 'PagesController@giohang')->name('giohang');
+// Trang chi tiết sản phẩm
+Route::get('giohang/{id}/{product_slug}.html', 'PagesController@getgiohang')->name('getgiohang');
+// Trang đặt hàng
+Route::get('giohang','PagesController@giohang')->name('giohang');
 Route::get('addcart/{id}', 'PagesController@addcart')->name('addcart');
 Route::get('editcart/{id}/{qty}', 'PagesController@editcart')->name('editcart');
 Route::get('delcart/{id}', 'PagesController@delcart')->name('delcart');

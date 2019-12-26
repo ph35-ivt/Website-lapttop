@@ -1,34 +1,18 @@
-<!DOCTYPE HTML>
-
-<head>
-    <title>Chi tiết sản phẩm</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <base href="{{asset('')}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-    <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
-    <script type="user/text/javascript" src="js/move-top.js"></script>
-    <script type="user/text/javascript" src="js/easing.js"></script>
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <style type="text/css">
+@extends('layout.index')
+@section('css')
+  <style type="text/css">
         .back-links {
             width: 150px;
             height: 30px;
         }
-    </style>
-@include('layout.script')
-</head>
 
-<body>
-    <div class="wrap">
-       @include('layout.header')
-    </div>
+         h2,h1,h4 {
+            font-family: 'Gelasio', serif !important;
+            font-family: 'Vollkorn', serif !important;
+        }
+    </style>
+ @endsection
+ @section('content')
     <div class="main">
         <div class="content">
             <div class="content_top">
@@ -43,7 +27,7 @@
                         <div class="grid images_3_of_2">
                             <div id="container">
                                 <div id="products_example">
-                                    <a href="#" target="_blank"><img width="300px; height=200px " src="{{asset($pt->link)}}"  alt=" " /></a>
+                                    <a href="{{route('giohang')}}" target="_blank"><img width="300px; height=200px " src="{{asset($pt->link)}}"  alt=" " /></a>
                                 </div>
                             </div>
                         </div>
@@ -52,18 +36,18 @@
                             <br>
                             <hr>
                             <div class="price">
-                                <p>Giá: <span>${{number_format($pt->price)}} Đồng</span></p>
-                                <p>Còn hàng</p>
+                                <p>Giá: <span> {{number_format($pt->price)}} Đồng</span></p>
+                                <p style="font-size: 17px; font-weight: bold;"><img width="30px" height="30px" src="user/images/logo/tik.png">Còn hàng</p>
                             </div>
                             <div class="share-desc">
                                 <div class="share">
                                     <p>Share Product :</p>
                                     <ul>
                                         <li>
-                                            <a href="#"><img src="user/images/facebook.png" alt="" /></a>
+                                            <a href="https://www.facebook.com/"><img src="user/images/facebook.png" alt="" /></a>
                                         </li>
                                         <li>
-                                            <a href="#"><img src="user/images/twitter.png" alt="" /></a>
+                                            <a href="https://www.twitter.com/"><img src="user/images/twitter.png" alt="" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -85,18 +69,18 @@
                             <div class="resp-tabs-container">
                                 <div class="product-desc">
                                     <h1 style="font-size: 20px">
-						1. THÔNG SỐ KỸ THUẬT :</h1>
+					                   	1. THÔNG SỐ KỸ THUẬT :</h1>
                                     <p>{{$pt->content}}</p>
                                 </div>
                                 <div class="product-desc">
                                     <h1 style="font-size: 20px">
-						2. GÓI BẢO HÀNH :</h1>
+					                   	2. GÓI BẢO HÀNH :</h1>
                                     <br>
                                     <a href=""><img width="724px" height="300px" src="user/images/product/goibh.png" alt=""></a>
                                 </div>
                                 <div class="product-desc">
                                     <h1 style="font-size: 20px">
-						3. CAM KẾT:</h1>
+						                  3. CAM KẾT:</h1>
                                     <br>
                                     <a href=""><img style="margin-left: 100px" width="500px" height="300px" src="user/images/product/CAM-KET.png" alt=""></a>
                                 </div>
@@ -151,7 +135,7 @@
                     </div>
                     <div class="section group">
                         @foreach($product1 as $pt)
-                        <div class="grid_1_of_4 images_1_of_4">
+                        <div class="grid_1_of_4 images_1_of_4" style="width: 150px ;height: 340px">
                             <div class="price" style="border:none">
                                 <a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
                                 <h2>{{$pt->name}}</h2>
@@ -174,16 +158,12 @@
                     <h2>CATEGORIES</h2>
                     <ul class="side-w3ls">
                         @foreach($categories as $ct)
-                        <li><a href="#">{{$ct->name}}</a></li>
+                        <li><a href="sanpham/{{$ct->id}}/{{$ct->slug}}.html">{{$ct->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    @include('layout.footer')
-
-</body>
-
-</html>
+@endsection
+ 

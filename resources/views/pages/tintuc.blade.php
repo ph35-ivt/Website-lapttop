@@ -1,32 +1,17 @@
-<!DOCTYPE HTML>
-
-<head>
-    <title>Enter Laptop </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <base href="{{asset('')}}">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-    <link href="user/css/bootstrap.min.css" rel="stylesheet">
-    <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="user/css/shop-homepage.css" rel="stylesheet">
-    <link href="user/css/my.css" rel="stylesheet">
-    <link href="user/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="user/text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="user/text/javascript" src="js/move-top.js"></script>
-    <script type="user/text/javascript" src="js/easing.js"></script>
-    <link rel="stylesheet" href="user/css/global.css">
-    <style type="text/css">
+@extends('layout.index')
+@section('css')
+  <style type="text/css">
         .back-links {
             width: 150px;
             height: 30px;
         }
+         h2 {
+            font-family: 'Gelasio', serif !important;
+            font-family: 'Vollkorn', serif !important;
+        }
     </style>
-</head>
-
-<body>
-    <div class="wrap">
-        @include('layout.header_user')
-    </div>
+ @endsection
+ @section('content')
     <div class="main">
         <div class="content">
             <div class="content_top">
@@ -40,7 +25,6 @@
                     <div class="product-details">
                         <h2 style="color: red">Tin tức</h2>
                         <hr>
-                        <?php $i= 0 ?>
                             @foreach($tintuc1 as $tt)
                             <div class="desc span_3_of_3">
 
@@ -54,7 +38,7 @@
 
                             </div>
                             @endforeach
-                            <div class="content-pagenation" style="text-align: center;">
+                            <div class="desc span_3_of_3" style="text-align: center;">
 
                                 {!! $tintuc1->fragment('foo')->links() !!}
 
@@ -73,7 +57,7 @@
                     </div>
                     <div class="section group">
                         @foreach($product1 as $pt)
-                        <div class="grid_1_of_4 images_1_of_4" style="width: 170px ;height: 340px">
+                        <div class="grid_1_of_4 images_1_of_4" style="width: 150px ;height: 340px">
                             <div class="price" style="border:none">
                                 <a href="preview.html"><img src="{{$pt->link}}" alt="" /></a>
                                 <h2>{{$pt->name}}</h2>
@@ -82,7 +66,7 @@
                                         <p><span class="rupees">Giá:{{number_format($pt->price)}}₫</span></p>
                                     </div>
                                     <div class="add-cart">
-                                        <h4><a href="giohang/{{$pt->id}}/{{$pt->product_slug}}.html" class="">Thêm giỏ hàng</a></h4>
+                                        <h4><a href="giohang/{{$pt->id}}/{{$pt->slug}}.html" class="">Thêm giỏ hàng</a></h4>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -96,25 +80,11 @@
                     <h2>CATEGORIES</h2>
                     <ul class="side-w3ls">
                         @foreach($categories as $ct)
-                        <li><a href="#">{{$ct->name}}</a></li>
+                        <li><a href="sanpham/{{$ct->id}}/{{$ct->slug}}.html">{{$ct->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    @include('layout.section')
-    @include('layout.footer')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
-</body>
-
-</html>
+@endsection
