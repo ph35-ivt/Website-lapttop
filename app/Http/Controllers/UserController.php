@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function add()
     {
-        return view('admin.users.add_user');
+        // return view('admin.users.add_user');
     }
 
     /**
@@ -37,9 +37,9 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        $data =$request->except('_token');
-        User::create($data);
-        return redirect()->route('list-user')->with('success','Create user successful !');
+        // $data =$request->except('_token');
+        // User::create($data);
+        // return redirect()->route('list-user')->with('success','Create user successful !');
     }
 
     /**

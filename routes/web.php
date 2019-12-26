@@ -94,10 +94,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::get('/users', 'UserController@index')->name('list-user');
 		// show
 		Route::get('/users/{id}/show','UserController@show')->name('show-user');
-		// create cat
-		Route::get('/users/add', 'UserController@add')->name('add-user');
+		// create 
+		// Route::get('/users/add', 'UserController@add')->name('add-user');
 		//store 
-		Route::post('/users', 'UserController@store')->name('store-user');
+		// Route::post('/users', 'UserController@store')->name('store-user');
 		//delete 
 		Route::delete('/users/{id}', 'UserController@destroy')->name('delete-user');
 		// show form edit
