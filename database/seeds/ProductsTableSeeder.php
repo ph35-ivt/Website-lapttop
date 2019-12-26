@@ -570,7 +570,7 @@ class ProductsTableSeeder extends Seeder
 			Trọng Lượng	  2.23 kg',
 			'price'=>'10200000',
 			'quantity'=>'30',
-			'link'=>'user/images/product/img28.jpg', 
+			'link'=>'user/images/product/img27.jpg', 
             'status'=>rand(0, 1),
             'created_at' => date("Y-m-d"),
             'updated_at' => date("Y-m-d"),

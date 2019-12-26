@@ -3,7 +3,7 @@
         <div class="categories">
             <ul>
                 <h3>Categories</h3> @foreach($categories as $ct)
-                <li><a href="sanpham/{{$ct->id}}/{{$ct->category_slug}}.html">{{$ct->name}}</a></li>
+                <li><a href="sanpham/{{$ct->id}}/{{$ct->slug}}.html">{{$ct->name}}</a></li>
                 @endforeach
             </ul>
         </div>
