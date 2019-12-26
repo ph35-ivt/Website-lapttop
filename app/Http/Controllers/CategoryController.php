@@ -85,7 +85,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        $data= $request->only('parent_category_id','name','category_slug','description','order','status');//lấy data form
+        $data= $request->only('parent_category_id','name','slug','description','order','status');//lấy data form
         $category->update($data);//update
         return redirect()->route('list-category')->with('success','Update category successful !');
     }

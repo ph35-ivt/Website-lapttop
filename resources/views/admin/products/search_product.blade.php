@@ -43,23 +43,23 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($listProducts as $product)
+          @foreach($search as $tk)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td><span class="text-ellipsis">{{$product->id}}</span></td>
-            <td><span class="text-ellipsis">{{$product->name}}</span></td>
-            <td><span class="text-ellipsis">{{number_format($product->price)}}</span></td>
-            <td><span class="text-ellipsis"><img style="width: 60px" src="{{$product->link}}" alt=""></span></td>
-            <td><span class="text-ellipsis">{{$product->quantity}}</span></td>
+            <td><span class="text-ellipsis">{{$tk->id}}</span></td>
+            <td><span class="text-ellipsis">{{$tk->name}}</span></td>
+            <td><span class="text-ellipsis">{{number_format($tk->price)}}</span></td>
+            <td><span class="text-ellipsis"><img style="width: 60px" src="{{$tk->link}}" alt=""></span></td>
+            <td><span class="text-ellipsis">{{$tk->quantity}}</span></td>
             <td>
-              <a class="btn" href="{{route('show-product',$product->id)}}">
+              <a class="btn" href="{{route('show-product',$tk->id)}}">
                 <button style="color: #0000EE" type="submit"><i class="fas fa-scroll"></i></button>
               </a>
-              <a  class="btn" href="{{route('edit-product',$product->id)}}">
+              <a  class="btn" href="{{route('edit-product',$tk->id)}}">
                 <button style="color: red" type="submit"><i class="fas fa-edit"></i></button>
               </a>
-                @if (empty($product->deleted_at))
-                    <form style="padding-left: 13px" action="{{route('delete-product', $product->id)}}" method="POST">
+                @if (empty($tk->deleted_at))
+                    <form style="padding-left: 13px" action="{{route('delete-product', $tk->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button onclick="return confirm('Bạn có muốn xóa không ?')" type="submit"><i style="width: 17px; color: black" style="" class="fas fa-trash-alt"></i></button>

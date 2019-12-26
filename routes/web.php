@@ -64,6 +64,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],
 		Route::get('/products/{id}/edit','ProductController@edit')->name('edit-product');
 		// update 
 		Route::put('/products/{id}','ProductController@update')->name('update-product');
+		// search
+		Route::get('products/searchs','ProductController@searchProduct')->name('product-search');
 		
 		
 //////////////
